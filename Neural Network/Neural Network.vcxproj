@@ -115,6 +115,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Neuron.cpp" />
+    <ClCompile Include="Weight.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Neuron.h" />
+    <ClInclude Include="ReLU.h" />
+    <ClInclude Include="Sigmoid.h" />
+    <ClInclude Include="Squishification.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Weight.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
