@@ -15,6 +15,7 @@ public:
 
 	int getId();
 	double getActivationValue();
+	void setActivationValue(double);
 	void squish(double value);
 	void initWeights(Layer& previousLayer);
 	void calculateActivation(Layer& previousLayer);
@@ -24,5 +25,5 @@ private:
 	double bias;
 	double activation;
 	Squishification* squishification;
-	std::vector<Weight> weights; // Incoming
+	std::vector<Weight*> weights; // Incoming
 };
