@@ -1,4 +1,5 @@
 #include"NeuralNetwork.h"
+#include <string>
 
 NeuralNetwork::NeuralNetwork()
 {
@@ -39,7 +40,7 @@ std::vector<double>* NeuralNetwork::predict(std::vector<double>& inputValues)
 	return nullptr;
 }
 
-void NeuralNetwork::randomizeWeightsBiases()
+void NeuralNetwork::initializeWeightsBiases()
 {
 	for (std::vector<Layer*>::iterator layerIt = this->layers.begin(); layerIt != this->layers.end(); ++layerIt)
 	{
@@ -47,7 +48,27 @@ void NeuralNetwork::randomizeWeightsBiases()
 
 		for (std::vector<Neuron*>::iterator neuronIt = neurons.begin(); neuronIt != neurons.end(); ++neuronIt)
 		{
-			(*neuronIt)->initWeights();
+			//(*neuronIt)->initWeights(); // TODO: To be implemented!
 		}
 	}
+}
+
+void NeuralNetwork::addLayer(Layer* layer) {
+	this->layers.push_back(layer);
+}
+
+
+std::string NeuralNetwork::toString() {
+	std::string view = "";
+
+	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
+	{
+		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons().begin(); neuron != (*layer)->getNeurons().end(); neuron++)
+		{
+			view += ("\t" + std::to_string((*neuron)->getActivationValue()));
+		}
+		view += "\n-----------------------------------\n";
+	}
+
+	return view;
 }
