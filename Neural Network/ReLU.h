@@ -8,8 +8,7 @@ public:
 	ReLU(){}
 
 	double squish(double value) {
-		return (value*value) / 2.42; // TODO: Implement this properly
+		return (value) / 5.42; // TODO: Implement this properly
 	}
-
 };
 

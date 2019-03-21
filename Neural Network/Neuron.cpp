@@ -8,6 +8,7 @@ Neuron::Neuron(int id)
 	this->id = id;
 	this->squishification = new ReLU();
 	this->type = 0;
+	this->bias = Utils::randomNumber();
 }
 
 Neuron::Neuron(int id, Squishification* squishification)
@@ -15,6 +16,7 @@ Neuron::Neuron(int id, Squishification* squishification)
 	this->id = id;
 	this->squishification = squishification;
 	this->type = 0;
+	this->bias = Utils::randomNumber();
 }
 
 double Neuron::squish(double value)
@@ -44,10 +46,14 @@ void Neuron::initWeights(std::vector<Neuron*>& sourceNeurons)
 	}
 }
 
-void Neuron::calculateActivation() {
+void Neuron::calculateActivation()
+{
 	for (std::vector<Weight*>::iterator weight = this->weights.begin(); weight != this->weights.end(); weight++)
 	{
-		this->activation += ((*weight)->getSourceNeuron()->activation * (*weight)->getValue());
+		if ((*weight)->getSourceNeuron() != nullptr)
+		{
+			this->activation += ((*weight)->getSourceNeuron()->activation * (*weight)->getValue());
+		}
 	}
 
 	this->activation += this->bias;
