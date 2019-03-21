@@ -1,5 +1,7 @@
 #pragma once
 
+class Neuron;
+
 class Weight
 {
 public:
@@ -7,12 +9,16 @@ public:
 	~Weight();
 
 	Weight(double value);
-	Weight(double value, int from, int to);
+	Weight(double value, Neuron* from, Neuron* to);
 
 	void setValue(double value);
+	double getValue();
+
+	Neuron* getSourceNeuron();
+	Neuron* getDestinationNeuron();
 
 private:
 	double value;
-	int from;		// from which neuron (id)
-	int to;			// to which neuron (id)
+	Neuron* from;		// from which neuron (id)
+	Neuron* to;			// to which neuron (id)
 };

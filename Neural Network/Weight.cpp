@@ -15,7 +15,7 @@ Weight::Weight(double value) {
 	this->setValue(value);
 }
 
-Weight::Weight(double value, int from, int to) {
+Weight::Weight(double value, Neuron* from, Neuron* to) {
 	this->setValue(value);
 	this->from = from;
 	this->to = to;
@@ -23,4 +23,16 @@ Weight::Weight(double value, int from, int to) {
 
 void Weight::setValue(double value) {
 	this->value = value;
+}
+
+double Weight::getValue() {
+	return this->value;
+}
+
+Neuron* Weight::getSourceNeuron() {
+	return from;
+}
+
+Neuron* Weight::getDestinationNeuron() {
+	return to;
 }
