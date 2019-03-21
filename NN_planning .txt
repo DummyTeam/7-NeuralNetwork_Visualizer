@@ -1,0 +1,44 @@
+Default version:
+
+	NeuralNetwork nn = NeuralNetwork(numberOfLayers);
+	
+	nn[0].populateNeurons(numberOfNeurons1);
+	nn[1].populateNeurons(numberOfNeurons2);
+	nn[2].populateNeurons(numberOfNeurons3);
+	...
+	...
+	...
+	nn[numberOfLayers - 1].populateNeurons(numberOfNeuronsN);
+	
+	nn.buildWeightConnections();
+
+	vector<double> inputValues; // Size of this should be equal to the number of neurons in input layer of nn
+	
+	vector<double> outputValues = nn.predict(inputValues);
+	
+//////////////////////////////////////////////////////////////
+
+Regular version:
+
+	NeuralNetwork* neuralNetwork = new NeuralNetwork();
+
+	Layer* inputLayer = new Layer();
+	Layer* hiddenLayer = new Layer();
+	Layer* outputLayer = new Layer();
+	
+	inputLayer->populateNeurons(2);
+	hiddenLayer->populateNeurons(4);
+	outputLayer->populateNeurons(3);
+	
+	neuralNetwork->addLayer(inputLayer);
+	neuralNetwork->addLayer(hiddenLayer);
+	neuralNetwork->addLayer(outputLayer);
+	
+//////////////////////////////////////////////////////////////
+
+	
+ - Create a neural network
+ - Create a layer
+	- Creating a layer, Create neurons automatically
+		- Creating neurons automatically, Check their types
+			
