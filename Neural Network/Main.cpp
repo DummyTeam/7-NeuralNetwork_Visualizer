@@ -33,6 +33,13 @@ int main() {
 	// Add output layer to neural network
 	neuralNetwork->addLayer(outputLayer);
 
+	neuralNetwork->buildWeightConnections();
+
+	double inputArr[] = { 1, 2 };
+	std::vector<double> input(inputArr, inputArr + sizeof(inputArr) / sizeof(double));
+
+	std::vector<double> results = neuralNetwork->predict(input);
+
 	std::cout << neuralNetwork->toString() << std::endl;
 
 	system("pause");
