@@ -2,17 +2,15 @@
 
 Layer::Layer()
 {
-
+	this->type = 0;
 }
-
-
 
 int Layer::getSize()
 {
 	return this->neurons.size();
 }
 
-void Layer::setSize(int size)
+void Layer::populateNeurons(int size)
 {
 	this->neurons.resize(size, new Neuron(14)); // TODO: Replace with id index generator. Each neuron must have a unique ID.
 }

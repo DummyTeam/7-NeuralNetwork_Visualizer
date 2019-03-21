@@ -9,7 +9,7 @@ public:
 	Layer();
 
 	int getSize();
-	void setSize(int size);
+	void populateNeurons(int size);
 	std::vector<Neuron*> getNeurons();
 	int pushNeuron(Neuron*);
 	bool deleteNeuronById(int);
@@ -25,8 +25,4 @@ private:
 			  // so that the data type of this variable can be set 
 			  // LayerType and it can be visible in Layer.cpp too. 
 			  // Don't forget to apply it in the constructor as well.
-};
-
-enum LayerType {
-	input = 0, regular, output = 1
 };
