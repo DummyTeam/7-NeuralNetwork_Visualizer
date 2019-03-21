@@ -10,13 +10,14 @@ public:
 
 	int getSize();
 	void populateNeurons(int size);
-	std::vector<Neuron*> getNeurons();
+	std::vector<Neuron*>* getNeurons();
 	int pushNeuron(Neuron*);
 	bool deleteNeuronById(int);
 	bool deleteNeuronsByValue(double);
 	Neuron* findNeuronById(int);
 	std::vector<Neuron*>* findNeuronsByValue(double);
 	void assignValues(std::vector<double>& values);
+	std::vector<double> getListActivationValues();
 
 private:
 	int id;

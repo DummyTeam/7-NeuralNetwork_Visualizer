@@ -15,9 +15,9 @@ void Layer::populateNeurons(int size)
 	this->neurons.resize(size, new Neuron(14)); // TODO: Replace with id index generator. Each neuron must have a unique ID.
 }
 
-std::vector<Neuron*> Layer::getNeurons()
+std::vector<Neuron*>* Layer::getNeurons()
 {
-	return this->neurons;
+	return &(this->neurons);
 }
 
 int Layer::pushNeuron(Neuron *neuron)
@@ -78,13 +78,25 @@ std::vector<Neuron*>* Layer::findNeuronsByValue(double value)
 
 void Layer::assignValues(std::vector<double>& values) {
 	if (this->neurons.size() != values.size()) {
-		//throw new Exception("Size of the values does not martch with the number of nuerons in this layer."); // TODO: Throw a proper runtime exception
+		throw "Size of the values does not match with the number of nuerons in this layer.";
 	}
 
 	int i = 0;
-	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it, i++) {
+	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it, i++)
+	{
 		// TODO: check this out! Make sure it works properly. 
 		//		 find a neat way to solve this problem. 
 		(*it)->setActivationValue(values[i]);
 	}
 }
+
+std::vector<double> Layer::getListActivationValues() {
+	std::vector<double> activationValues;
+	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it) {
+		activationValues.push_back( (*it)->getActivationValue() );
+	}
+
+	return activationValues;
+}
+
+
