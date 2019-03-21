@@ -12,7 +12,7 @@ int NeuralNetwork::getNeuronIndex()
 
 	for (std::vector<Layer*>::iterator it = this->layers.begin(); it != this->layers.end(); ++it)
 	{
-		numberOfNeurons += (*it)->getNeurons().size();
+		numberOfNeurons += (*it)->getNeurons()->size();
 	}
 
 	// Note: I don't know why I'm doing this line...
@@ -23,34 +23,26 @@ int NeuralNetwork::getNeuronIndex()
 }
 
 
-std::vector<double>* NeuralNetwork::predict(std::vector<double>& inputValues)
+std::vector<double> NeuralNetwork::predict(std::vector<double>& inputValues)
 {
-	// TODO: to be implemented!
+	std::vector<double> results;
+
+	this->layers.at(0)->assignValues(inputValues);
 
 	for (std::vector<Layer*>::iterator layerIt = this->layers.begin(); layerIt != this->layers.end(); ++layerIt)
 	{
-		std::vector<Neuron*> neurons = (*layerIt)->getNeurons();
-
-		for (std::vector<Neuron*>::iterator neuronIt = neurons.begin(); neuronIt != neurons.end(); ++neuronIt)
+		for (std::vector<Neuron*>::iterator neuronIt = (*layerIt)->getNeurons()->begin(); neuronIt != (*layerIt)->getNeurons()->end(); ++neuronIt)
 		{
-
+			(*neuronIt)->calculateActivation();
 		}
 	}
 
-	return nullptr;
-}
-
-void NeuralNetwork::initializeWeightsBiases()
-{
-	for (std::vector<Layer*>::iterator layerIt = this->layers.begin(); layerIt != this->layers.end(); ++layerIt)
+	if (this->layers.size() > 1)
 	{
-		std::vector<Neuron*> neurons = (*layerIt)->getNeurons();
-
-		for (std::vector<Neuron*>::iterator neuronIt = neurons.begin(); neuronIt != neurons.end(); ++neuronIt)
-		{
-			//(*neuronIt)->initWeights(); // TODO: To be implemented!
-		}
+		results = this->layers.at(this->layers.size() - 1)->getListActivationValues();
 	}
+
+	return results;
 }
 
 void NeuralNetwork::addLayer(Layer* layer) {
@@ -63,7 +55,7 @@ std::string NeuralNetwork::toString() {
 
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
 	{
-		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons().begin(); neuron != (*layer)->getNeurons().end(); neuron++)
+		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
 		{
 			view += ("\t" + std::to_string((*neuron)->getActivationValue()));
 		}
@@ -71,4 +63,22 @@ std::string NeuralNetwork::toString() {
 	}
 
 	return view;
+}
+
+void NeuralNetwork::buildWeightConnections() {
+	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
+	{
+		std::vector<Neuron*>*  something = (*layer)->getNeurons();
+		std::vector<Neuron*>::iterator asda = (*layer)->getNeurons()->begin();
+		std::vector<Neuron*>::iterator asd2a = (*layer)->getNeurons()->end();
+
+		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
+		{
+			if (layer != this->layers.begin())
+			{
+				std::vector<Neuron*> previousLayerNeurons = *((*layer)->getNeurons());
+				(*neuron)->initWeights(previousLayerNeurons);
+			}
+		}
+	}
 }
