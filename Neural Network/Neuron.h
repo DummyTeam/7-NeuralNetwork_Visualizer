@@ -3,7 +3,6 @@
 #include <vector>
 #include "Weight.h"
 #include "Squishification.h"
-#include "ReLU.h"
 
 class Layer;
 
@@ -16,14 +15,15 @@ public:
 	int getId();
 	double getActivationValue();
 	void setActivationValue(double);
-	void squish(double value);
-	void initWeights(Layer& previousLayer);
-	void calculateActivation(Layer& previousLayer);
+	double squish(double value);
+	void initWeights(std::vector<Neuron*>& neurons);				// Create weights, push_back to weights vector
+	void calculateActivation();
 	
 private:
 	int id;
 	double bias;
 	double activation;
+	int type;
 	Squishification* squishification;
 	std::vector<Weight*> weights; // Incoming
 };

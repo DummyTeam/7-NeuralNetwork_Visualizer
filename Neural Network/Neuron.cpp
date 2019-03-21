@@ -1,23 +1,25 @@
 #include "Neuron.h"
 #include "Utils.h"
 #include "Layer.h"
+#include "ReLU.h"
 
 Neuron::Neuron(int id)
 {
 	this->id = id;
 	this->squishification = new ReLU();
+	this->type = 0;
 }
 
 Neuron::Neuron(int id, Squishification* squishification)
 {
 	this->id = id;
 	this->squishification = squishification;
+	this->type = 0;
 }
 
-
-void Neuron::squish(double value)
+double Neuron::squish(double value)
 {
-	this->squishification->squish(value);
+	return this->squishification->squish(value);
 }
 
 int Neuron::getId()
@@ -34,17 +36,20 @@ void Neuron::setActivationValue(double activation) {
 	this->activation = activation;
 }
 
-void Neuron::calculateActivation(Layer& previousLayer) {
-	// TODO: to be implemented!
+void Neuron::initWeights(std::vector<Neuron*>& sourceNeurons)
+{
+	for (std::vector<Neuron*>::iterator neuron = sourceNeurons.begin(); neuron != sourceNeurons.end(); neuron++)
+	{
+		this->weights.push_back(new Weight(Utils::randomNumber(0.0, 100.0), *neuron, this));
+	}
 }
 
-// Creating weights and assingning random numbers for each
-void Neuron::initWeights(Layer& previousLayer) 
-{
-	for (std::vector<Neuron*>::iterator neuron = previousLayer.getNeurons().begin();
-		neuron != previousLayer.getNeurons().end();
-		neuron++)
+void Neuron::calculateActivation() {
+	for (std::vector<Weight*>::iterator weight = this->weights.begin(); weight != this->weights.end(); weight++)
 	{
-		this->weights.push_back(new Weight(Utils::randomNumber(0.0, 100.0), (*neuron)->getId(), this->getId()));
+		this->activation += ((*weight)->getSourceNeuron()->activation * (*weight)->getValue());
 	}
+
+	this->activation += this->bias;
+	this->setActivationValue(this->squish(this->activation));
 }
