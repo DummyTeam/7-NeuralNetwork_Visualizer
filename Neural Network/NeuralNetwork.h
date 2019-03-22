@@ -10,9 +10,11 @@ public:
 	NeuralNetwork();
 	int getNeuronIndex();
 	void addLayer(Layer*);
+	double calculateError(std::vector<double>&);
 	std::vector<double> predict(std::vector<double>&);
+	void train(std::vector<std::vector<double>>&);
 	std::string toString();
-	void buildWeightConnections();
+	void buildWeightsAndBiases();
 private:
 	int neuronIndex;
 	std::vector<Layer*> layers;

@@ -65,19 +65,43 @@ std::string NeuralNetwork::toString() {
 	return view;
 }
 
-void NeuralNetwork::buildWeightConnections() {
+void NeuralNetwork::train(std::vector<std::vector<double>>& trainingData) {
+
+	std::auto_ptr<std::vector<double>> results;
+
+	for (std::vector<std::vector<double>>::iterator trainingSample = trainingData.begin(); trainingSample != trainingData.end(); trainingSample++)
+	{
+		std::vector<double> sample((*trainingSample).begin(), (*trainingSample).end() - 1);
+		*results = this->predict(sample);
+		printf("Cost: %f", this->calculateError(*results));
+	}
+}
+
+double NeuralNetwork::calculateError(std::vector<double>& results)
+{
+	bool isOutputLayer = false;
+
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
 	{
-		std::vector<Neuron*>*  something = (*layer)->getNeurons();
-		std::vector<Neuron*>::iterator asda = (*layer)->getNeurons()->begin();
-		std::vector<Neuron*>::iterator asd2a = (*layer)->getNeurons()->end();
+		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
+		{
+			isOutputLayer = layer == this->layers.end();
 
+			(*neuron)->updateWeightAndBias(isOutputLayer);
+		}
+	}
+	return 0.0;
+}
+
+void NeuralNetwork::buildWeightsAndBiases() {
+	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
+	{
 		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
 		{
 			if (layer != this->layers.begin())
 			{
-				std::vector<Neuron*> previousLayerNeurons = *((*layer)->getNeurons());
-				(*neuron)->initWeights(previousLayerNeurons);
+				std::vector<Neuron*>* previousLayerNeurons = (*(layer-1))->getNeurons();
+				(*neuron)->initWeightsAndBias(*previousLayerNeurons);
 			}
 		}
 	}
