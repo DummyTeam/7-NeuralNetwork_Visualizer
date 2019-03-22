@@ -5,10 +5,18 @@
 class ReLU : public Squishification
 {
 public:
-	ReLU(){}
+	ReLU() {}
 
 	double squish(double value) {
-		return (value) / 5.42; // TODO: Implement this properly
+		if (value <= 0)
+			return 0;
+		return value;
 	}
-};
 
+	double derivative(double value) {
+		if (value <= 0)
+			return 0;
+		return 1;
+	}
+
+};
