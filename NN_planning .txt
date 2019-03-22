@@ -34,11 +34,65 @@ Regular version:
 	neuralNetwork->addLayer(hiddenLayer);
 	neuralNetwork->addLayer(outputLayer);
 	
-//////////////////////////////////////////////////////////////
+	neuralNetwork->buildWeightConnections(); // Initialized weights and biases
+	
+	// <Training>
+	
+	neuralNetwork->train(trainingData);
+		- trainingData is  a two dimensional vector; (trainingData[cases][sample_data_of_the_case])
+		- train takes samples vector by vector
+		- runs it through predict function
+		- takes the results and calculate the cost
+		- run backpropogation (updates weights and biases)
 
+	
+	// </Training>
+	
+	vector<double> results = neuralNetwork->predict(input);
+	
+	
+	cout << neuralNetwork->toString();
+	
+//////////////////////////////////////////////////////////////
 	
  - Create a neural network
  - Create a layer
 	- Creating a layer, Create neurons automatically
-		- Creating neurons automatically, Check their types
+		- Creating neurons automatically, Check their types 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 			
