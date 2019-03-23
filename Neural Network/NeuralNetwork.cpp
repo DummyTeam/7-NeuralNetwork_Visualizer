@@ -1,6 +1,7 @@
 #include"NeuralNetwork.h"
 #include <string>
 
+
 NeuralNetwork::NeuralNetwork()
 {
 
@@ -65,11 +66,11 @@ std::string NeuralNetwork::toString() {
 	return view;
 }
 
-void NeuralNetwork::train(std::vector<std::vector<std::vector<double>>>& trainingData) {
+void NeuralNetwork::train(DataSet* dataSet) {
 
 	std::auto_ptr<std::vector<double>> results;
-
-	for (std::vector<std::vector<std::vector<double>>>::iterator trainingSample = trainingData.begin(); trainingSample != trainingData.end(); trainingSample++)
+	dataSet->getDataSet()->at(0).getInput();
+	for (std::vector<Sample>::iterator trainingSample = dataSet->getDataSet()->begin(); trainingSample != dataSet->getDataSet()->end(); trainingSample++)
 	{
 		*results = this->predict((*trainingSample).at(0));
 		this->backPropogate(*results, (*trainingSample).at(1));
