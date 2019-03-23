@@ -8,6 +8,7 @@ int main() {
 	// Initialize random seed
 	srand(10);
 
+	DataSet* dataSet = new DataSet("data.data", 2, 1);
 
 
 	system("pause");
@@ -48,46 +49,7 @@ int main() {
 	// Building relationships (weights and biases) amoung neurons
 	neuralNetwork->buildWeightsAndBiases();
 
-
-/*
-	
-	NNInput* nnInput = new NNInput();
-	nnInput->getDataSet();*/
-	
-	// Training Stage
-	double trainDataArr[] = { 0, 0, };
-	double trainDataArr2[] = { 1, 1 };
-	double trainDataArr3[] = { 0, 1 };
-	double trainDataArr4[] = { 1, 0 };
-
-	double expectedArr[] = { 0 };
-	double expectedArr2[] = { 0 };
-	double expectedArr3[] = { 1 };
-	double expectedArr4[] = { 1 };
-
-	std::vector<std::vector<std::vector<double>>> trainingDataSet;
-
-	std::vector<std::vector<double>> sample1;
-	sample1.push_back(std::vector<double>(trainDataArr, trainDataArr + sizeof(trainDataArr) / sizeof(double)));
-	sample1.push_back(std::vector<double>(expectedArr, expectedArr + sizeof(expectedArr) / sizeof(double)));
-		
-	std::vector<std::vector<double>> sample2;
-	sample2.push_back(std::vector<double>(trainDataArr2, trainDataArr2 + sizeof(trainDataArr2) / sizeof(double)));
-	sample2.push_back(std::vector<double>(expectedArr2, expectedArr2 + sizeof(expectedArr2) / sizeof(double)));
-
-	std::vector<std::vector<double>> sample3;
-	sample3.push_back(std::vector<double>(trainDataArr3, trainDataArr3 + sizeof(trainDataArr3) / sizeof(double)));
-	sample3.push_back(std::vector<double>(expectedArr3, expectedArr3 + sizeof(expectedArr3) / sizeof(double)));
-
-	std::vector<std::vector<double>> sample4;
-	sample4.push_back(std::vector<double>(trainDataArr4, trainDataArr4 + sizeof(trainDataArr4) / sizeof(double)));
-	sample4.push_back(std::vector<double>(expectedArr4, expectedArr4 + sizeof(expectedArr4) / sizeof(double)));
-
-	trainingDataSet.push_back(sample1);
-	trainingDataSet.push_back(sample2);
-	trainingDataSet.push_back(sample3);
-	trainingDataSet.push_back(sample4);
-
+	// Train the network
 	neuralNetwork->train(trainingDataSet);
 
 	// Predicting stage
