@@ -6,6 +6,7 @@ Sample::Sample(std::string line, int sizeOfInput, int sizeOfOutput)
 	this->sizeOfInput = sizeOfInput;
 	this->sizeOfOutput = sizeOfOutput;
 	this->line = line;
+	this->splitInputAndOutput();
 }
 
 std::vector<double> Sample::getInput()
@@ -27,9 +28,9 @@ void Sample::pushToOutput(double outputItem) {
 }
 
 
-void Sample::splitInputAndOutput(std::string line)
+void Sample::splitInputAndOutput()
 {
-	std::stringstream ss(line);
+	std::stringstream ss(this->line);
 	double num;
 
 	for (size_t i = 0; i < this->sizeOfInput; i++)

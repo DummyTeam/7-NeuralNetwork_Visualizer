@@ -14,7 +14,7 @@ public:
 	void pushToInput(double);
 	void pushToOutput(double);
 
-	void splitInputAndOutput(std::string);
+	void splitInputAndOutput();
 
 private:
 	std::vector<double> input;
