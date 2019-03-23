@@ -7,12 +7,13 @@
 class NeuralNetwork
 {
 public:
+
 	NeuralNetwork();
 	int getNeuronIndex();
 	void addLayer(Layer*);
-	double calculateError(std::vector<double>&);
+	void backPropogate(std::vector<double>&, std::vector<double>&);
 	std::vector<double> predict(std::vector<double>&);
-	void train(std::vector<std::vector<double>>&);
+	void train(std::vector<std::vector<std::vector<double>>>&);
 	std::string toString();
 	void buildWeightsAndBiases();
 private:

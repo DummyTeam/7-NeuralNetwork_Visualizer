@@ -65,42 +65,52 @@ std::string NeuralNetwork::toString() {
 	return view;
 }
 
-void NeuralNetwork::train(std::vector<std::vector<double>>& trainingData) {
+void NeuralNetwork::train(std::vector<std::vector<std::vector<double>>>& trainingData) {
 
 	std::auto_ptr<std::vector<double>> results;
 
-	for (std::vector<std::vector<double>>::iterator trainingSample = trainingData.begin(); trainingSample != trainingData.end(); trainingSample++)
+	for (std::vector<std::vector<std::vector<double>>>::iterator trainingSample = trainingData.begin(); trainingSample != trainingData.end(); trainingSample++)
 	{
-		std::vector<double> sample((*trainingSample).begin(), (*trainingSample).end() - 1);
-		*results = this->predict(sample);
-		printf("Cost: %f", this->calculateError(*results));
+		*results = this->predict((*trainingSample).at(0));
+		this->backPropogate(*results, (*trainingSample).at(1));
 	}
 }
 
-double NeuralNetwork::calculateError(std::vector<double>& results)
+// This method should be in Layer.h
+void NeuralNetwork::backPropogate(std::vector<double>& results, std::vector<double>& expected)
 {
-	bool isOutputLayer = false;
+	Layer* outputLayer = this->layers.at(this->layers.size() - 1);
+
+	if (results.size() != expected.size() || results.size() != (*(outputLayer->getNeurons())).size())
+	{
+		throw "Size of the resulting array of numbers from prediction does not match with the size of expected value array. Number of expected values should be equal to the number of output layer neurons.";
+	}
+
+	for (size_t i = 0; i < results.size(); i++)
+	{
+		(*(outputLayer->getNeurons())).at(i)->setDelta(2 * (results[i] - expected[i]));
+	}
+
+	for (std::vector<Layer*>::iterator layer = this->layers.end(); layer != this->layers.begin(); layer++)
+	{
+		(*layer)->calculateDeltaInLayer();
+	}
 
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
 	{
-		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
-		{
-			isOutputLayer = layer == this->layers.end();
-
-			(*neuron)->updateWeightAndBias(isOutputLayer);
-		}
+		if (layer != this->layers.begin())
+			(*layer)->updateWeightsAndBiases();
 	}
-	return 0.0;
 }
 
 void NeuralNetwork::buildWeightsAndBiases() {
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
 	{
-		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
+		if (layer != this->layers.begin())
 		{
-			if (layer != this->layers.begin())
+			for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons()->begin(); neuron != (*layer)->getNeurons()->end(); neuron++)
 			{
-				std::vector<Neuron*>* previousLayerNeurons = (*(layer-1))->getNeurons();
+				std::vector<Neuron*>* previousLayerNeurons = (*(layer - 1))->getNeurons();
 				(*neuron)->initWeightsAndBias(*previousLayerNeurons);
 			}
 		}
