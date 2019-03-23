@@ -60,11 +60,33 @@ void Neuron::calculateActivation()
 	this->setActivationValue(this->squish(this->activation));
 }
 
-void Neuron::updateWeightAndBias(bool isInputNeuron)
+void Neuron::updateWeightAndBias()
 {
-	for (std::vector<Weight*>::iterator weightIt = this->weights->begin(); weightIt != this->weights->end(); weightIt++)
+	double learningRate = 0.01;
+
+	for (std::vector<Weight*>::iterator weight = this->weights->begin(); weight != this->weights->end(); weight++)
 	{
-		double sqshDerivative = this->squishification->derivative((*weightIt)->getValue());
-		double previousNeuron =
+		(*weight)->setValue((*weight)->getValue() + this->activation * squishification->derivative(this->activation) * learningRate * this->getDelta());
+	}
+}
+
+void Neuron::setDelta(double delta)
+{
+	this->delta = delta;
+}
+
+double Neuron::getDelta()
+{
+	return this->delta;
+}
+
+void Neuron::calculateDelta()
+{
+	for (std::vector<Weight*>::iterator weight = this->weights->begin(); weight != this->weights->end(); weight++)
+	{
+		if ((*weight)->getSourceNeuron() != nullptr)
+		{
+			(*weight)->getSourceNeuron()->delta += ((*weight)->getValue() * this->getActivationValue());
+		}
 	}
 }

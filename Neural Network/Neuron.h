@@ -14,16 +14,20 @@ public:
 
 	int getId();
 	double getActivationValue();
+	void setDelta(double);
+	double getDelta();
 	void setActivationValue(double);
 	double squish(double value);
 	void initWeightsAndBias(std::vector<Neuron*>& neurons);				// Create weights, push_back to weights vector
 	void calculateActivation();
-	void updateWeightAndBias(bool);
+	void calculateDelta();
+	void updateWeightAndBias();
 	
 private:
 	int id;
 	double bias;
 	double activation;
+	double delta;
 	int type;
 	Squishification* squishification;
 	std::vector<Weight*>* weights; // Incoming
