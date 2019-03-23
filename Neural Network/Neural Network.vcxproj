@@ -119,6 +119,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NeuralNetwork.cpp" />
     <ClCompile Include="Neuron.cpp" />
+    <ClCompile Include="DataSet.cpp" />
+    <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Weight.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +128,16 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="NeuralNetwork.h" />
     <ClInclude Include="Neuron.h" />
+    <ClInclude Include="DataSet.h" />
     <ClInclude Include="ReLU.h" />
+    <ClInclude Include="Sample.h" />
     <ClInclude Include="Sigmoid.h" />
     <ClInclude Include="Squishification.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weight.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data.data" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
