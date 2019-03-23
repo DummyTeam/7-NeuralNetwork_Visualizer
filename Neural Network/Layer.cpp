@@ -93,10 +93,24 @@ void Layer::assignValues(std::vector<double>& values) {
 std::vector<double> Layer::getListActivationValues() {
 	std::vector<double> activationValues;
 	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it) {
-		activationValues.push_back( (*it)->getActivationValue() );
+		activationValues.push_back((*it)->getActivationValue());
 	}
 
 	return activationValues;
 }
 
+void Layer::calculateDeltaInLayer() {
+	for (std::vector<Neuron*>::iterator neuron = this->getNeurons()->begin(); neuron != this->getNeurons()->end(); neuron++)
+	{
+		(*neuron)->calculateDelta();
+	}
+}
+
+void Layer::updateWeightsAndBiases() 
+{
+	for (std::vector<Neuron*>::iterator neuron = this->getNeurons()->begin(); neuron != this->getNeurons()->end(); neuron++)
+	{
+		(*neuron)->updateWeightAndBias();
+	}
+}
 

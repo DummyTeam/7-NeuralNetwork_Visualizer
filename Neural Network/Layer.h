@@ -18,6 +18,8 @@ public:
 	std::vector<Neuron*>* findNeuronsByValue(double);
 	void assignValues(std::vector<double>& values);
 	std::vector<double> getListActivationValues();
+	void calculateDeltaInLayer();
+	void updateWeightsAndBiases();
 
 private:
 	int id;
