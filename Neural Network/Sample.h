@@ -8,8 +8,8 @@ class Sample
 public:
 	Sample(std::string line, int sizeOfInput, int sizeOfOutput);
 
-	std::vector<double> getInput();
-	std::vector<double> getOutput();
+	std::vector<double>& getInput();
+	std::vector<double>& getOutput();
 
 	void pushToInput(double);
 	void pushToOutput(double);

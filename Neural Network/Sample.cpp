@@ -9,12 +9,12 @@ Sample::Sample(std::string line, int sizeOfInput, int sizeOfOutput)
 	this->splitInputAndOutput();
 }
 
-std::vector<double> Sample::getInput()
+std::vector<double>& Sample::getInput()
 {
 	return this->input;
 }
 
-std::vector<double> Sample::getOutput()
+std::vector<double>& Sample::getOutput()
 {
 	return this->output;
 }
@@ -26,7 +26,6 @@ void Sample::pushToInput(double inputItem) {
 void Sample::pushToOutput(double outputItem) {
 	this->output.push_back(outputItem);
 }
-
 
 void Sample::splitInputAndOutput()
 {
