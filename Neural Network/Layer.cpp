@@ -15,9 +15,9 @@ void Layer::populateNeurons(int size)
 	this->neurons.resize(size, new Neuron(14)); // TODO: Replace with id index generator. Each neuron must have a unique ID.
 }
 
-std::vector<Neuron*>* Layer::getNeurons()
+std::vector<Neuron*>& Layer::getNeurons()
 {
-	return &(this->neurons);
+	return (this->neurons);
 }
 
 int Layer::pushNeuron(Neuron *neuron)
@@ -76,7 +76,7 @@ std::vector<Neuron*>* Layer::findNeuronsByValue(double value)
 	return foundNeurons;
 }
 
-void Layer::assignValues(std::vector<double>& values) {
+void Layer::assignValues(std::vector<double> const &values) {
 	if (this->neurons.size() != values.size()) {
 		throw "Size of the values does not match with the number of nuerons in this layer.";
 	}
@@ -99,16 +99,16 @@ std::vector<double> Layer::getListActivationValues() {
 	return activationValues;
 }
 
-void Layer::calculateDeltaInLayer() {
-	for (std::vector<Neuron*>::iterator neuron = this->getNeurons()->begin(); neuron != this->getNeurons()->end(); neuron++)
+void Layer::calculateDelta() {
+	for (std::vector<Neuron*>::iterator neuron = this->getNeurons().begin(); neuron != this->getNeurons().end(); neuron++)
 	{
-		(*neuron)->calculateDelta();
+		//(*neuron)->calculateDelta();
 	}
 }
 
-void Layer::updateWeightsAndBiases() 
+void Layer::updateWeightsAndBiases()
 {
-	for (std::vector<Neuron*>::iterator neuron = this->getNeurons()->begin(); neuron != this->getNeurons()->end(); neuron++)
+	for (std::vector<Neuron*>::iterator neuron = this->getNeurons().begin(); neuron != this->getNeurons().end(); neuron++)
 	{
 		(*neuron)->updateWeightAndBias();
 	}
