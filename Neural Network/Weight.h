@@ -15,10 +15,12 @@ public:
 	double getValue();
 
 	Neuron* getSourceNeuron();
+
 	Neuron* getDestinationNeuron();
 
 private:
 	double value;
+	
 	Neuron* from;		// from which neuron (id)
 	Neuron* to;			// to which neuron (id)
 };

@@ -50,7 +50,7 @@ int main() {
 	neuralNetwork->buildWeightsAndBiases();
 
 	// Train the network
-	neuralNetwork->train(trainingDataSet);
+	neuralNetwork->train(dataSet);
 
 	// Predicting stage
 	double inputArr[] = { 1, 2 };
