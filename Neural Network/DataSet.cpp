@@ -6,6 +6,7 @@ DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput)
 	this->path = path;
 	this->sizeOfInput = sizeOfInput;
 	this->sizeOfOutput = sizeOfOutput;
+
 	readFromFile();
 }
 
@@ -19,13 +20,13 @@ void DataSet::readFromFile() {
 	{
 		while (getline(dataFile, line))
 		{
-			this->dataSet.push_back(Sample(line, sizeOfInput, sizeOfOutput));
+			this->dataSet.push_back(new Sample(line, sizeOfInput, sizeOfOutput));
 		}
 		dataFile.close();
 	}
 	else printf("Unable to open file");
 }
 
-std::vector<Sample>* DataSet::getDataSet() {
-	return &(this->dataSet);
+std::vector<Sample*>& DataSet::getDataSet() {
+	return this->dataSet;
 }
