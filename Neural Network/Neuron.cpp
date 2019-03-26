@@ -2,13 +2,14 @@
 #include "Utils.h"
 #include "Layer.h"
 #include "ReLU.h"
+#include "Sigmoid.h"
 
 Neuron::Neuron(int id)
 {
 	this->id = id;
-	this->squishification = new ReLU();
+	this->squishification = new Sigmoid();
 	this->type = 0;
-	this->weights = new std::vector<Weight*>();
+	this->activation = Utils::randomNumber(0, 1);
 }
 
 Neuron::Neuron(int id, Squishification* squishification)
@@ -16,7 +17,7 @@ Neuron::Neuron(int id, Squishification* squishification)
 	this->id = id;
 	this->squishification = squishification;
 	this->type = 0;
-	this->weights = new std::vector<Weight*>();
+	this->activation = Utils::randomNumber(0, 1);
 }
 
 double Neuron::squish(double value)
@@ -44,15 +45,16 @@ void Neuron::initWeightsAndBias(std::vector<Neuron*> &sourceNeurons)
 
 	for (std::vector<Neuron*>::iterator neuron = sourceNeurons.begin(); neuron != sourceNeurons.end(); neuron++)
 	{
-		std::cout << (*neuron)->id << std::endl;
-		Weight* amir = new Weight(Utils::randomNumber(0.0, 10.0), *neuron, this);
-		this->weights->push_back(amir);
+		Weight* weight = new Weight(Utils::randomNumber(0.0, 10.0), *neuron, this);
+
+		this->weights.push_back(weight);
+		(*neuron)->outgoingWeights.push_back(weight);
 	}
 }
 
 void Neuron::calculateActivation()
 {
-	for (std::vector<Weight*>::iterator weight = this->weights->begin(); weight != this->weights->end(); weight++)
+	for (std::vector<Weight*>::iterator weight = this->weights.begin(); weight != this->weights.end(); weight++)
 	{
 		if ((*weight)->getSourceNeuron() != nullptr)
 		{
@@ -62,13 +64,12 @@ void Neuron::calculateActivation()
 
 	this->activation += this->bias;
 	this->setActivationValue(this->squish(this->activation));
+	printf("Squished value: %f\n", this->squish(this->activation));
 }
 
-void Neuron::updateWeightAndBias()
+void Neuron::updateWeightAndBias(double learningRate)
 {
-	double learningRate = 0.01;
-
-	for (std::vector<Weight*>::iterator weight = this->weights->begin(); weight != this->weights->end(); weight++)
+	for (std::vector<Weight*>::iterator weight = this->weights.begin(); weight != this->weights.end(); weight++)
 	{
 		(*weight)->setValue((*weight)->getValue() + this->activation * squishification->derivative(this->activation) * learningRate * this->getDelta());
 	}
@@ -84,13 +85,14 @@ double Neuron::getDelta()
 	return this->delta;
 }
 
-void Neuron::calculateDelta(double learningRate)
-{
-	for (std::vector<Weight*>::iterator weight = this->weights->begin(); weight != this->weights->end(); weight++)
-	{
-		if ((*weight)->getSourceNeuron() != nullptr)
-		{
-			(*weight)->getSourceNeuron()->delta += ((*weight)->getValue() * this->getActivationValue());
+void Neuron::calculatePreviousLayerNeuronDelta() {
+	for (std::vector<Weight*>::iterator weight = this->outgoingWeights.begin(); weight != this->outgoingWeights.end(); weight++) {
+		if ((*weight)->getSourceNeuron() != nullptr && (*weight)->getDestinationNeuron() != nullptr) {
+			this->delta += ((*weight)->getValue() * (*weight)->getDestinationNeuron()->getActivationValue());
 		}
 	}
+}
+
+void Neuron::calculateOutputNeuronDelta(double expected) {
+	this->delta = 2 * (this->activation - expected);
 }

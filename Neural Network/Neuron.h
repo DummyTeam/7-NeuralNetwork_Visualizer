@@ -40,10 +40,13 @@ public:
 	void calculateActivation();
 
 	// Calculate delta
-	void calculateDelta(double);
+	void calculatePreviousLayerNeuronDelta();
 
 	// Updates weights and biases
-	void updateWeightAndBias();
+	void updateWeightAndBias(double learningRate);
+
+	// Calculates output layer delta
+	void calculateOutputNeuronDelta(double);
 
 private:
 	int id;
@@ -52,5 +55,6 @@ private:
 	double delta;
 	int type;
 	Squishification* squishification;
-	std::vector<Weight*>* weights; // Incoming
+	std::vector<Weight*> weights; // Incoming
+	std::vector<Weight*> outgoingWeights; // Outgoing
 };
