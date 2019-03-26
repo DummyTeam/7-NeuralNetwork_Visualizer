@@ -18,6 +18,9 @@ public:
 	// Clear enough
 	int getId();
 
+	// Clear enough
+	double getBias();
+
 	// Returns activation value of neuron
 	double getActivationValue();
 
@@ -47,6 +50,8 @@ public:
 
 	// Calculates output layer delta
 	void calculateOutputNeuronDelta(double);
+
+	std::vector<Weight*> & getInconmingWeights();
 
 private:
 	int id;
