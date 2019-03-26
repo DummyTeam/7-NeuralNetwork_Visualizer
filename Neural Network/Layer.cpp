@@ -1,5 +1,6 @@
 #include "Layer.h"
 #include"Sigmoid.h"
+#include "NeuralNetwork.h"
 
 Layer::Layer()
 {
@@ -20,9 +21,12 @@ int Layer::getSize()
 	return this->neurons.size();
 }
 
-void Layer::populateNeurons(int size)
+void Layer::populateNeurons(int size, NeuralNetwork* nn)
 {
-	this->neurons.resize(size, new Neuron(14, squishification)); // TODO: Replace with id index generator. Each neuron must have a unique ID.
+	for (size_t i = 0; i < size; i++)
+	{
+		this->neurons.push_back(new Neuron(nn->getNewNeuronIndex(), squishification));
+	}
 }
 
 
@@ -93,8 +97,8 @@ void Layer::assignValues(std::vector<double> const &values) {
 	}
 
 	int i = 0;
-	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it, i++)
-	{
+
+	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it, i++) {
 		// TODO: check this out! Make sure it works properly. 
 		//		 find a neat way to solve this problem. 
 		(*it)->setActivationValue(values[i]);

@@ -3,6 +3,8 @@
 #include <vector>
 #include "Neuron.h"
 
+class NeuralNetwork;
+
 class Layer
 {
 public:
@@ -12,7 +14,7 @@ public:
 	int getSize();
 
 	// Resizes neurons vector
-	void populateNeurons(int size);
+	void populateNeurons(int size, NeuralNetwork* nn);
 
 	// Get neurons vector
 	std::vector<Neuron*> & getNeurons();
