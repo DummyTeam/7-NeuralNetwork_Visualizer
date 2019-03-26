@@ -9,7 +9,12 @@ public:
 	Sigmoid() {}
 
 	double squish(double value) {
-		return (exp(value)) / (exp(value) + 1) * 1.0;
+		if (value > 15)
+			return 1;
+		else if (value <= -15)
+			return 0;
+		else
+			return (exp(value)) / (exp(value) + 1) * 1.0;
 	}
 
 	double derivative(double value) {
