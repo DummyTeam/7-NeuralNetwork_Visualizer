@@ -26,8 +26,6 @@ std::vector<double> NeuralNetwork::predict(std::vector<double> &inputValues)
 
 	this->layers.at(0)->assignValues(inputValues);
 
-	//std::cout << this->toString() << std::endl;
-
 	for (std::vector<Layer*>::iterator layerIt = this->layers.begin(); layerIt != this->layers.end(); ++layerIt) {
 		if (layerIt != this->layers.begin())
 			(*layerIt)->calculateActivations();
