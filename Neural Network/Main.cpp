@@ -2,15 +2,14 @@
 #include"NeuralNetwork.h"
 #include"Utils.h"
 #include"DataSet.h"
+#include"ReLU.h"
 
 int main() {
-
 	// Initialize random seed
 	srand(10);
 
 	DataSet* dataSet = new DataSet("data.data", 2, 1);
-
-
+	double learningRate = 0.5;
 	system("pause");
 
 	// Create a neural network
@@ -27,15 +26,15 @@ int main() {
 
 	// Create hidden layer
 	Layer* hiddenLayer = new Layer();
-	Layer* hiddenLayer2 = new Layer();
+	//Layer* hiddenLayer2 = new Layer();
 
 	// Add created neurons to hidden layer
-	hiddenLayer->populateNeurons(4);
-	hiddenLayer2->populateNeurons(4);
+	hiddenLayer->populateNeurons(3);
+	//hiddenLayer2->populateNeurons(4);
 
 	// Add hidden layer to neural network
 	neuralNetwork->addLayer(hiddenLayer);
-	neuralNetwork->addLayer(hiddenLayer2);
+	//neuralNetwork->addLayer(hiddenLayer2);
 
 	// Create an output layer
 	Layer* outputLayer = new Layer();
@@ -50,12 +49,8 @@ int main() {
 	neuralNetwork->buildWeightsAndBiases();
 
 	// Train the network
-	neuralNetwork->train(dataSet);
+	neuralNetwork->train(dataSet, learningRate);
 
-	// Predicting stage
-	double inputArr[] = { 1, 2 };
-	std::vector<double> input(inputArr, inputArr + sizeof(inputArr) / sizeof(double));
-	std::vector<double> results = neuralNetwork->predict(input);
 
 	std::cout << neuralNetwork->toString() << std::endl;
 
