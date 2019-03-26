@@ -1,14 +1,18 @@
 #pragma once
 
 #include "Squishification.h"
+#include "Math.h"
 
 class Sigmoid : public Squishification
 {
 public:
-	Sigmoid(){}
+	Sigmoid() {}
 
 	double squish(double value) {
-		return (value*value) / 5.42; // TODO: Implement this properly
+		return (exp(value)) / (exp(value) + 1) * 1.0;
 	}
 
+	double derivative(double value) {
+		return (1.0 * squish(value) * (1.0 - squish(value)));
+	}
 };
