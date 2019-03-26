@@ -23,8 +23,7 @@ int Layer::getSize()
 
 void Layer::populateNeurons(int size, NeuralNetwork* nn)
 {
-	for (size_t i = 0; i < size; i++)
-	{
+	for (size_t i = 0; i < size; i++) {
 		this->neurons.push_back(new Neuron(nn->getNewNeuronIndex(), squishification));
 	}
 }

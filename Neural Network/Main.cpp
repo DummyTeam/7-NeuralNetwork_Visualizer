@@ -8,11 +8,17 @@
 int main() {
 
 	// Initialize random seed
-	srand(10);
+	srand(15);
+/*
+	for (size_t i = 0; i < 50; i++)
+	{
+		std::cout<< Utils::randomNumberInt(0, 5) << std::endl;
+	}
 
+	system("pause");*/
 	DataSet* dataSet = new DataSet("data.data", 2, 1);
 
-	double learningRate = 0.2;
+	double learningRate = 0.1;
 
 	// Create a neural network
 	NeuralNetwork* neuralNetwork = new NeuralNetwork();
@@ -27,7 +33,7 @@ int main() {
 	neuralNetwork->addLayer(inputLayer);
 
 	// Create hidden layer
-	Layer* hiddenLayer = new Layer(new Sigmoid());
+	Layer* hiddenLayer = new Layer();
 	//Layer* hiddenLayer2 = new Layer();
 
 	// Add created neurons to hidden layer
@@ -39,7 +45,7 @@ int main() {
 	//neuralNetwork->addLayer(hiddenLayer2);
 
 	// Create an output layer
-	Layer* outputLayer = new Layer(new ReLU());
+	Layer* outputLayer = new Layer();
 
 	// Add created neurons to output layer
 	outputLayer->populateNeurons(1, neuralNetwork);
