@@ -1,9 +1,19 @@
 #include "Layer.h"
+#include"Sigmoid.h"
 
 Layer::Layer()
 {
 	this->type = 0;
+	this->squishification = new Sigmoid();
+
 }
+
+Layer::Layer(Squishification* squishification)
+{
+	this->type = 0;
+	this->squishification = squishification;
+}
+
 
 int Layer::getSize()
 {
@@ -12,8 +22,9 @@ int Layer::getSize()
 
 void Layer::populateNeurons(int size)
 {
-	this->neurons.resize(size, new Neuron(14)); // TODO: Replace with id index generator. Each neuron must have a unique ID.
+	this->neurons.resize(size, new Neuron(14, squishification)); // TODO: Replace with id index generator. Each neuron must have a unique ID.
 }
+
 
 std::vector<Neuron*>& Layer::getNeurons()
 {
@@ -99,18 +110,30 @@ std::vector<double> Layer::getListActivationValues() {
 	return activationValues;
 }
 
-void Layer::calculateDelta() {
-	for (std::vector<Neuron*>::iterator neuron = this->getNeurons().begin(); neuron != this->getNeurons().end(); neuron++)
-	{
-		//(*neuron)->calculateDelta();
+void Layer::calculateDelta(std::vector<double> const &expected, bool isOutputLayer) {
+	for (size_t i = 0; i < this->neurons.size(); i++) {
+		if (isOutputLayer)
+			this->neurons[i]->calculateOutputNeuronDelta(expected[i]);
+		else
+			this->neurons[i]->calculatePreviousLayerNeuronDelta();
 	}
 }
 
-void Layer::updateWeightsAndBiases()
-{
-	for (std::vector<Neuron*>::iterator neuron = this->getNeurons().begin(); neuron != this->getNeurons().end(); neuron++)
-	{
-		(*neuron)->updateWeightAndBias();
+void Layer::updateWeightsAndBiases(double learningRate) {
+	for (std::vector<Neuron*>::iterator neuron = this->getNeurons().begin(); neuron != this->getNeurons().end(); neuron++) {
+		(*neuron)->updateWeightAndBias(learningRate);
 	}
 }
 
+void Layer::buildWeightsAndBiases(Layer* previousLayer) {
+	for (std::vector<Neuron*>::iterator neuron = this->getNeurons().begin(); neuron != this->getNeurons().end(); neuron++) {
+		(*neuron)->initWeightsAndBias(previousLayer->getNeurons());
+	}
+}
+
+void Layer::calculateActivations() {
+	for (std::vector<Neuron*>::iterator neuronIt = this->getNeurons().begin(); neuronIt != this->getNeurons().end(); ++neuronIt)
+	{
+		(*neuronIt)->calculateActivation();
+	}
+}

@@ -7,6 +7,7 @@ class Layer
 {
 public:
 	Layer();
+	Layer(Squishification*);
 
 	int getSize();
 
@@ -38,17 +39,26 @@ public:
 	std::vector<double> getListActivationValues();
 
 	// Calculates delta values
-	void calculateDelta();
+	void calculateDelta(std::vector<double> const &, bool isOutputLayer);
 
 	// Clear enough
-	void updateWeightsAndBiases();
+	void updateWeightsAndBiases(double learningRate);
+
+
+	void buildWeightsAndBiases(Layer* previousLayer);
+
+
+	void calculateActivations();
+
 
 private:
 
 	int id;
-	
+
 	std::vector<Neuron*> neurons;
-	
+
+	Squishification* squishification;
+
 	int type; // LayerType - TODO: Find correct way to declare an enum 
 			  // so that the data type of this variable can be set 
 			  // LayerType and it can be visible in Layer.cpp too. 
