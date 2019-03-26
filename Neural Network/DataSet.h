@@ -22,4 +22,6 @@ private:
 
 	void readFromFile();
 
+	void shuffleInput(int numberOfOriginalCases, int numberOfIterations);
+
 };
