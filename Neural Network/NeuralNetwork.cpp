@@ -6,7 +6,7 @@ NeuralNetwork::NeuralNetwork()
 
 }
 
-int NeuralNetwork::getNeuronIndex()
+int NeuralNetwork::getNewNeuronIndex()
 {
 	int numberOfNeurons = 0;
 
@@ -15,9 +15,7 @@ int NeuralNetwork::getNeuronIndex()
 		numberOfNeurons += (*it)->getNeurons().size();
 	}
 
-	// Note: I don't know why I'm doing this line...
-	//		 Maybe I can use it one day for something usefull.
-	this->neuronIndex = numberOfNeurons;
+	this->latestNeuronIndex = numberOfNeurons;
 
 	return numberOfNeurons;
 }
@@ -28,8 +26,11 @@ std::vector<double> NeuralNetwork::predict(std::vector<double> &inputValues)
 
 	this->layers.at(0)->assignValues(inputValues);
 
+	//std::cout << this->toString() << std::endl;
+
 	for (std::vector<Layer*>::iterator layerIt = this->layers.begin(); layerIt != this->layers.end(); ++layerIt) {
-		(*layerIt)->calculateActivations();
+		if (layerIt != this->layers.begin())
+			(*layerIt)->calculateActivations();
 	}
 
 	if (this->layers.size() > 1) {
@@ -48,11 +49,25 @@ std::string NeuralNetwork::toString() {
 
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++)
 	{
+		if (layer != this->layers.begin()) {
+			for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons().begin(); neuron != (*layer)->getNeurons().end(); neuron++)
+			{
+				for (std::vector<Weight*>::iterator weight = (*neuron)->getInconmingWeights().begin(); weight != (*neuron)->getInconmingWeights().end(); weight++)
+				{
+					view += ("\t " + std::to_string((*weight)->getValue()));
+				}
+			}
+
+			view += "\n-----------------------------------\n";
+		}
+
 		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons().begin(); neuron != (*layer)->getNeurons().end(); neuron++)
 		{
-			view += ("\t" + std::to_string((*neuron)->getActivationValue()));
+			view += ("\t  (" + std::to_string((*neuron)->getBias()) + ") " + std::to_string((*neuron)->getActivationValue()));
 		}
 		view += "\n-----------------------------------\n";
+
+
 	}
 
 	view += "\n";
@@ -60,6 +75,7 @@ std::string NeuralNetwork::toString() {
 }
 
 void NeuralNetwork::train(DataSet* dataSet, double learningRate) {
+	int index = 0;
 	for (std::vector<Sample*>::iterator trainingSample = dataSet->getDataSet().begin(); trainingSample != dataSet->getDataSet().end(); trainingSample++)
 	{
 		this->backPropogate(
@@ -68,8 +84,8 @@ void NeuralNetwork::train(DataSet* dataSet, double learningRate) {
 			learningRate							// Learning rate
 		);
 
-		printf("Cost: %f\n", costFunction((*trainingSample)->getOutput()));
-		std::cout << this->toString() << std::endl;
+		printf("Case: %d\tCost: %f\n\n", index++, costFunction((*trainingSample)->getOutput()));
+		//std::cout << this->toString() << std::endl;
 	}
 }
 
@@ -99,7 +115,7 @@ double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
 		cost += pow(values[0] - expectedValues[0], 2);
 	}
 
-	return cost;
+	return cost / 2.0;
 }
 
 void NeuralNetwork::buildWeightsAndBiases() {

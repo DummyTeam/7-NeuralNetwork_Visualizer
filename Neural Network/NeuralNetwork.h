@@ -13,7 +13,7 @@ public:
 	NeuralNetwork();
 
 	// Kind of index generator for neurons. Not used right now.
-	int getNeuronIndex();
+	int getNewNeuronIndex();
 
 	// Adds layer to layers vector
 	void addLayer(Layer*);
@@ -44,7 +44,7 @@ public:
 	//const DataSet& getDataSet();
 
 private:
-	int neuronIndex;
+	int latestNeuronIndex;
 	std::vector<Layer*> layers;
 	DataSet* dataSet;
 };
