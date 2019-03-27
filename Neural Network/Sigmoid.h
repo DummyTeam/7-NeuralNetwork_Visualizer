@@ -18,6 +18,6 @@ public:
 	}
 
 	double derivative(double value) {
-		return (1.0 * squish(value) * (1.0 - squish(value)));
+		return (1.0 * (value) * (1.0 - (value)));
 	}
 };

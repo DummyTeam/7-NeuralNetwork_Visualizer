@@ -64,16 +64,15 @@ void Neuron::calculateActivation()
 	}
 
 	this->activation += this->bias;
-	//printf("Delta: %f\tBias: %f\tActivation: %f\tSquished: %f\n", this->delta, this->bias, this->activation, this->squish(this->activation));
 	this->setActivationValue(this->squish(this->activation));
 }
 
 void Neuron::updateWeightAndBias(double learningRate) {
 	for (std::vector<Weight*>::iterator weight = this->weights.begin(); weight != this->weights.end(); weight++) {
-		(*weight)->setValue((*weight)->getValue() + (*weight)->getSourceNeuron()->getActivationValue() * ((this->activation)*(1 - this->activation))  * learningRate * this->getDelta());
+		(*weight)->setValue((*weight)->getValue() + (*weight)->getSourceNeuron()->getActivationValue() * this->squishification->derivative(this->activation) * learningRate * this->getDelta());
 	}
 
-	this->bias += ((this->activation)*(1 - this->activation)) * learningRate * this->getDelta();
+	this->bias += this->squishification->derivative(this->activation) * learningRate * this->getDelta();
 }
 
 void Neuron::setDelta(double delta)

@@ -55,35 +55,35 @@ std::string NeuralNetwork::toString() {
 					view += ("\t " + std::to_string((*weight)->getValue()));
 				}
 			}
-
 			view += "\n-----------------------------------\n";
 		}
 
-		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons().begin(); neuron != (*layer)->getNeurons().end(); neuron++)
-		{
+		for (std::vector<Neuron*>::iterator neuron = (*layer)->getNeurons().begin(); neuron != (*layer)->getNeurons().end(); neuron++) {
 			view += ("\t  (" + std::to_string((*neuron)->getBias()) + ") " + std::to_string((*neuron)->getActivationValue()));
 		}
 		view += "\n-----------------------------------\n";
-
-
 	}
-
 	view += "\n";
 	return view;
 }
 
 void NeuralNetwork::train(DataSet* dataSet, double learningRate) {
 	int index = 0;
-	for (std::vector<Sample*>::iterator trainingSample = dataSet->getDataSet().begin(); trainingSample != dataSet->getDataSet().end(); trainingSample++)
-	{
+	for (std::vector<Sample*>::iterator trainingSample = dataSet->getDataSet().begin(); trainingSample != dataSet->getDataSet().end(); trainingSample++) {
 		this->backPropogate(
 			predict((*trainingSample)->getInput()),	// Output layer activation values after feedforward propogation
 			(*trainingSample)->getOutput(),			// Expected results
 			learningRate							// Learning rate
 		);
-
-		printf("Case: %d\tCost: %f\n\n", index++, costFunction((*trainingSample)->getOutput()));
-		//std::cout << this->toString() << std::endl;
+		printf("Case: %d\tCost: %f\n", index++, costFunction((*trainingSample)->getOutput()));
+	}
+	for (std::vector<Sample*>::iterator trainingSample = dataSet->getDataSet().begin(); trainingSample != dataSet->getDataSet().end(); trainingSample++) {
+		this->backPropogate(
+			predict((*trainingSample)->getInput()),	// Output layer activation values after feedforward propogation
+			(*trainingSample)->getOutput(),			// Expected results
+			learningRate							// Learning rate
+		);
+		printf("Case: %d\tCost: %f\n", index++, costFunction((*trainingSample)->getOutput()));
 	}
 }
 
@@ -110,10 +110,10 @@ double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
 	double cost = 0;
 
 	for (size_t i = 0; i < expectedValues.size(); i++) {
-		cost += pow(values[0] - expectedValues[0], 2);
+		cost += pow((values[0] - expectedValues[0])*100, 2);
 	}
 
-	return cost / 2.0;
+	return cost;
 }
 
 void NeuralNetwork::buildWeightsAndBiases() {
