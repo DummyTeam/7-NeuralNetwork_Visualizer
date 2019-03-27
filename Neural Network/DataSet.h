@@ -7,6 +7,7 @@ class DataSet
 public:
 
 	DataSet(std::string path, int sizeOfInput, int sizeOfOutput);
+	DataSet(std::string path, int sizeOfInput, int sizeOfOutput, int numberOfOriginalCases, int numberOfIterations);
 
 	std::vector<Sample*>& getDataSet();
 

@@ -1,12 +1,21 @@
 #include"DataSet.h"
 #include <fstream>
 #include"Utils.h"
+
 DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput)
 {
 	this->path = path;
 	this->sizeOfInput = sizeOfInput;
 	this->sizeOfOutput = sizeOfOutput;
-	shuffleInput(4, 50000);
+	readFromFile();
+}
+
+DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput, int numberOfOriginalCases,int numberOfIterations)
+{
+	this->path = path;
+	this->sizeOfInput = sizeOfInput;
+	this->sizeOfOutput = sizeOfOutput;
+	shuffleInput(numberOfOriginalCases, numberOfIterations);
 }
 
 void DataSet::readFromFile() {
