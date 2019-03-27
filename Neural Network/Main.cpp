@@ -6,19 +6,23 @@
 #include"Sigmoid.h"
 
 int main() {
-
 	// Initialize random seed
-	srand(15);
-/*
-	for (size_t i = 0; i < 50; i++)
-	{
-		std::cout<< Utils::randomNumberInt(0, 5) << std::endl;
-	}
+	srand(24);
 
-	system("pause");*/
-	DataSet* dataSet = new DataSet("data.data", 2, 1);
-
+	// Initialize variables
 	double learningRate = 0.1;
+	double numberOfInputs = 22;
+	double numberOfOutputs = 1;
+	double numberOfOriginalCases = 76;
+	double numberOfIterations = 1000;
+
+	// If no shuffle is needed then use simple constructor
+	// DataSet* dataSet = new DataSet("data.data", numberOfInputs, numberOfOutputs);
+
+	// Prepare shuffled data set
+	DataSet* dataSet = new DataSet("newDataSet.data", numberOfInputs, numberOfOutputs, numberOfOriginalCases, numberOfIterations);
+
+	DataSet* testDataSet = new DataSet("testDataSet.data", numberOfInputs, numberOfOutputs);
 
 	// Create a neural network
 	NeuralNetwork* neuralNetwork = new NeuralNetwork();
@@ -27,28 +31,31 @@ int main() {
 	Layer* inputLayer = new Layer();
 
 	// Add created neurons to the created input layer
-	inputLayer->populateNeurons(2, neuralNetwork);
+	inputLayer->populateNeurons(numberOfInputs, neuralNetwork);
 
 	// Add input layer to neural network
 	neuralNetwork->addLayer(inputLayer);
 
 	// Create hidden layer
 	Layer* hiddenLayer = new Layer();
-	//Layer* hiddenLayer2 = new Layer();
+	Layer* hiddenLayer2 = new Layer();
+	Layer* hiddenLayer3 = new Layer();
 
 	// Add created neurons to hidden layer
-	hiddenLayer->populateNeurons(2, neuralNetwork);
-	//hiddenLayer2->populateNeurons(3, neuralNetwork);
+	hiddenLayer->populateNeurons(16, neuralNetwork);
+	hiddenLayer2->populateNeurons(16, neuralNetwork);
+	hiddenLayer3->populateNeurons(8, neuralNetwork);
 
 	// Add hidden layer to neural network
 	neuralNetwork->addLayer(hiddenLayer);
-	//neuralNetwork->addLayer(hiddenLayer2);
+	neuralNetwork->addLayer(hiddenLayer2);
+	neuralNetwork->addLayer(hiddenLayer3);
 
 	// Create an output layer
-	Layer* outputLayer = new Layer();
+	Layer* outputLayer = new Layer(new ReLU()); // new ReLU()
 
 	// Add created neurons to output layer
-	outputLayer->populateNeurons(1, neuralNetwork);
+	outputLayer->populateNeurons(numberOfOutputs, neuralNetwork);
 
 	// Add output layer to neural network
 	neuralNetwork->addLayer(outputLayer);
@@ -59,7 +66,17 @@ int main() {
 	// Train the network
 	neuralNetwork->train(dataSet, learningRate);
 
-	std::cout << neuralNetwork->toString() << std::endl;
+	std::cout << neuralNetwork->toString() << std::endl << std::endl;
+	std::cout << "Start prediction!" << std::endl;
+
+	for (std::vector<Sample*>::iterator trainingSample = testDataSet->getDataSet().begin(); trainingSample != testDataSet->getDataSet().end(); trainingSample++) {
+		std::vector<double> res = neuralNetwork->predict((*trainingSample)->getInput());
+
+		for (size_t i = 0; i < res.size(); i++)
+		{
+			std::cout << res[i] << std::endl;
+		}
+	}
 
 	system("pause");
 	return 0;

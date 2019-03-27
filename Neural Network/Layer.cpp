@@ -29,19 +29,16 @@ void Layer::populateNeurons(int size, NeuralNetwork* nn)
 }
 
 
-std::vector<Neuron*>& Layer::getNeurons()
-{
+std::vector<Neuron*>& Layer::getNeurons() {
 	return (this->neurons);
 }
 
-int Layer::pushNeuron(Neuron *neuron)
-{
+int Layer::pushNeuron(Neuron *neuron) {
 	this->neurons.push_back(neuron);
 	return neuron->getId();
 }
 
-bool Layer::deleteNeuronById(int id)
-{
+bool Layer::deleteNeuronById(int id) {
 	for (std::vector<Neuron*>::iterator it = this->neurons.begin(); it != this->neurons.end(); ++it) {
 		if ((*it)->getId() == id)
 		{
