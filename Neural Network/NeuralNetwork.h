@@ -35,15 +35,24 @@ public:
 	// Returns a string which represent neurons in each layer with activation values 
 	std::string toString();
 
-	// Returns a const char* of  which represent neurons in each layer with activation values 
-	const char* toConstChar();
-
 	// Creates new Weight objects and bias values for each neuron
 	void buildWeightsAndBiases();
 
 	// Last layer activations subtracted from expected value
 	double costFunction(std::vector<double> const &);
-	
+
+
+	class Builder
+	{
+	public:
+		Builder();
+		Builder* addLayer(Layer*);
+		NeuralNetwork* build();
+
+	private:
+		NeuralNetwork* neuralNetwork;
+	};
+
 private:
 	int latestNeuronIndex;
 	std::vector<Layer*> layers;

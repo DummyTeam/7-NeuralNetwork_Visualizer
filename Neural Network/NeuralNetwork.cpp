@@ -98,10 +98,6 @@ std::string NeuralNetwork::toString() {
 	return view;
 }
 
-const char* NeuralNetwork::toConstChar(){
-	return this->toString().c_str();
-}
-
 void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOfIterations) {
 
 	for (size_t i = 0; i < numberOfIterations; i++) {
@@ -123,6 +119,7 @@ void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOf
 	//printf("comb00: %d\tcomb01: %d\tcomb10: %d\tcomb11: %d\n", comb00, comb01, comb10, comb11);
 }
 
+// Obsolete
 void NeuralNetwork::train(DataSet* dataSet, double learningRate) {
 	int index = 0;
 	for (std::vector<Sample*>::iterator sample = dataSet->getDataSet().begin(); sample < dataSet->getDataSet().end(); sample++) {
@@ -131,12 +128,29 @@ void NeuralNetwork::train(DataSet* dataSet, double learningRate) {
 			(*sample)->getOutput(),				// Expected results
 			learningRate						// Learning rate
 		);
-		printf("Case: %d\tCost: %f\tInput1: %f\tInput2: %f\tOutput: %f\n", 
-			index++, 
-			costFunction((*sample)->getOutput()), 
-			(*sample)->getInput().at(0), 
-			(*sample)->getInput().at(1), 
+		printf("Case: %d\tCost: %f\tInput1: %f\tInput2: %f\tOutput: %f\n",
+			index++,
+			costFunction((*sample)->getOutput()),
+			(*sample)->getInput().at(0),
+			(*sample)->getInput().at(1),
 			(*sample)->getOutput().at(0));
 	}
 	//printf("comb00: %d\tcomb01: %d\tcomb10: %d\tcomb11: %d\n", comb00, comb01, comb10, comb11);
+}
+
+NeuralNetwork::Builder::Builder()
+{
+	this->neuralNetwork = new NeuralNetwork();
+}
+
+NeuralNetwork::Builder* NeuralNetwork::Builder::addLayer(Layer* layer) {
+	this->neuralNetwork->addLayer(layer);
+
+	return this;
+}
+
+NeuralNetwork* NeuralNetwork::Builder::build() {
+	this->neuralNetwork->buildWeightsAndBiases();
+
+	return this->neuralNetwork;
 }
