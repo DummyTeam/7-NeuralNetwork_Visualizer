@@ -6,7 +6,13 @@ Layer::Layer()
 {
 	this->type = 0;
 	this->squishification = new Sigmoid();
+}
 
+Layer::Layer(int numberOfNeurons)
+{
+	this->type = 0;
+	this->squishification = new Sigmoid();
+	this->populateNeurons(numberOfNeurons);
 }
 
 Layer::Layer(Squishification* squishification)
@@ -15,16 +21,22 @@ Layer::Layer(Squishification* squishification)
 	this->squishification = squishification;
 }
 
+Layer::Layer(int numberOfNeurons, Squishification* squishification)
+{
+	this->type = 0;
+	this->squishification = squishification;
+	this->populateNeurons(numberOfNeurons);
+}
 
 int Layer::getSize()
 {
 	return this->neurons.size();
 }
 
-void Layer::populateNeurons(size_t size, NeuralNetwork* nn)
+void Layer::populateNeurons(size_t size)
 {
 	for (size_t i = 0; i < size; i++) {
-		this->neurons.push_back(new Neuron(nn->getNewNeuronIndex(), squishification));
+		this->neurons.push_back(new Neuron(squishification));
 	}
 }
 
