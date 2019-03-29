@@ -44,3 +44,7 @@ void Sample::splitInputAndOutput()
 		this->output.push_back(num);
 	}
 }
+
+Sample* Sample::clone() {
+	return new Sample(this->line, this->sizeOfInput, this->sizeOfOutput);
+}

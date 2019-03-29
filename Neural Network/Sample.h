@@ -15,13 +15,14 @@ public:
 	void pushToOutput(double);
 
 	void splitInputAndOutput();
+	Sample* clone();
 
 private:
 	std::vector<double> input;
 	std::vector<double> output;
 
-	int sizeOfInput;
-	int sizeOfOutput;
+	size_t sizeOfInput;
+	size_t sizeOfOutput;
 	std::string line;
 };
 
