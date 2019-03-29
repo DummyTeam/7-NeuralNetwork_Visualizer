@@ -13,7 +13,7 @@ Neuron::Neuron(int id)
 	this->bias = 0;
 }
 
-Neuron::Neuron(int id, Squishification* squishification)
+Neuron::Neuron(Squishification* squishification)
 {
 	this->id = id;
 	this->squishification = squishification;

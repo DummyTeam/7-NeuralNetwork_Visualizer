@@ -13,7 +13,7 @@ public:
 	Neuron(int id);
 
 	// Constructor
-	Neuron(int id, Squishification* squishification);
+	Neuron(Squishification* squishification);
 
 	// Clear enough
 	int getId();
