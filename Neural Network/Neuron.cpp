@@ -43,7 +43,7 @@ void Neuron::setActivationValue(double activation) {
 
 void Neuron::initWeightsAndBias(std::vector<Neuron*> &sourceNeurons)
 {
-	this->bias = 1;
+	this->bias = 0.5;
 
 	for (std::vector<Neuron*>::iterator neuron = sourceNeurons.begin(); neuron != sourceNeurons.end(); neuron++)
 	{

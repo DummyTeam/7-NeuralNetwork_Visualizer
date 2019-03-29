@@ -29,20 +29,21 @@ public:
 	// Takes a DataSet and runs each sample through predict function.
 	// Then takes the output layer result and pass it through backPropogation function
 	// with expected values in the sample.
+	void train(DataSet*, double, size_t);
 	void train(DataSet*, double);
 
 	// Returns a string which represent neurons in each layer with activation values 
 	std::string toString();
+
+	// Returns a const char* of  which represent neurons in each layer with activation values 
+	const char* toConstChar();
 
 	// Creates new Weight objects and bias values for each neuron
 	void buildWeightsAndBiases();
 
 	// Last layer activations subtracted from expected value
 	double costFunction(std::vector<double> const &);
-
-	//void setDataSet(DataSet*);
-	//const DataSet& getDataSet();
-
+	
 private:
 	int latestNeuronIndex;
 	std::vector<Layer*> layers;
