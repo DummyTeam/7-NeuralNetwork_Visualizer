@@ -122,6 +122,7 @@
     <ClCompile Include="DataSet.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Weight.cpp" />
+    <ClCompile Include="Xor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Squishification.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weight.h" />
+    <ClInclude Include="Xor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data.data" />
