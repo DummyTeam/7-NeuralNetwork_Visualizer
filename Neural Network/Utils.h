@@ -14,7 +14,7 @@ public:
 		return 	(rand() % ((int)(to - from) * 100)) / 100.0 + from;
 	}
 
-	static double randomNumberInt(int from, int to)
+	static int randomNumberInt(int from, int to)
 	{
 		return 	rand() % (to - from + 1) + from;
 	}
