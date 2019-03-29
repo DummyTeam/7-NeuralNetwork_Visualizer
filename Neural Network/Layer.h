@@ -11,10 +11,11 @@ public:
 	Layer();
 	Layer(Squishification*);
 
+	// Clear enough
 	int getSize();
 
 	// Resizes neurons vector
-	void populateNeurons(int size, NeuralNetwork* nn);
+	void populateNeurons(size_t size, NeuralNetwork* nn);
 
 	// Get neurons vector
 	std::vector<Neuron*> & getNeurons();

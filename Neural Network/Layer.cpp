@@ -21,13 +21,12 @@ int Layer::getSize()
 	return this->neurons.size();
 }
 
-void Layer::populateNeurons(int size, NeuralNetwork* nn)
+void Layer::populateNeurons(size_t size, NeuralNetwork* nn)
 {
 	for (size_t i = 0; i < size; i++) {
 		this->neurons.push_back(new Neuron(nn->getNewNeuronIndex(), squishification));
 	}
 }
-
 
 std::vector<Neuron*>& Layer::getNeurons() {
 	return (this->neurons);
