@@ -25,7 +25,7 @@ void Xor::init()
 	int numberOfOutputs = 1;
 	int numberOfOriginalCases = 4;
 
-	// Prepare shuffled data set
+	// Prepare data set
 	this->dataSet = new DataSet(this->dataPath, numberOfInputs, numberOfOutputs);
 
 	// Obsolete
@@ -38,7 +38,7 @@ void Xor::init()
 	Layer* inputLayer = new Layer();
 
 	// Add created neurons to the created input layer
-	inputLayer->populateNeurons(numberOfInputs, neuralNetwork);
+	inputLayer->populateNeurons(numberOfInputs);
 
 	// Add input layer to neural network
 	neuralNetwork->addLayer(inputLayer);
@@ -47,7 +47,7 @@ void Xor::init()
 	Layer* hiddenLayer = new Layer();
 
 	// Add created neurons to hidden layer
-	hiddenLayer->populateNeurons(2, neuralNetwork);
+	hiddenLayer->populateNeurons(2);
 
 	// Add hidden layer to neural network
 	neuralNetwork->addLayer(hiddenLayer);
@@ -56,7 +56,7 @@ void Xor::init()
 	Layer* outputLayer = new Layer(); // new ReLU()
 
 	// Add created neurons to output layer
-	outputLayer->populateNeurons(numberOfOutputs, neuralNetwork);
+	outputLayer->populateNeurons(numberOfOutputs);
 
 	// Add output layer to neural network
 	neuralNetwork->addLayer(outputLayer);
