@@ -1,5 +1,5 @@
-#include"DataSet.h"
 #include <fstream>
+#include"DataSet.h"
 #include"Utils.h"
 
 DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput)
@@ -10,7 +10,7 @@ DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput)
 	readFromFile();
 }
 
-DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput, int numberOfOriginalCases,int numberOfIterations)
+DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput, int numberOfOriginalCases, int numberOfIterations)
 {
 	this->path = path;
 	this->sizeOfInput = sizeOfInput;
@@ -21,7 +21,6 @@ DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput, int number
 void DataSet::readFromFile() {
 
 	std::string line;
-
 	std::ifstream dataFile(this->path);
 
 	if (dataFile.is_open())
@@ -35,14 +34,22 @@ void DataSet::readFromFile() {
 	else printf("Unable to open file");
 }
 
-void DataSet::shuffleInput(int numberOfOriginalCases, int numberOfIterations) {
+
+Sample* DataSet::getRandomSample() {
+	return this->dataSet.at(Utils::randomNumberInt(0, this->dataSet.size() - 1));
+}
+
+std::vector<Sample*>& DataSet::getDataSet() {
+	return this->dataSet;
+}
+
+
+void DataSet::shuffleInput(int numberOfOriginalCases, size_t numberOfIterations) {
 	if (numberOfIterations <= 0 || numberOfOriginalCases <= 0)
 		throw "Number of iterations and number of original cases must be greater than 0 in DataSet::shuffleInput(int)\n";
 
 	std::string line;
-
 	std::ifstream dataFile(this->path);
-
 	std::vector<std::string> cases;
 
 	if (dataFile.is_open())
@@ -56,11 +63,8 @@ void DataSet::shuffleInput(int numberOfOriginalCases, int numberOfIterations) {
 	else printf("Unable to open file");
 
 	for (size_t i = 0; i < numberOfIterations; i++) {
-		this->dataSet.push_back(new Sample(cases[Utils::randomNumberInt(0, numberOfOriginalCases - 1)], sizeOfInput, sizeOfOutput));
+		this->dataSet.push_back(new Sample(cases[Utils::randomNumberInt(0, numberOfOriginalCases - 1)],
+			sizeOfInput,
+			sizeOfOutput));
 	}
-}
-
-
-std::vector<Sample*>& DataSet::getDataSet() {
-	return this->dataSet;
 }
