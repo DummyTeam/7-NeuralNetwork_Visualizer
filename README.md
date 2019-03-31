@@ -29,6 +29,7 @@ The sample code below shows how Neural Network can be built in the project:
 
 ### Class Diagram
 
+![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/classDiagram.PNG)
 
 
 ### Tools
