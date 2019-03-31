@@ -3,7 +3,7 @@ Neural Network Implemented in C++: An Object Oriented Approach From Scratch
 
 ### Sample Code
 
-The sample code below shows how Neural Network is built in the project:
+The sample code below shows how Neural Network can be built in the project:
 
 ```cpp
 	int numberOfInputs = 2;
@@ -25,6 +25,11 @@ The sample code below shows how Neural Network is built in the project:
 		numberOfIterations
 	);
 ```
+
+
+### Class Diagram
+
+
 
 ### Tools
 
