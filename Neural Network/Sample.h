@@ -11,6 +11,8 @@ public:
 	std::vector<double>& getInput();
 	std::vector<double>& getOutput();
 
+	void setOutput(std::vector<double>&);
+
 	void pushToInput(double);
 	void pushToOutput(double);
 

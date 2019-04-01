@@ -48,3 +48,8 @@ void Sample::splitInputAndOutput()
 Sample* Sample::clone() {
 	return new Sample(this->line, this->sizeOfInput, this->sizeOfOutput);
 }
+
+void Sample::setOutput(std::vector<double>& values)
+{
+	this->output = values;
+}
