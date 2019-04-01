@@ -98,9 +98,10 @@ std::string NeuralNetwork::toString() {
 	return view;
 }
 
-void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOfIterations) {
-
-	for (size_t i = 0; i < numberOfIterations; i++) {
+void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOfIterations)
+{
+	for (size_t i = 0; i < numberOfIterations; i++)
+	{
 		Sample* s = dataSet->getRandomSample();
 
 		this->backPropogate(
@@ -109,33 +110,37 @@ void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOf
 			learningRate		    // Learning rate
 		);
 
-		printf("Case: %d\tCost: %f\tInput1: %f\tInput2: %f\tOutput: %f\n",
+		printf("Case: %d\tCost: %.8f\tInput1: %.4f\tInput2: %.4f\tInput3: %.4f\tInput4: %.4f\tOutput: %.4f\n",
 			i,
 			costFunction(s->getOutput()),
 			s->getInput().at(0),
 			s->getInput().at(1),
+			s->getInput().at(2),
+			s->getInput().at(3),
 			s->getOutput().at(0));
 	}
 	//printf("comb00: %d\tcomb01: %d\tcomb10: %d\tcomb11: %d\n", comb00, comb01, comb10, comb11);
+	std::cout << this->toString() << std::endl;
 }
 
-// Obsolete
-void NeuralNetwork::train(DataSet* dataSet, double learningRate) {
+void NeuralNetwork::test(DataSet* dataSet) {
 	int index = 0;
 	for (std::vector<Sample*>::iterator sample = dataSet->getDataSet().begin(); sample < dataSet->getDataSet().end(); sample++) {
-		this->backPropogate(
-			predict((*sample)->getInput()),		// Output layer activation values after feedforward propogation
-			(*sample)->getOutput(),				// Expected results
-			learningRate						// Learning rate
-		);
-		printf("Case: %d\tCost: %f\tInput1: %f\tInput2: %f\tOutput: %f\n",
-			index++,
-			costFunction((*sample)->getOutput()),
-			(*sample)->getInput().at(0),
-			(*sample)->getInput().at(1),
-			(*sample)->getOutput().at(0));
+		// Output layer activation values after feedforward propogation
+		std::vector<double> testRes = predict((*sample)->getInput());
+
+		printf("Case: %d\tCost: %0.4f\t", index++, costFunction((*sample)->getOutput()));
+
+		for (size_t i = 0; i < testRes.size(); i++)
+		{
+			printf("Output: %.4f\t", testRes[i]);
+		}
+
+		printf("\n____________________________________________________________________________________________\n");
+		std::cout << this->toString() << std::endl;
 	}
-	//printf("comb00: %d\tcomb01: %d\tcomb10: %d\tcomb11: %d\n", comb00, comb01, comb10, comb11);
+
+	return;
 }
 
 NeuralNetwork::Builder::Builder()

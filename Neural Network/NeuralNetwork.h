@@ -30,7 +30,10 @@ public:
 	// Then takes the output layer result and pass it through backPropogation function
 	// with expected values in the sample.
 	void train(DataSet*, double, size_t);
-	void train(DataSet*, double);
+
+	// To predict for set of inputs
+	void test(DataSet*);
+
 
 	// Returns a string which represent neurons in each layer with activation values 
 	std::string toString();
