@@ -4,6 +4,7 @@
 #include"DataSet.h"
 #include<vector>
 #include<string>
+#include "Visualizer.h"
 
 class NeuralNetwork
 {
@@ -12,7 +13,13 @@ public:
 	// Initialization
 	NeuralNetwork();
 
-	// Kind of index generator for neurons. Not used right now.
+	// Clear enough
+	int getNumberOfLayers();
+
+	// Compares all layer sizes and returns maximum one
+	int getMaxNumberOfNeurons();
+
+	// Kind of index generator for neurons. Not used right now
 	int getNewNeuronIndex();
 
 	// Adds layer to layers vector
@@ -34,7 +41,6 @@ public:
 	// To predict for set of inputs
 	void test(DataSet*);
 
-
 	// Returns a string which represent neurons in each layer with activation values 
 	std::string toString();
 
@@ -44,12 +50,16 @@ public:
 	// Last layer activations subtracted from expected value
 	double costFunction(std::vector<double> const &);
 
+	// Clear enough
+	bool getWillBeVisualized();
 
+	// Neural Network Builder class
 	class Builder
 	{
 	public:
 		Builder();
 		Builder* addLayer(Layer*);
+		Builder* setVisualizer(Visualizer*);
 		NeuralNetwork* build();
 
 	private:
@@ -60,4 +70,5 @@ private:
 	int latestNeuronIndex;
 	std::vector<Layer*> layers;
 	DataSet* dataSet;
+	bool willBeVisualized;
 };

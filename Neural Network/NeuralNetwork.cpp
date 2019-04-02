@@ -7,6 +7,20 @@
 NeuralNetwork::NeuralNetwork()
 {
 	this->latestNeuronIndex = 0;
+	this->willBeVisualized = false;
+}
+
+int NeuralNetwork::getNumberOfLayers() {
+	return this->layers.size();
+}
+
+int NeuralNetwork::getMaxNumberOfNeurons() {
+	int max = 0;
+	for (std::vector<Layer*>::iterator layerIt = this->layers.begin(); layerIt != this->layers.end(); ++layerIt) {
+		max = ((*layerIt)->getSize() > max) ? (*layerIt)->getSize() : max;
+	}
+
+	return max;
 }
 
 int NeuralNetwork::getNewNeuronIndex()
@@ -154,7 +168,25 @@ NeuralNetwork::Builder* NeuralNetwork::Builder::addLayer(Layer* layer) {
 	return this;
 }
 
+
+NeuralNetwork::Builder* NeuralNetwork::Builder::setVisualizer(bool willBeVisualized) {
+	this->neuralNetwork->willBeVisualized = willBeVisualized;
+
+	return this;
+}
+
+bool NeuralNetwork::getWillBeVisualized() {
+	return this->willBeVisualized;
+}
+
 NeuralNetwork* NeuralNetwork::Builder::build() {
+	this->neuralNetwork->buildWeightsAndBiases();
+
+	return this->neuralNetwork;
+}
+
+
+NeuralNetwork::Builder* NeuralNetwork::Builder::setVisualizer(Visualizer* visualizer) {
 	this->neuralNetwork->buildWeightsAndBiases();
 
 	return this->neuralNetwork;
