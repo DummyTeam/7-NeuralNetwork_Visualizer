@@ -1,25 +1,12 @@
 #include "Core.h"
 #include "Xor.h"
 #include "ReLU.h"
-#include <SFML/Graphics.hpp>
+#include "Visualizer.h"
 
 int main()
 {
 
-	sf::RenderWindow window(sf::VideoMode(640, 480), "Neural Network Visualization");
 
-	while (window.isOpen())
-	{
-		// handle events
-
-		// update game logic
-
-		window.clear();
-
-		// window.draw()
-
-		window.display();
-	}
 
 	//// Initialize random seed
 	//srand(24);

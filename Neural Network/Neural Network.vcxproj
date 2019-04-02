@@ -129,11 +129,13 @@
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="DataSet.cpp" />
     <ClCompile Include="Sample.cpp" />
+    <ClCompile Include="Visualizer.cpp" />
     <ClCompile Include="Weight.cpp" />
     <ClCompile Include="Xor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Drawable.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="NeuralNetwork.h" />
     <ClInclude Include="Neuron.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="Sigmoid.h" />
     <ClInclude Include="Squishification.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Visualizer.h" />
     <ClInclude Include="Weight.h" />
     <ClInclude Include="Xor.h" />
   </ItemGroup>
