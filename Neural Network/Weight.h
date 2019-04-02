@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Drawable.h"
+
 class Neuron;
 
-class Weight
+class Weight : public Drawable
 {
 public:
 	Weight();
@@ -18,9 +20,11 @@ public:
 
 	Neuron* getDestinationNeuron();
 
+	void draw(sf::RenderWindow&);
+
 private:
 	double value;
-	
 	Neuron* from;		// from which neuron (id)
 	Neuron* to;			// to which neuron (id)
+	sf::Sprite* sprite;
 };

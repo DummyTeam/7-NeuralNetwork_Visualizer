@@ -36,3 +36,8 @@ Neuron* Weight::getSourceNeuron() {
 Neuron* Weight::getDestinationNeuron() {
 	return to;
 }
+
+void Weight::draw(sf::RenderWindow& window)
+{
+	window.draw(*(this->sprite));
+}
