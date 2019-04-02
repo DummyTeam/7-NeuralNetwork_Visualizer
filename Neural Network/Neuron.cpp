@@ -106,3 +106,8 @@ std::vector<Weight*> & Neuron::getInconmingWeights() {
 double Neuron::getBias() {
 	return this->bias;
 }
+
+void Neuron::draw(sf::RenderWindow& window)
+{
+	window.draw(*(this->sprite));
+}

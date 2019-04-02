@@ -53,6 +53,8 @@ public:
 
 	std::vector<Weight*> & getInconmingWeights();
 
+	void draw(sf::RenderWindow&);
+
 private:
 	int id;
 	double bias;
@@ -62,4 +64,8 @@ private:
 	Squishification* squishification;
 	std::vector<Weight*> weights; // Incoming
 	std::vector<Weight*> outgoingWeights; // Outgoing
+
+	sf::Sprite* sprite;
+	sf::Texture* texture;
+	sf::Text* text;
 };
