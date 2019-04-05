@@ -6,7 +6,7 @@
 #include<string>
 #include "Visualizer.h"
 
-class NeuralNetwork
+class NeuralNetwork : public Visualizable
 {
 public:
 
@@ -53,13 +53,15 @@ public:
 	// Clear enough
 	bool getWillBeVisualized();
 
+	// Visualizable implementation
+	void draw(sf::RenderWindow*);
+
 	// Neural Network Builder class
 	class Builder
 	{
 	public:
 		Builder();
 		Builder* addLayer(Layer*);
-		Builder* setVisualizer(Visualizer*);
 		NeuralNetwork* build();
 
 	private:

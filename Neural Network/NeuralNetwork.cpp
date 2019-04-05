@@ -1,7 +1,8 @@
 #include"NeuralNetwork.h"
+#include"Utils.h"
 #include <string>
 #include<iostream>
-#include"Utils.h"
+// TODO: Remove unnecessary lib
 #include <algorithm>    // std::random_shuffle
 
 NeuralNetwork::NeuralNetwork()
@@ -80,10 +81,15 @@ double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
 }
 
 void NeuralNetwork::buildWeightsAndBiases() {
+	int layerIndex = 0;
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++) {
+		(*layer)->arrangeVisually(this->getMaxNumberOfNeurons(), layerIndex);
+
 		if (layer != this->layers.begin()) {
 			(*layer)->buildWeightsAndBiases(*(layer - 1));
 		}
+
+		layerIndex++;
 	}
 }
 
@@ -157,6 +163,20 @@ void NeuralNetwork::test(DataSet* dataSet) {
 	return;
 }
 
+void NeuralNetwork::draw(sf::RenderWindow* renderWindow) {
+	// TODO: draw all neurons and weights
+	for (auto& elem : this->layers) {
+		// whether it's the first layer
+		elem->draw(renderWindow, (&elem - &(this->layers[0])) != (this->layers.size() - 1));
+	}
+}
+
+bool NeuralNetwork::getWillBeVisualized() {
+	return this->willBeVisualized;
+}
+
+// Builder implementation
+
 NeuralNetwork::Builder::Builder()
 {
 	this->neuralNetwork = new NeuralNetwork();
@@ -168,25 +188,7 @@ NeuralNetwork::Builder* NeuralNetwork::Builder::addLayer(Layer* layer) {
 	return this;
 }
 
-
-NeuralNetwork::Builder* NeuralNetwork::Builder::setVisualizer(bool willBeVisualized) {
-	this->neuralNetwork->willBeVisualized = willBeVisualized;
-
-	return this;
-}
-
-bool NeuralNetwork::getWillBeVisualized() {
-	return this->willBeVisualized;
-}
-
 NeuralNetwork* NeuralNetwork::Builder::build() {
-	this->neuralNetwork->buildWeightsAndBiases();
-
-	return this->neuralNetwork;
-}
-
-
-NeuralNetwork::Builder* NeuralNetwork::Builder::setVisualizer(Visualizer* visualizer) {
 	this->neuralNetwork->buildWeightsAndBiases();
 
 	return this->neuralNetwork;
