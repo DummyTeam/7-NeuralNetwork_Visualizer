@@ -83,7 +83,7 @@
     <ClInclude Include="Visualizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Drawable.h">
+    <ClInclude Include="Visualizable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
