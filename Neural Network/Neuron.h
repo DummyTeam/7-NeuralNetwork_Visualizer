@@ -6,7 +6,7 @@
 
 class Layer;
 
-class Neuron
+class Neuron : public Visualizable
 {
 public:
 	// Constructor with default ReLU squish
@@ -14,6 +14,9 @@ public:
 
 	// Constructor
 	Neuron(Squishification* squishification);
+
+	// Mutual init for all constructors
+	void init();
 
 	// Clear enough
 	int getId();
@@ -53,7 +56,15 @@ public:
 
 	std::vector<Weight*> & getInconmingWeights();
 
-	void draw(sf::RenderWindow&);
+	// Custom draw implementation
+	void draw(sf::RenderWindow*, bool);
+
+	sf::CircleShape* getShape();
+
+	const sf::Vector2f& getInitPoint();
+	sf::Vector2f getCenterPoint();
+
+	sf::Text* getText();
 
 private:
 	int id;
@@ -65,7 +76,13 @@ private:
 	std::vector<Weight*> weights; // Incoming
 	std::vector<Weight*> outgoingWeights; // Outgoing
 
-	sf::Sprite* sprite;
-	sf::Texture* texture;
+	sf::CircleShape* shape;
 	sf::Text* text;
+	sf::Font* font;
+
+	float shapeWidth;
+	float shapeHeight;
+
+	// Visualizable implementation
+	void draw(sf::RenderWindow*);
 };
