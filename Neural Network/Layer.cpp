@@ -4,28 +4,32 @@
 
 Layer::Layer()
 {
-	this->type = 0;
 	this->squishification = new Sigmoid();
-}
-
-Layer::Layer(int numberOfNeurons)
-{
-	this->type = 0;
-	this->squishification = new Sigmoid();
-	this->populateNeurons(numberOfNeurons);
+	init();
 }
 
 Layer::Layer(Squishification* squishification)
 {
-	this->type = 0;
 	this->squishification = squishification;
+	init();
+}
+
+Layer::Layer(int numberOfNeurons)
+{
+	this->squishification = new Sigmoid();
+	this->populateNeurons(numberOfNeurons);
+	init();
 }
 
 Layer::Layer(int numberOfNeurons, Squishification* squishification)
 {
-	this->type = 0;
 	this->squishification = squishification;
 	this->populateNeurons(numberOfNeurons);
+	init();
+}
+
+void Layer::init() {
+	this->type = 0;
 }
 
 int Layer::getSize()
@@ -146,5 +150,24 @@ void Layer::calculateActivations() {
 	for (std::vector<Neuron*>::iterator neuronIt = this->getNeurons().begin(); neuronIt != this->getNeurons().end(); ++neuronIt)
 	{
 		(*neuronIt)->calculateActivation();
+	}
+}
+
+void Layer::draw(sf::RenderWindow* window, bool drawNeuronWeights) {
+	for (auto& neuron : this->neurons) {
+		// the condition means whether it is the first layer neuron
+		neuron->draw(window, drawNeuronWeights);
+	}
+}
+
+void Layer::arrangeVisually(int maxNeurons, int layerIndex) {
+	float w = 80.0f;
+	float g = 10.0f;
+	float nd = 20.0f;
+	float layerOffset = ((maxNeurons - getSize()) * nd * 2 + (maxNeurons - getSize()) * g) / 2.0;
+
+	for (int i = 0; i < this->neurons.size(); i++) {
+		// the condition means whether it is the first layer neuron
+		this->neurons[i]->getShape()->setPosition(layerIndex*(nd + w), layerOffset + i * (nd * 2 + g));
 	}
 }

@@ -9,9 +9,15 @@ class Layer
 {
 public:
 	Layer();
-	Layer(int);
 	Layer(Squishification*);
+
+	// These constructors will populate the layer with neurons automatically.
+	// Since layer does not store the number of neurons, we directly populate them
+	Layer(int);
 	Layer(int, Squishification*);
+
+	// Mutual init for all constructors
+	void init();
 
 	// Clear enough
 	int getSize();
@@ -56,6 +62,10 @@ public:
 	void calculateActivations();
 
 
+	void draw(sf::RenderWindow*, bool); 
+	
+	void arrangeVisually(int, int);
+
 private:
 
 	int id;
@@ -68,4 +78,6 @@ private:
 			  // so that the data type of this variable can be set 
 			  // LayerType and it can be visible in Layer.cpp too. 
 			  // Don't forget to apply it in the constructor as well.
+
+
 };
