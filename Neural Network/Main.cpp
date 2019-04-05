@@ -5,45 +5,44 @@
 
 int main()
 {
-
-
-
-	//// Initialize random seed
+	// Initialize random seed
 	//srand(24);
 
-	//// Alternative 1: Neural Network for XOR
-	////Xor* x = new Xor("data.data", 0.1, 52000);
-	////x->train();
-	////x->viewNetwork();
+	// Alternative 1: Neural Network for XOR
+	/*Xor* x = new Xor("data2.data", 0.1, 12000);
+	x->train();
+	x->viewNetwork();
+*/
+	printf("\n");
+	system("pause");
 
-	//printf("\n");
-	//system("pause");
+	// Alternative 2: Neural Network for XOR
+	int numberOfInputs = 4;
+	int numberOfHiddenLayerNodes = 4;
+	int numberOfHiddenLayerNodes2 = 2;
+	int numberOfOutputs = 1;
 
-	//// Alternative 2: Neural Network for XOR
-	//int numberOfInputs = 22;
-	//int numberOfHiddenLayerNodes = 16;
-	//int numberOfHiddenLayerNodes2 = 8;
-	//int numberOfOutputs = 1;
+	NeuralNetwork* nn = (new NeuralNetwork::Builder())
+		->addLayer(new Layer(numberOfInputs))
+		->addLayer(new Layer(numberOfHiddenLayerNodes))
+		->addLayer(new Layer(numberOfHiddenLayerNodes2))
+		->addLayer(new Layer(numberOfOutputs, new ReLU()))
+		->build();
 
-	//NeuralNetwork* nn = (new NeuralNetwork::Builder())
-	//	->addLayer(new Layer(numberOfInputs))
-	//	->addLayer(new Layer(numberOfHiddenLayerNodes))
-	//	->addLayer(new Layer(numberOfHiddenLayerNodes2))
-	//	->addLayer(new Layer(numberOfOutputs, new ReLU()))
-	//	->build();
+	double learningRate = 0.09;
+	int numberOfIterations = 5000;
 
-	//double learningRate = 0.06;
-	//int numberOfIterations = 200000;
+	nn->train(
+		new DataSet("data4.data", numberOfInputs, numberOfOutputs),
+		learningRate,
+		numberOfIterations
+	);
 
-	//nn->train(
-	//	new DataSet("newDataSet.data", numberOfInputs, numberOfOutputs),
-	//	learningRate,
-	//	numberOfIterations
-	//);
+	Visualizer* visualizer = new Visualizer(nn->getNumberOfLayers(), nn->getMaxNumberOfNeurons());
+	visualizer->addSubscriber(nn);
+	visualizer->drawNetwork();
 
-	//system("pause");
-
-	//nn->test(new DataSet("newDataSetTest.data", numberOfInputs, numberOfOutputs));
+	nn->test(new DataSet("data4Test.data", numberOfInputs, numberOfOutputs));
 
 	system("pause");
 
