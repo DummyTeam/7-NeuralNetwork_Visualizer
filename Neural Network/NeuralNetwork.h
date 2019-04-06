@@ -4,9 +4,8 @@
 #include"DataSet.h"
 #include<vector>
 #include<string>
-#include "Visualizer.h"
 
-class NeuralNetwork : public Visualizable
+class NeuralNetwork
 {
 public:
 
@@ -53,8 +52,7 @@ public:
 	// Clear enough
 	bool getWillBeVisualized();
 
-	// Visualizable implementation
-	void draw(sf::RenderWindow*);
+	const std::vector<Layer*> & getLayers();
 
 	// Neural Network Builder class
 	class Builder

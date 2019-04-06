@@ -2,8 +2,6 @@
 #include"Utils.h"
 #include <string>
 #include<iostream>
-// TODO: Remove unnecessary lib
-#include <algorithm>    // std::random_shuffle
 
 NeuralNetwork::NeuralNetwork()
 {
@@ -83,7 +81,7 @@ double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
 void NeuralNetwork::buildWeightsAndBiases() {
 	int layerIndex = 0;
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++) {
-		(*layer)->arrangeVisually(this->getMaxNumberOfNeurons(), layerIndex);
+		//(*layer)->arrangeVisually(this->getMaxNumberOfNeurons(), layerIndex); TODO: Remove this line
 
 		if (layer != this->layers.begin()) {
 			(*layer)->buildWeightsAndBiases(*(layer - 1));
@@ -130,16 +128,10 @@ void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOf
 			learningRate		    // Learning rate
 		);
 
-		printf("Case: %d\tCost: %.8f\tInput1: %.4f\tInput2: %.4f\tInput3: %.4f\tInput4: %.4f\tOutput: %.4f\n",
+		printf("Case: %d\tCost: %.8f\n",
 			i,
-			costFunction(s->getOutput()),
-			s->getInput().at(0),
-			s->getInput().at(1),
-			s->getInput().at(2),
-			s->getInput().at(3),
-			s->getOutput().at(0));
+			costFunction(s->getOutput()));
 	}
-	//printf("comb00: %d\tcomb01: %d\tcomb10: %d\tcomb11: %d\n", comb00, comb01, comb10, comb11);
 	std::cout << this->toString() << std::endl;
 }
 
@@ -163,12 +155,8 @@ void NeuralNetwork::test(DataSet* dataSet) {
 	return;
 }
 
-void NeuralNetwork::draw(sf::RenderWindow* renderWindow) {
-	// TODO: draw all neurons and weights
-	for (auto& elem : this->layers) {
-		// whether it's the first layer
-		elem->draw(renderWindow, (&elem - &(this->layers[0])) != (this->layers.size() - 1));
-	}
+const std::vector<Layer*> & NeuralNetwork::getLayers() {
+	return this->layers;
 }
 
 bool NeuralNetwork::getWillBeVisualized() {
