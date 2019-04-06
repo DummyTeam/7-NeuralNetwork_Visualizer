@@ -3,7 +3,7 @@
 
 class Neuron;
 
-class Weight : public Visualizable
+class Weight
 {
 public:
 	Weight();
@@ -20,17 +20,9 @@ public:
 
 	Neuron* getDestinationNeuron();
 
-	void draw(sf::RenderWindow*);
-
-
 private:
 	double value;
 	Neuron* from;		// from which neuron (id)
 	Neuron* to;			// to which neuron (id)
-
-	sf::Sprite* shape;
-	sf::Vertex weightLine[2];
-
-	void getValueColor();
 
 };
