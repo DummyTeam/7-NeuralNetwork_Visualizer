@@ -128,13 +128,18 @@
     <ClCompile Include="NeuralNetwork.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="DataSet.cpp" />
+    <ClCompile Include="NNVisualAdapter.cpp" />
     <ClCompile Include="Sample.cpp" />
-    <ClCompile Include="Visualizer.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="VisualLayer.cpp" />
+    <ClCompile Include="VisualNeuron.cpp" />
+    <ClCompile Include="VisualWeight.cpp" />
     <ClCompile Include="Weight.cpp" />
     <ClCompile Include="Xor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
+    <ClInclude Include="NNVisualAdapter.h" />
     <ClInclude Include="Visualizable.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="NeuralNetwork.h" />
@@ -145,12 +150,20 @@
     <ClInclude Include="Sigmoid.h" />
     <ClInclude Include="Squishification.h" />
     <ClInclude Include="Utils.h" />
-    <ClInclude Include="Visualizer.h" />
+    <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="VisualLayer.h" />
+    <ClInclude Include="VisualNeuron.h" />
+    <ClInclude Include="VisualObject.h" />
+    <ClInclude Include="VisualWeight.h" />
     <ClInclude Include="Weight.h" />
     <ClInclude Include="Xor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data.data" />
+    <None Include="data2.data" />
+    <None Include="data2Test.data" />
+    <None Include="data4.data" />
+    <None Include="data4Test.data" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

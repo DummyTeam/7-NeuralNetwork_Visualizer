@@ -13,81 +13,124 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Visualization">
+      <UniqueIdentifier>{4e16173a-dee7-4e7f-a8fd-ce5e47e0e1ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visualization">
+      <UniqueIdentifier>{6b7104c1-6d2e-4db5-9f1f-6443a64c412d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NeuralNetwork">
+      <UniqueIdentifier>{15037e5f-d528-41e8-8383-3680262d0fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NeuralNetwork">
+      <UniqueIdentifier>{273e43bb-3245-43de-9b1c-01e628b9ddd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Weight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Neuron.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NeuralNetwork.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DataSet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Xor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Visualizer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="VisualNeuron.cpp">
+      <Filter>Source Files\Visualization</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualWeight.cpp">
+      <Filter>Source Files\Visualization</Filter>
+    </ClCompile>
+    <ClCompile Include="NNVisualAdapter.cpp">
+      <Filter>Source Files\Visualization</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualLayer.cpp">
+      <Filter>Source Files\Visualization</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSet.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuralNetwork.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="Neuron.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="Weight.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files\Visualization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Weight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Neuron.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="VisualNeuron.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
-    <ClInclude Include="Squishification.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="VisualWeight.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
-    <ClInclude Include="ReLU.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="VisualObject.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
-    <ClInclude Include="Sigmoid.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="NNVisualAdapter.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
-    <ClInclude Include="Layer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="VisualLayer.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
     <ClInclude Include="NeuralNetwork.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="DataSet.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Neuron.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="ReLU.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
     <ClInclude Include="Sample.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="Xor.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="DataSet.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="Visualizer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Sigmoid.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="Squishification.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
     <ClInclude Include="Visualizable.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="Weight.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
+      <Filter>Header Files\Visualization</Filter>
+    </ClInclude>
+    <ClInclude Include="Xor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data.data" />
+    <None Include="data2.data" />
+    <None Include="data2Test.data" />
+    <None Include="data4.data" />
+    <None Include="data4Test.data" />
   </ItemGroup>
 </Project>
