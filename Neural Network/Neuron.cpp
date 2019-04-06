@@ -21,30 +21,8 @@ Neuron::Neuron(Squishification* squishification)
 
 void Neuron::init() {
 	this->type = 0;
-	this->activation = 0;
+	this->setActivationValue(0);
 	this->bias = 0;
-
-	this->shapeWidth = 20.0f;
-	this->shapeHeight = this->shapeWidth;
-
-	this->shape = new sf::CircleShape(this->shapeWidth);
-	this->shape->setFillColor(sf::Color::White);
-
-	this->text = new sf::Text();
-	this->font = new sf::Font();
-	if (!font->loadFromFile("arial.ttf")) {
-		throw "Font not found";
-	}
-
-	this->text->setFont(*font);
-	this->text->setString("0.123");
-	// in pixels, not points!
-	this->text->setCharacterSize(12);
-	this->text->setFillColor(sf::Color::Red);
-
-	//this->text->setStyle(sf::Text::Bold | sf::Text::Underlined);
-	//this->shape->setOutlineThickness(this->shapeHeight);
-	//this->shape->setOutlineColor(sf::Color::Magenta);
 }
 
 int Neuron::getId()
@@ -130,39 +108,4 @@ void Neuron::calculatePreviousLayerNeuronDelta() {
 
 void Neuron::calculateOutputNeuronDelta(double expected) {
 	this->delta = 2 * (expected - this->activation);
-}
-
-sf::CircleShape* Neuron::getShape() {
-	return this->shape;
-}
-
-sf::Text* Neuron::getText() {
-	this->text->setString(std::to_string(this->activation).substr(0, 5));
-	return this->text;
-}
-
-const sf::Vector2f& Neuron::getInitPoint() {
-	return this->shape->getPosition();
-}
-
-sf::Vector2f Neuron::getCenterPoint() {
-	return sf::Vector2f(this->shape->getPosition().x + this->shapeWidth, this->shape->getPosition().y + this->shapeHeight);
-}
-
-void Neuron::draw(sf::RenderWindow* window)
-{
-	window->draw(*(this->shape));
-	window->draw(*(this->getText()));
-}
-
-void Neuron::draw(sf::RenderWindow* window, bool drawWeights)
-{
-	this->text->setPosition(this->getCenterPoint().x - this->text->getLocalBounds().width / 2.0, this->getCenterPoint().y - this->text->getLocalBounds().height);
-
-	if (drawWeights)
-		for (auto& elem : this->outgoingWeights) {
-			elem->draw(window);
-		}
-
-	this->draw(window);
 }

@@ -6,7 +6,7 @@
 
 class Layer;
 
-class Neuron : public Visualizable
+class Neuron
 {
 public:
 	// Constructor with default ReLU squish
@@ -56,16 +56,6 @@ public:
 
 	std::vector<Weight*> & getInconmingWeights();
 
-	// Custom draw implementation
-	void draw(sf::RenderWindow*, bool);
-
-	sf::CircleShape* getShape();
-
-	const sf::Vector2f& getInitPoint();
-	sf::Vector2f getCenterPoint();
-
-	sf::Text* getText();
-
 private:
 	int id;
 	double bias;
@@ -76,13 +66,5 @@ private:
 	std::vector<Weight*> weights; // Incoming
 	std::vector<Weight*> outgoingWeights; // Outgoing
 
-	sf::CircleShape* shape;
-	sf::Text* text;
-	sf::Font* font;
 
-	float shapeWidth;
-	float shapeHeight;
-
-	// Visualizable implementation
-	void draw(sf::RenderWindow*);
 };
