@@ -152,22 +152,3 @@ void Layer::calculateActivations() {
 		(*neuronIt)->calculateActivation();
 	}
 }
-
-void Layer::draw(sf::RenderWindow* window, bool drawNeuronWeights) {
-	for (auto& neuron : this->neurons) {
-		// the condition means whether it is the first layer neuron
-		neuron->draw(window, drawNeuronWeights);
-	}
-}
-
-void Layer::arrangeVisually(int maxNeurons, int layerIndex) {
-	float w = 80.0f;
-	float g = 10.0f;
-	float nd = 20.0f;
-	float layerOffset = ((maxNeurons - getSize()) * nd * 2 + (maxNeurons - getSize()) * g) / 2.0;
-
-	for (int i = 0; i < this->neurons.size(); i++) {
-		// the condition means whether it is the first layer neuron
-		this->neurons[i]->getShape()->setPosition(layerIndex*(nd + w), layerOffset + i * (nd * 2 + g));
-	}
-}

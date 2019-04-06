@@ -62,10 +62,6 @@ public:
 	void calculateActivations();
 
 
-	void draw(sf::RenderWindow*, bool); 
-	
-	void arrangeVisually(int, int);
-
 private:
 
 	int id;
