@@ -1,6 +1,5 @@
 #include "VisualLayer.h"
 
-
 VisualLayer::VisualLayer()
 {
 
@@ -20,14 +19,22 @@ void VisualLayer::draw(sf::RenderWindow* window) {
 	}
 }
 
-void VisualLayer::arrangeVisually(int maxNeurons, int layerIndex) {
+void VisualLayer::arrangeVisually(int maxNeurons, int layerIndex, int numberOfLayers) {
+	float l = 800;
+	float h = 600;
+
 	float w = 80.0f;
 	float g = 10.0f;
 	float nd = 20.0f;
+
+	float p = 30.0f;
+	float bh = (h - 2 * p - 2 * nd * maxNeurons - g * (maxNeurons - 1)) / 2.0;
+	float bl = (l - 2 * p - 2 * nd * numberOfLayers - w * (numberOfLayers - 1)) / 2.0;
+	
 	float layerOffset = ((maxNeurons - this->visualNeurons.size()) * nd * 2 + (maxNeurons - this->visualNeurons.size()) * g) / 2.0;
 
-	for (int i = 0; i < this->visualNeurons.size(); i++) {
+	for (size_t i = 0; i < this->visualNeurons.size(); i++) {
 		// the condition means whether it is the first layer neuron
-		this->visualNeurons[i]->getShape()->setPosition(layerIndex*(nd + w), layerOffset + i * (nd * 2 + g));
+		this->visualNeurons[i]->getShape()->setPosition(nd * 1.5 + p + bl + layerIndex * (nd + w), p + bh + layerOffset + i * (nd * 2 + g));
 	}
 }
