@@ -40,7 +40,7 @@ sf::CircleShape* VisualNeuron::getShape() {
 	r = (r < 0) ? 0 : r;
 	g = (g < 0) ? 0 : g;
 
-	this->shape->setFillColor(sf::Color(r, g, 50, 255));
+	this->shape->setFillColor(sf::Color(r, g, 0, 255));
 	return this->shape;
 }
 

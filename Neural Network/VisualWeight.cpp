@@ -22,7 +22,7 @@ void VisualWeight::getValueColor()
 	r = (r < 0) ? 0 : r;
 	g = (g < 0) ? 0 : g;
 
-	sf::Color color = sf::Color(r, g, 50, 255);
+	sf::Color color = sf::Color(r, g, 0, 255);
 	this->weightLine[0].color = color;
 	this->weightLine[1].color = color;
 }
