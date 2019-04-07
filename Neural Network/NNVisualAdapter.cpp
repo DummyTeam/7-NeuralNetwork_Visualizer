@@ -22,11 +22,13 @@ void NNVisualAdapter::init() {
 				for (size_t z = 0; z < (((nn->getLayers())[i])->getNeurons()).at(j)->getInconmingWeights().size(); z++) // iterating weights
 				{
 					Weight* weight = (((nn->getLayers())[i])->getNeurons()).at(j)->getInconmingWeights().at(z);
+
 					VisualWeight* visualWeight = new VisualWeight(
 						weight,
 						this->visualLayers[i - 1]->getVisualNeurons()[z],
 						visualNeuron
 					);
+
 					this->visualWeights.push_back(visualWeight);
 				}
 		}
@@ -36,7 +38,7 @@ void NNVisualAdapter::init() {
 
 void NNVisualAdapter::arrangeVisually() {
 	for (auto& objs : this->visualLayers) {
-		objs->arrangeVisually(this->nn->getMaxNumberOfNeurons(), (&objs - &(this->visualLayers[0])));
+		objs->arrangeVisually(this->nn->getMaxNumberOfNeurons(), (&objs - &(this->visualLayers[0])), this->visualLayers.size());
 	}
 
 	for (auto& objs : this->visualWeights) {

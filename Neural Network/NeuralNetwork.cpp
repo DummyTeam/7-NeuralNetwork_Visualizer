@@ -1,3 +1,4 @@
+#include <SFML/System.hpp>
 #include"NeuralNetwork.h"
 #include"Utils.h"
 #include <string>
@@ -81,12 +82,9 @@ double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
 void NeuralNetwork::buildWeightsAndBiases() {
 	int layerIndex = 0;
 	for (std::vector<Layer*>::iterator layer = this->layers.begin(); layer != this->layers.end(); layer++) {
-		//(*layer)->arrangeVisually(this->getMaxNumberOfNeurons(), layerIndex); TODO: Remove this line
-
 		if (layer != this->layers.begin()) {
 			(*layer)->buildWeightsAndBiases(*(layer - 1));
 		}
-
 		layerIndex++;
 	}
 }

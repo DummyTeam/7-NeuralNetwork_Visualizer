@@ -33,7 +33,7 @@ int main()
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
 
 	MainWindow* mainWindow = new MainWindow();
-	mainWindow->addSubscriber(nnVisualAdapter);
+	mainWindow->addAdapter(nnVisualAdapter);
 
 	// Starts a new view thread!
 	mainWindow->startWindow();

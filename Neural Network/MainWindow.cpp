@@ -30,7 +30,7 @@ void MainWindow::drawNetwork() {
 
 		window->clear(sf::Color::Black);
 
-		for (auto& elem : this->subscribers) {
+		for (auto& elem : this->adapters) {
 			elem->draw(this->window);
 		}
 
@@ -42,8 +42,8 @@ double MainWindow::getLayerVerticalOffset(int neuronCount) {
 	return (maxNeuronsInALayer - neuronCount) * (neuronDiameter + distanceBetweenLayers) / 2.0;
 }
 
-void MainWindow::addSubscriber(Visualizable* visualizable) {
-	this->subscribers.push_back(visualizable);
+void MainWindow::addAdapter(Visualizable* visualizable) {
+	this->adapters.push_back(visualizable);
 }
 
 sf::RenderWindow* MainWindow::getRenderWindow() {

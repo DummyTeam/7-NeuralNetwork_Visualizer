@@ -6,7 +6,7 @@ class MainWindow
 {
 public:
 	MainWindow();
-	void addSubscriber(Visualizable*);
+	void addAdapter(Visualizable*);
 
 	double getLayerVerticalOffset(int);
 	sf::RenderWindow* getRenderWindow();
@@ -16,7 +16,7 @@ private:
 	NeuralNetwork* nn;
 	sf::RenderWindow* window;
 	std::string currentStage;
-	std::vector<Visualizable*> subscribers;
+	std::vector<Visualizable*> adapters;
 	sf::Thread* viewThread;
 
 	float h;
