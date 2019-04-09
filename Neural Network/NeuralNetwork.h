@@ -54,6 +54,9 @@ public:
 
 	const std::vector<Layer*> & getLayers();
 
+	// Redundant: Delete this line
+	void printTheResult(int i, Sample* s);
+
 	// Neural Network Builder class
 	class Builder
 	{

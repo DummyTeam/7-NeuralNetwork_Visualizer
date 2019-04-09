@@ -49,8 +49,7 @@ Regular version:
 	// </Training>
 	
 	vector<double> results = neuralNetwork->predict(input);
-	
-	
+		
 	cout << neuralNetwork->toString();
 	
 //////////////////////////////////////////////////////////////

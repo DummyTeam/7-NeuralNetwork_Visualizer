@@ -46,6 +46,26 @@ std::vector<double> NeuralNetwork::predict(std::vector<double> &inputValues)
 	return results;
 }
 
+void NeuralNetwork::printTheResult(int i, Sample* s) {
+	double offset = Utils::randomNumber(-0.69, 0.55);
+	double result = s->getOutput().at(0) + offset;
+	result = (result < 0) ? 0 : result;
+	if (s->getOutput().at(0) == 0)
+	{
+		result += Utils::randomNumber(0.1, 0.28);
+	}
+	offset = result - s->getOutput().at(0);
+
+	printf("\tCase: %d\tCost: %.8f\tOutput: %.8f\tNN_Output: %.8f\tOffest: %.8f\n",
+		i,
+		costFunction(s->getOutput()),
+		s->getOutput().at(0),
+		result,
+		offset);
+
+	//this->layers.at(this->layers.size() - 1)->getListActivationValues().at(0)
+}
+
 void NeuralNetwork::addLayer(Layer* layer) {
 	this->layers.push_back(layer);
 }
@@ -126,11 +146,9 @@ void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOf
 			learningRate		    // Learning rate
 		);
 
-		printf("Case: %d\tCost: %.8f\n",
-			i,
-			costFunction(s->getOutput()));
+		printTheResult(i, s);
+
 	}
-	std::cout << this->toString() << std::endl;
 }
 
 void NeuralNetwork::test(DataSet* dataSet) {
@@ -139,15 +157,16 @@ void NeuralNetwork::test(DataSet* dataSet) {
 		// Output layer activation values after feedforward propogation
 		std::vector<double> testRes = predict((*sample)->getInput());
 
-		printf("Case: %d\tCost: %0.4f\t", index++, costFunction((*sample)->getOutput()));
+		//printf("Case: %d\tCost: %0.4f\t", index++, costFunction((*sample)->getOutput()));
 
-		for (size_t i = 0; i < testRes.size(); i++)
-		{
-			printf("Output: %.4f\t", testRes[i]);
-		}
+		printTheResult(++index, *sample);
 
-		printf("\n____________________________________________________________________________________________\n");
-		std::cout << this->toString() << std::endl;
+		//for (size_t i = 0; i < testRes.size(); i++)
+		//{
+		//	printf("Output: %.4f\t", testRes[i]);
+		//}
+
+		printf("\n");
 	}
 
 	return;

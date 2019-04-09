@@ -24,8 +24,8 @@ void VisualLayer::arrangeVisually(int maxNeurons, int layerIndex, int numberOfLa
 	float h = 600;
 
 	float w = 80.0f;
-	float g = 10.0f;
-	float nd = 20.0f;
+	float g = 5.0f;
+	float nd = 10.0f;
 
 	float p = 30.0f;
 	float bh = (h - 2 * p - 2 * nd * maxNeurons - g * (maxNeurons - 1)) / 2.0;

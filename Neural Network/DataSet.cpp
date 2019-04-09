@@ -11,7 +11,6 @@ DataSet::DataSet(std::string path, int sizeOfInput, int sizeOfOutput)
 }
 
 void DataSet::readFromFile() {
-
 	std::string line;
 	std::ifstream dataFile(this->path);
 

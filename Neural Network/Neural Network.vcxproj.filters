@@ -132,5 +132,7 @@
     <None Include="data2Test.data" />
     <None Include="data4.data" />
     <None Include="data4Test.data" />
+    <None Include="newDataSet.data" />
+    <None Include="newDataSetTest.data" />
   </ItemGroup>
 </Project>
