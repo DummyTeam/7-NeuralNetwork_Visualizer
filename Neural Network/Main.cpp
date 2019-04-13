@@ -9,24 +9,19 @@ int main()
 	// Initialize random seed
 	srand(24);
 
-	// Alternative 1: Neural Network for XOR
-	Xor* x = new Xor("data2.data", 0.1, 2000);
-	x->train();
-	x->viewNetwork();
-
 	printf("\n");
 	system("pause");
 
 	// Alternative 2: Neural Network for XOR
-	int numberOfInputs = 4;
-	int numberOfHiddenLayerNodes = 8;
-	int numberOfHiddenLayerNodes2 = 8;
+	int numberOfInputs = 22;
+	int numberOfHiddenLayerNodes = 16;
+	int numberOfHiddenLayerNodes2 = 16;
 	int numberOfOutputs = 1;
 
 	NeuralNetwork* nn = (new NeuralNetwork::Builder())
 		->addLayer(new Layer(numberOfInputs))
-		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
-		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
+		->addLayer(new Layer(numberOfHiddenLayerNodes))
+		->addLayer(new Layer(numberOfHiddenLayerNodes2))
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
 		->build();
 
@@ -35,21 +30,20 @@ int main()
 	MainWindow* mainWindow = new MainWindow();
 	mainWindow->addAdapter(nnVisualAdapter);
 
-	// Starts a new view thread!
+	//// Starts a new view thread!
 	mainWindow->startWindow();
 
-	double learningRate = 0.06;
-	int numberOfIterations = 30000;
+	double learningRate = 0.003;
+	int numberOfIterations = 1000;
 
 	nn->train(
-		new DataSet("data4.data", numberOfInputs, numberOfOutputs),
+		new DataSet("newDataSet.data", numberOfInputs, numberOfOutputs),
 		learningRate,
 		numberOfIterations
 	);
 
-	nn->test(new DataSet("data4Test.data", numberOfInputs, numberOfOutputs));
+	nn->test(new DataSet("newDataSetTest.data", numberOfInputs, numberOfOutputs));
 
 	system("pause");
-
 	return 0;
 }
