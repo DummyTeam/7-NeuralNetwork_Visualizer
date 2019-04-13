@@ -25,6 +25,12 @@
     <Filter Include="Source Files\NeuralNetwork">
       <UniqueIdentifier>{273e43bb-3245-43de-9b1c-01e628b9ddd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graph">
+      <UniqueIdentifier>{7615d5ad-b255-4305-ab56-f517577304ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graph">
+      <UniqueIdentifier>{2cfaa2a9-daa2-42fd-8d02-2a023e76ce46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -37,9 +43,6 @@
       <Filter>Source Files\Visualization</Filter>
     </ClCompile>
     <ClCompile Include="VisualWeight.cpp">
-      <Filter>Source Files\Visualization</Filter>
-    </ClCompile>
-    <ClCompile Include="NNVisualAdapter.cpp">
       <Filter>Source Files\Visualization</Filter>
     </ClCompile>
     <ClCompile Include="VisualLayer.cpp">
@@ -66,6 +69,21 @@
     <ClCompile Include="MainWindow.cpp">
       <Filter>Source Files\Visualization</Filter>
     </ClCompile>
+    <ClCompile Include="NNVisualAdapter.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="X_Axis.cpp">
+      <Filter>Source Files\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Y_Axis.cpp">
+      <Filter>Source Files\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Axis.cpp">
+      <Filter>Source Files\Graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -81,9 +99,6 @@
       <Filter>Header Files\Visualization</Filter>
     </ClInclude>
     <ClInclude Include="VisualObject.h">
-      <Filter>Header Files\Visualization</Filter>
-    </ClInclude>
-    <ClInclude Include="NNVisualAdapter.h">
       <Filter>Header Files\Visualization</Filter>
     </ClInclude>
     <ClInclude Include="VisualLayer.h">
@@ -113,9 +128,6 @@
     <ClInclude Include="Squishification.h">
       <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="Visualizable.h">
-      <Filter>Header Files\NeuralNetwork</Filter>
-    </ClInclude>
     <ClInclude Include="Weight.h">
       <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
@@ -124,6 +136,24 @@
     </ClInclude>
     <ClInclude Include="Xor.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NNVisualAdapter.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualizable.h">
+      <Filter>Header Files\Visualization</Filter>
+    </ClInclude>
+    <ClInclude Include="X_Axis.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Y_Axis.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Axis.h">
+      <Filter>Header Files\Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

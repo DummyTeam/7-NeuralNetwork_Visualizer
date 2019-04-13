@@ -123,6 +123,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Axis.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NeuralNetwork.cpp" />
@@ -136,9 +138,13 @@
     <ClCompile Include="VisualWeight.cpp" />
     <ClCompile Include="Weight.cpp" />
     <ClCompile Include="Xor.cpp" />
+    <ClCompile Include="X_Axis.cpp" />
+    <ClCompile Include="Y_Axis.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Axis.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="NNVisualAdapter.h" />
     <ClInclude Include="Visualizable.h" />
     <ClInclude Include="Layer.h" />
@@ -157,6 +163,8 @@
     <ClInclude Include="VisualWeight.h" />
     <ClInclude Include="Weight.h" />
     <ClInclude Include="Xor.h" />
+    <ClInclude Include="X_Axis.h" />
+    <ClInclude Include="Y_Axis.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data.data" />
