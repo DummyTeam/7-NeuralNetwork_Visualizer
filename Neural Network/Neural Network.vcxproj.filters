@@ -84,6 +84,12 @@
     <ClCompile Include="Axis.cpp">
       <Filter>Source Files\Graph</Filter>
     </ClCompile>
+    <ClCompile Include="NNGraphAdapter.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphData.cpp">
+      <Filter>Source Files\Graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -153,6 +159,12 @@
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
     <ClInclude Include="Axis.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="NNGraphAdapter.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphData.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
   </ItemGroup>

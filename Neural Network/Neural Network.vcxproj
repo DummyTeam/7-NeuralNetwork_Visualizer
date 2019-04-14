@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClCompile Include="Axis.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GraphData.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NeuralNetwork.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="DataSet.cpp" />
+    <ClCompile Include="NNGraphAdapter.cpp" />
     <ClCompile Include="NNVisualAdapter.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="MainWindow.cpp" />
@@ -145,6 +147,8 @@
     <ClInclude Include="Axis.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphData.h" />
+    <ClInclude Include="NNGraphAdapter.h" />
     <ClInclude Include="NNVisualAdapter.h" />
     <ClInclude Include="Visualizable.h" />
     <ClInclude Include="Layer.h" />

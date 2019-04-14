@@ -5,7 +5,14 @@ class Axis : public Visualizable
 {
 public:
 	Axis();
+	void draw(sf::RenderWindow*);
+	float getWidth();
+	float getHeight();
 
-private:
-	sf::Vertex line[2];
+	const sf::Vector2f& getPosition() const;
+
+protected:
+	sf::RectangleShape* axis;
+	float width;
+	float height;
 };
