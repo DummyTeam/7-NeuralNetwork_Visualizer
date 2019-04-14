@@ -3,6 +3,7 @@
 #include "ReLU.h"
 #include "MainWindow.h"
 #include "NNVisualAdapter.h"
+#include "NNGraphAdapter.h"
 
 int main()
 {
@@ -25,10 +26,15 @@ int main()
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
 		->build();
 
+	DataSet* trainingDataSet = new DataSet("newDataSet.data", numberOfInputs, numberOfOutputs);
+	DataSet* testingDataSet = new DataSet("newDataSetTest.data", numberOfInputs, numberOfOutputs);
+
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
+	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn);
 
 	MainWindow* mainWindow = new MainWindow();
 	mainWindow->addAdapter(nnVisualAdapter);
+	mainWindow->addAdapter(graphAdapter);
 
 	//// Starts a new view thread!
 	mainWindow->startWindow();
@@ -37,12 +43,12 @@ int main()
 	int numberOfIterations = 1000;
 
 	nn->train(
-		new DataSet("newDataSet.data", numberOfInputs, numberOfOutputs),
+		trainingDataSet,
 		learningRate,
 		numberOfIterations
 	);
 
-	nn->test(new DataSet("newDataSetTest.data", numberOfInputs, numberOfOutputs));
+	nn->test(testingDataSet);
 
 	system("pause");
 	return 0;
