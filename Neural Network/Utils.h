@@ -18,4 +18,9 @@ public:
 	{
 		return 	rand() % (to - from + 1) + from;
 	}
+
+	static double map(double ratio1_1, double ratio1_2, double ratio2_1)
+	{
+		return (ratio1_2 * ratio2_1) / ratio1_1 * 1.0;
+	}
 };
