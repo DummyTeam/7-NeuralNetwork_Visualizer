@@ -84,6 +84,7 @@ void NeuralNetwork::backPropogate(std::vector<double> const &results, std::vecto
 	}
 }
 
+// Add it to a separate class
 double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
 	std::vector<double> values = this->layers.at(this->layers.size() - 1)->getListActivationValues();
 
