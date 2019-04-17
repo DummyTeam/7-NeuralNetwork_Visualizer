@@ -7,6 +7,7 @@ MainWindow::MainWindow()
 
 void  MainWindow::startWindow()
 {
+	/// Starting a thread
 	this->viewThread->launch();
 }
 
