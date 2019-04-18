@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Axis.cpp" />
+    <ClCompile Include="Cost.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphData.cpp" />
     <ClCompile Include="Layer.cpp" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Axis.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Cost.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphData.h" />
     <ClInclude Include="NNGraphAdapter.h" />

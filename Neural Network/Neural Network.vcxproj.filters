@@ -90,6 +90,9 @@
     <ClCompile Include="GraphData.cpp">
       <Filter>Source Files\Graph</Filter>
     </ClCompile>
+    <ClCompile Include="Cost.cpp">
+      <Filter>Source Files\Visualization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="GraphData.h">
       <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Cost.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

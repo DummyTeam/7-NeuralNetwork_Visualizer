@@ -2,7 +2,8 @@
 
 Axis::Axis()
 {
-
+	this->height = 200.f;
+	this->width = 2.f;
 }
 
 void Axis::draw(sf::RenderWindow* window)
