@@ -1,7 +1,7 @@
 #pragma once
 #include "X_Axis.h"
 #include "Y_Axis.h"
-#include "GraphData.h"
+#include "VisualGraphData.h"
 #include <vector>
 
 class Graph : public Visualizable
@@ -14,5 +14,6 @@ public:
 private:
 	X_Axis* xAxis;
 	Y_Axis* yAxis;
-	std::vector<GraphData*> graphData;
+	std::vector<VisualGraphData*> graphData;
+	std::vector<double>* costHistory;
 };

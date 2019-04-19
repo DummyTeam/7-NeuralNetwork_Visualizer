@@ -5,6 +5,7 @@ Graph::Graph()
 {
 	this->xAxis = new X_Axis();
 	this->yAxis = new Y_Axis();
+	this->graphData.resize(250, new VisualGraphData(0));
 }
 
 void Graph::draw(sf::RenderWindow* window)
@@ -14,8 +15,9 @@ void Graph::draw(sf::RenderWindow* window)
 
 	for (int i = this->graphData.size() - 1, j = 0; i >= 0 && j < 250; i--, j++)
 	{
+		this->graphData.at(i)->setData(this->costHistory->at(i));
 		this->graphData.at(i)->setPosition(
-			this->xAxis->getWidth() + this->xAxis->getPosition().x + i, 
+			this->xAxis->getWidth() + this->xAxis->getPosition().x + j,
 			this->xAxis->getPosition().y - this->yAxis->getWidth()
 		);
 		this->graphData.at(i)->draw(window);
@@ -24,6 +26,6 @@ void Graph::draw(sf::RenderWindow* window)
 
 void Graph::addData(double item)
 {
-	this->graphData.push_back(new GraphData(item));
+	this->graphData.push_back(new VisualGraphData(item));
 }
 
