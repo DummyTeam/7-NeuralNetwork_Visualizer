@@ -1,12 +1,13 @@
 #pragma once
 #include "Visualizable.h"
 
-class GraphData : public Visualizable
+class VisualGraphData : public Visualizable
 {
 public:
-	GraphData(double data);
+	VisualGraphData(double data);
 	void draw(sf::RenderWindow*);
 	void setPosition(float x, float y);
+	void setData(double data);
 
 private:
 	sf::CircleShape* shape;
