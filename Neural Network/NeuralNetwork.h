@@ -1,9 +1,10 @@
 #pragma once
 
-#include"Layer.h"
-#include"DataSet.h"
-#include<vector>
-#include<string>
+#include "Layer.h"
+#include "DataSet.h"
+#include "LearningMethod.h"
+#include <vector>
+#include <string>
 
 class NeuralNetwork
 {
@@ -32,10 +33,11 @@ public:
 	// Then calculates activations throughout the network.
 	std::vector<double> predict(std::vector<double> &);
 
+	// TODO: Update the comment
 	// Takes a DataSet and runs each sample through predict function.
 	// Then takes the output layer result and pass it through backPropogation function
 	// with expected values in the sample.
-	void train(DataSet*, double, size_t);
+	void train(DataSet*, double, int);
 
 	// To predict for set of inputs
 	void test(DataSet*);
@@ -52,6 +54,12 @@ public:
 	// Clear enough
 	bool getWillBeVisualized();
 
+	// Clear enough
+	void setLearningMethod(LearningMethod*);
+
+	// Clear enough
+	LearningMethod* getLearningMethod();
+
 	const std::vector<Layer*> & getLayers();
 
 	// Redundant: Delete this line
@@ -63,6 +71,7 @@ public:
 	public:
 		Builder();
 		Builder* addLayer(Layer*);
+		Builder* setLearningMethod(LearningMethod*);
 		NeuralNetwork* build();
 
 	private:
@@ -74,4 +83,5 @@ private:
 	std::vector<Layer*> layers;
 	DataSet* dataSet;
 	bool willBeVisualized;
+	LearningMethod* learningMethod;
 };

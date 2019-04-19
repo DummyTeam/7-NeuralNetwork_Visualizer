@@ -87,11 +87,14 @@
     <ClCompile Include="NNGraphAdapter.cpp">
       <Filter>Source Files\NeuralNetwork</Filter>
     </ClCompile>
-    <ClCompile Include="GraphData.cpp">
-      <Filter>Source Files\Graph</Filter>
+    <ClCompile Include="GradientDescent.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
     </ClCompile>
-    <ClCompile Include="Cost.cpp">
-      <Filter>Source Files\Visualization</Filter>
+    <ClCompile Include="MSE.cpp">
+      <Filter>Source Files\NeuralNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualGraphData.cpp">
+      <Filter>Source Files\Graph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,11 +170,20 @@
     <ClInclude Include="NNGraphAdapter.h">
       <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="GraphData.h">
-      <Filter>Header Files\Graph</Filter>
+    <ClInclude Include="LearningMethod.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="Cost.h">
-      <Filter>Header Files\Visualization</Filter>
+    <ClInclude Include="CostFunction.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="GradientDescent.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="MSE.h">
+      <Filter>Header Files\NeuralNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualGraphData.h">
+      <Filter>Header Files\Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

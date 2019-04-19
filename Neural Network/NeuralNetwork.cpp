@@ -73,20 +73,8 @@ void NeuralNetwork::backPropogate(std::vector<double> const &results, std::vecto
 	}
 }
 
-// Add it to a separate class
 double NeuralNetwork::costFunction(std::vector<double> const & expectedValues) {
-	std::vector<double> values = this->layers.at(this->layers.size() - 1)->getListActivationValues();
-
-	if (expectedValues.size() != values.size())
-		throw "Cannot calculate the cost. Number of expected outputs does not match with number of output layer neurons";
-
-	double cost = 0;
-
-	for (size_t i = 0; i < expectedValues.size(); i++) {
-		cost += pow((values[0] - expectedValues[0]), 2);
-	}
-
-	return cost;
+	return this->learningMethod->calculateCost(expectedValues);
 }
 
 void NeuralNetwork::buildWeightsAndBiases() {
@@ -124,20 +112,9 @@ std::string NeuralNetwork::toString() {
 	return view;
 }
 
-void NeuralNetwork::train(DataSet* dataSet, double learningRate, size_t numberOfIterations)
+void NeuralNetwork::train(DataSet* dataSet, double learningRate, int numberOfIterations)
 {
-	for (size_t i = 0; i < numberOfIterations; i++)
-	{
-		Sample* s = dataSet->getRandomSample();
-
-		this->backPropogate(
-			predict(s->getInput()), // Output layer activation values after feedforward propogation
-			s->getOutput(),			// Expected results
-			learningRate		    // Learning rate
-		);
-
-		printTheResult(i, s);
-	}
+	this->learningMethod->train(dataSet, learningRate, numberOfIterations);
 }
 
 void NeuralNetwork::test(DataSet* dataSet) {
@@ -169,6 +146,16 @@ bool NeuralNetwork::getWillBeVisualized() {
 	return this->willBeVisualized;
 }
 
+void NeuralNetwork::setLearningMethod(LearningMethod* learningMethod) {
+	this->learningMethod = learningMethod;
+	this->learningMethod->setNeuralNetwork(this);
+}
+
+LearningMethod* NeuralNetwork::getLearningMethod() {
+	return this->learningMethod;
+}
+
+
 // Builder implementation
 
 NeuralNetwork::Builder::Builder()
@@ -178,12 +165,15 @@ NeuralNetwork::Builder::Builder()
 
 NeuralNetwork::Builder* NeuralNetwork::Builder::addLayer(Layer* layer) {
 	this->neuralNetwork->addLayer(layer);
+	return this;
+}
 
+NeuralNetwork::Builder* NeuralNetwork::Builder::setLearningMethod(LearningMethod* layer) {
+	this->neuralNetwork->setLearningMethod(layer);
 	return this;
 }
 
 NeuralNetwork* NeuralNetwork::Builder::build() {
 	this->neuralNetwork->buildWeightsAndBiases();
-
 	return this->neuralNetwork;
 }

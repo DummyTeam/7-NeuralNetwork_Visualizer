@@ -124,11 +124,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Axis.cpp" />
-    <ClCompile Include="Cost.cpp" />
+    <ClCompile Include="GradientDescent.cpp" />
     <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="GraphData.cpp" />
+    <ClCompile Include="VisualGraphData.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MSE.cpp" />
     <ClCompile Include="NeuralNetwork.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="DataSet.cpp" />
@@ -147,9 +148,12 @@
   <ItemGroup>
     <ClInclude Include="Axis.h" />
     <ClInclude Include="Core.h" />
-    <ClInclude Include="Cost.h" />
+    <ClInclude Include="CostFunction.h" />
+    <ClInclude Include="GradientDescent.h" />
+    <ClInclude Include="LearningMethod.h" />
     <ClInclude Include="Graph.h" />
-    <ClInclude Include="GraphData.h" />
+    <ClInclude Include="VisualGraphData.h" />
+    <ClInclude Include="MSE.h" />
     <ClInclude Include="NNGraphAdapter.h" />
     <ClInclude Include="NNVisualAdapter.h" />
     <ClInclude Include="Visualizable.h" />
