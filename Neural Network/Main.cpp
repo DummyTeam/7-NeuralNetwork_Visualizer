@@ -1,9 +1,12 @@
 #include "Core.h"
 #include "Xor.h"
 #include "ReLU.h"
+#include "MSE.h"
+#include "GradientDescent.h"
 #include "MainWindow.h"
 #include "NNVisualAdapter.h"
 #include "NNGraphAdapter.h"
+
 
 int main()
 {
@@ -24,6 +27,7 @@ int main()
 		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
 		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
+		->setLearningMethod(new GradientDescent(new MSE()))
 		->build();
 
 	DataSet* trainingDataSet = new DataSet("data4.data", numberOfInputs, numberOfOutputs);
