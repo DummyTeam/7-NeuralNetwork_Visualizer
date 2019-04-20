@@ -11,7 +11,7 @@ public:
 	virtual void train(DataSet*, double, int) = 0;
 	virtual void setNeuralNetwork(NeuralNetwork*) = 0;
 	virtual double calculateCost(std::vector<double> const &) = 0;
-	virtual const std::vector<double> & getCostHistory() = 0;
+	virtual std::vector<double> & getCostHistory() = 0;
 
 protected:
 	CostFunction* cost;
