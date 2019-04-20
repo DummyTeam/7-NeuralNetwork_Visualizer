@@ -2,7 +2,7 @@
 
 Axis::Axis()
 {
-	this->height = 200.f;
+	this->height = 450.f;
 	this->width = 2.f;
 }
 
