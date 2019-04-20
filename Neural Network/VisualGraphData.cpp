@@ -12,6 +12,11 @@ void VisualGraphData::setPosition(float x, float y)
 	this->shape->setPosition(x, y - data);
 }
 
+const sf::Vector2f& VisualGraphData::getPosition()
+{
+	return this->shape->getPosition();
+}
+
 void VisualGraphData::draw(sf::RenderWindow* window)
 {
 	window->draw(*(this->shape));
