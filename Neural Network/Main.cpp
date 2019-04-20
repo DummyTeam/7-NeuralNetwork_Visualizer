@@ -7,7 +7,6 @@
 #include "NNVisualAdapter.h"
 #include "NNGraphAdapter.h"
 
-
 int main()
 {
 	// Initialize random seed
@@ -38,10 +37,15 @@ int main()
 
 	MainWindow* mainWindow = new MainWindow();
 	mainWindow->addAdapter(nnVisualAdapter);
-	mainWindow->addAdapter(graphAdapter);
+
+	MainWindow* mainWindow2 = new MainWindow();
+	mainWindow2->addAdapter(graphAdapter);
 
 	// Starts a new view thread!
 	mainWindow->startWindow();
+	mainWindow2->startWindow();
+
+	system("pause");
 
 	double learningRate = 0.0314;
 	int numberOfIterations = 7000;
