@@ -7,7 +7,7 @@
 class Graph : public Visualizable
 {
 public:
-	Graph();
+	Graph(std::vector<double>&);
 	void draw(sf::RenderWindow*);
 	void addData(double);
 
@@ -15,5 +15,5 @@ private:
 	X_Axis* xAxis;
 	Y_Axis* yAxis;
 	std::vector<VisualGraphData*> graphData;
-	std::vector<double>* costHistory;
+	std::vector<double>& costHistory;
 };
