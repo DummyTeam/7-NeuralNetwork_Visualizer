@@ -6,6 +6,8 @@
 class VisualNeuron : public VisualObject
 {
 public:
+	static double radius() { return 20.0; };
+
 	VisualNeuron(Neuron*);
 	
 	sf::Text* getText();

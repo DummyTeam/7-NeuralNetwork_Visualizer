@@ -4,7 +4,7 @@ VisualNeuron::VisualNeuron(Neuron* neuron)
 {
 	this->neuronPointer = neuron;
 
-	this->shapeWidth = 10.0f;
+	this->shapeWidth = VisualNeuron::radius();
 	this->shapeHeight = this->shapeWidth;
 
 	this->shape = new sf::CircleShape(this->shapeWidth);
@@ -60,5 +60,5 @@ sf::Vector2f VisualNeuron::getCenterPoint() {
 
 void VisualNeuron::draw(sf::RenderWindow* renderWindow) {
 	renderWindow->draw(*(this->getShape()));
-	//renderWindow->draw(*(this->getText()));
+	renderWindow->draw(*(this->getText()));
 }
