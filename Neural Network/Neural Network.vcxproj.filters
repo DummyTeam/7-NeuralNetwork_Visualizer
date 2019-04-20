@@ -69,9 +69,6 @@
     <ClCompile Include="MainWindow.cpp">
       <Filter>Source Files\Visualization</Filter>
     </ClCompile>
-    <ClCompile Include="NNVisualAdapter.cpp">
-      <Filter>Source Files\NeuralNetwork</Filter>
-    </ClCompile>
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files\Graph</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
     <ClCompile Include="Axis.cpp">
       <Filter>Source Files\Graph</Filter>
     </ClCompile>
-    <ClCompile Include="NNGraphAdapter.cpp">
-      <Filter>Source Files\NeuralNetwork</Filter>
-    </ClCompile>
     <ClCompile Include="GradientDescent.cpp">
       <Filter>Source Files\NeuralNetwork</Filter>
     </ClCompile>
@@ -95,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="VisualGraphData.cpp">
       <Filter>Source Files\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="NNGraphAdapter.cpp">
+      <Filter>Source Files\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="NNVisualAdapter.cpp">
+      <Filter>Source Files\Visualization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +149,6 @@
     <ClInclude Include="Xor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NNVisualAdapter.h">
-      <Filter>Header Files\NeuralNetwork</Filter>
-    </ClInclude>
     <ClInclude Include="Graph.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
@@ -167,9 +164,6 @@
     <ClInclude Include="Axis.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
-    <ClInclude Include="NNGraphAdapter.h">
-      <Filter>Header Files\NeuralNetwork</Filter>
-    </ClInclude>
     <ClInclude Include="LearningMethod.h">
       <Filter>Header Files\NeuralNetwork</Filter>
     </ClInclude>
@@ -184,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="VisualGraphData.h">
       <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="NNGraphAdapter.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="NNVisualAdapter.h">
+      <Filter>Header Files\Visualization</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
