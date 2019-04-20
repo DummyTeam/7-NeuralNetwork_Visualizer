@@ -11,6 +11,6 @@ public:
 	void train(DataSet*, double, int);
 	void setNeuralNetwork(NeuralNetwork*);
 	double calculateCost(std::vector<double> const &);
-	const std::vector<double> &  getCostHistory();
+	std::vector<double>&  getCostHistory();
 
 };

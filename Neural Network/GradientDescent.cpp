@@ -23,7 +23,9 @@ void GradientDescent::train(DataSet* dataSet, double learningRate, int numberOfI
 			learningRate		        // Learning rate
 		);
 
-		nn->printTheResult(i, s);
+		this->calculateCost(s->getOutput());
+
+		//nn->printTheResult(i, s);
 	}
 }
 
@@ -34,7 +36,7 @@ double GradientDescent::calculateCost(std::vector<double> const & expectedValues
 	return value;
 }
 
-const std::vector<double> & GradientDescent::getCostHistory()
+std::vector<double>& GradientDescent::getCostHistory()
 {
 	return costHistory;
 }
