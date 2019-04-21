@@ -4,12 +4,14 @@
 #include "VisualGraphData.h"
 #include <vector>
 
-class Graph : public Visualizable
+class Graph
 {
 public:
 	Graph(std::vector<double>&);
 	void draw(sf::RenderWindow*);
 	void addData(double);
+	sf::Vector2u getSize();
+	void setPosition(sf::Vector2f);
 
 private:
 	X_Axis* xAxis;

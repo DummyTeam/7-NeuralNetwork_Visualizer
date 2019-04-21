@@ -38,9 +38,10 @@ void Graph::draw(sf::RenderWindow* window)
 			sf::VertexArray line(sf::LinesStrip, 2);
 
 			line[0].position = sf::Vector2f(posX, posY);
-			line[0].color = sf::Color::Magenta;
 			line[1].position = sf::Vector2f(previousPosX, previousPosY);
-			line[1].color = sf::Color::Magenta;
+
+			line[0].color = sf::Color(217, 53, 86);
+			line[1].color = sf::Color(217, 53, 86);
 
 			window->draw(line);
 		}
@@ -50,4 +51,16 @@ void Graph::draw(sf::RenderWindow* window)
 void Graph::addData(double item)
 {
 	this->graphData.push_back(new VisualGraphData(item));
+}
+
+sf::Vector2u Graph::getSize() {
+	return sf::Vector2u(
+		this->xAxis->getHeight(),
+		this->yAxis->getHeight()
+	);
+}
+
+void Graph::setPosition(sf::Vector2f pos) {
+	this->yAxis->setPosition(pos);
+	this->xAxis->setPosition(sf::Vector2f(pos.x, pos.y + this->yAxis->getHeight()));
 }
