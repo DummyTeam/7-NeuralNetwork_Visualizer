@@ -25,3 +25,7 @@ const sf::Vector2f &Axis::getPosition() const
 {
 	return axis->getPosition();
 }
+
+void Axis::setPosition(sf::Vector2f pos) {
+	this->axis->setPosition(pos);
+}
