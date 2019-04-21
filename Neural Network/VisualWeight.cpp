@@ -10,19 +10,13 @@ VisualWeight::VisualWeight(Weight* weight, VisualNeuron* from, VisualNeuron* to)
 
 void VisualWeight::getValueColor()
 {
-	int r = 255;
-	int g = 255;
+	sf::Color color;
+	
+	if (this->weightPointer->getValue() > 0)
+		color = sf::Color(88, 204, 53);
+	else
+		color = sf::Color(217, 53, 86);
 
-	// Max weight limit is 2 (arbitrary)
-	r = 127 - 127 * this->weightPointer->getValue() / 2;
-	g = 127 + 127 * this->weightPointer->getValue() / 2;
-
-	r = (r > 255) ? 255 : r;
-	g = (g > 255) ? 255 : g;
-	r = (r < 0) ? 0 : r;
-	g = (g < 0) ? 0 : g;
-
-	sf::Color color = sf::Color(r, g, 0, 255);
 	this->weightLine[0].color = color;
 	this->weightLine[1].color = color;
 }

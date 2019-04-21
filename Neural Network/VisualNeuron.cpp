@@ -8,7 +8,7 @@ VisualNeuron::VisualNeuron(Neuron* neuron)
 	this->shapeHeight = this->shapeWidth;
 
 	this->shape = new sf::CircleShape(this->shapeWidth);
-	this->shape->setFillColor(sf::Color::White);
+	this->shape->setFillColor(sf::Color(217, 53, 86));
 
 	this->text = new sf::Text();
 	this->font = new sf::Font();
@@ -22,25 +22,18 @@ VisualNeuron::VisualNeuron(Neuron* neuron)
 
 	// in pixels, not points!
 	this->text->setCharacterSize(12);
-	this->text->setFillColor(sf::Color::Black);
+	this->text->setFillColor(sf::Color::White);
 
-	this->shape->setOutlineThickness(1);
+	this->shape->setOutlineThickness(3);
 	this->shape->setOutlineColor(sf::Color::White);
 }
 
 sf::CircleShape* VisualNeuron::getShape() {
-	int r = 127;
-	int g = 127;
+	if (this->neuronPointer->getActivationValue() > 0.000001)
+		this->shape->setFillColor(sf::Color(88, 204, 53));
+	else
+		this->shape->setFillColor(sf::Color(217, 53, 86));
 
-	// Max weight limit is 2 (arbitrary)
-	r = 127 - 127 * this->neuronPointer->getActivationValue() / 2;
-	g = 127 + 127 * this->neuronPointer->getActivationValue() / 2;
-	r = (r > 255) ? 255 : r;
-	g = (g > 255) ? 255 : g;
-	r = (r < 0) ? 0 : r;
-	g = (g < 0) ? 0 : g;
-
-	this->shape->setFillColor(sf::Color(r, g, 0, 255));
 	return this->shape;
 }
 
