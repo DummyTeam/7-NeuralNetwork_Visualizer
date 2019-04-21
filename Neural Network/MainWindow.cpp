@@ -1,17 +1,16 @@
 #include "MainWindow.h"
 
-MainWindow::MainWindow()
+Window::Window()
 {
-	this->viewThread = new sf::Thread(&MainWindow::drawNetwork, this);
+	this->viewThread = new sf::Thread(&Window::drawNetwork, this);
 }
 
-void  MainWindow::startWindow()
+void  Window::startWindow()
 {
-	/// Starting a thread
 	this->viewThread->launch();
 }
 
-void MainWindow::drawNetwork() {
+void Window::drawNetwork() {
 
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
@@ -29,7 +28,7 @@ void MainWindow::drawNetwork() {
 				window->close();
 		}
 
-		window->clear(sf::Color::Black);
+		window->clear(sf::Color::White);
 
 		for (auto& elem : this->adapters) {
 			elem->draw(this->window);
@@ -39,14 +38,10 @@ void MainWindow::drawNetwork() {
 	}
 }
 
-double MainWindow::getLayerVerticalOffset(int neuronCount) {
-	return (maxNeuronsInALayer - neuronCount) * (neuronDiameter + distanceBetweenLayers) / 2.0;
-}
-
-void MainWindow::addAdapter(Visualizable* visualizable) {
+void Window::addAdapter(Visualizable* visualizable) {
 	this->adapters.push_back(visualizable);
 }
 
-sf::RenderWindow* MainWindow::getRenderWindow() {
+sf::RenderWindow* Window::getRenderWindow() {
 	return this->window;
 }

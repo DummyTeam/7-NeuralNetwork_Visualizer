@@ -2,13 +2,12 @@
 
 #include "NeuralNetwork.h"
 
-class MainWindow
+class Window
 {
 public:
-	MainWindow();
+	Window();
 	void addAdapter(Visualizable*);
 
-	double getLayerVerticalOffset(int);
 	sf::RenderWindow* getRenderWindow();
 	void startWindow();
 
