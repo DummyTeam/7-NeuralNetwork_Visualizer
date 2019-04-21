@@ -12,5 +12,6 @@ public:
 	void setNeuralNetwork(NeuralNetwork*);
 	double calculateCost(std::vector<double> const &);
 	std::vector<double>&  getCostHistory();
+	double getCurrentCost();
 
 };

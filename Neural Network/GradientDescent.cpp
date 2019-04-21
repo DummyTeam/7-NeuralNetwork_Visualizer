@@ -29,14 +29,21 @@ void GradientDescent::train(DataSet* dataSet, double learningRate, int numberOfI
 	}
 }
 
-double GradientDescent::calculateCost(std::vector<double> const & expectedValues) 
+double GradientDescent::calculateCost(std::vector<double> const & expectedValues)
 {
 	double value = this->cost->calculate(expectedValues, nn->getLayers().at(nn->getLayers().size() - 1)->getListActivationValues());
-	costHistory.push_back(value);
+	this->costHistory.push_back(value);
 	return value;
 }
 
 std::vector<double>& GradientDescent::getCostHistory()
 {
-	return costHistory;
+	return this->costHistory;
+}
+
+double GradientDescent::getCurrentCost()
+{
+	if (this->costHistory.size() <= 0)
+		return 0;
+	return this->costHistory.at(this->costHistory.size()-1);
 }
