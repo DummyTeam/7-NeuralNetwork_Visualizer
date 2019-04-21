@@ -19,7 +19,7 @@ void Graph::draw(sf::RenderWindow* window)
 
 	for (int i = this->costHistory.size() - 1, j = 0; i >= 0 && j < size; i--, j++)
 	{
-		this->graphData.at(this->graphData.size() - j - 1)->setData(this->costHistory.at(i) * 150);
+		this->graphData.at(this->graphData.size() - j - 1)->setData(this->costHistory.at(i) * 150);// TODO: Remove 150.
 
 		float posX = this->xAxis->getWidth() + this->xAxis->getPosition().x + size - j;
 		float posY = this->xAxis->getPosition().y - this->yAxis->getWidth();

@@ -1,5 +1,4 @@
 #include "Core.h"
-#include "Xor.h"
 #include "ReLU.h"
 #include "MSE.h"
 #include "GradientDescent.h"
@@ -12,10 +11,9 @@ int main()
 	// Initialize random seed
 	srand(24);
 
-	printf("\n");
 	system("pause");
 
-	// Alternative 2: Neural Network for XOR
+	// Neural Network for XOR
 	int numberOfInputs = 4;
 	int numberOfHiddenLayerNodes = 8;
 	int numberOfHiddenLayerNodes2 = 8;
@@ -35,17 +33,15 @@ int main()
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
 	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn);
 
-	MainWindow* mainWindow = new MainWindow();
-	mainWindow->addAdapter(nnVisualAdapter);
+	Window* nnWindow = new Window();
+	nnWindow->addAdapter(nnVisualAdapter);
 
-	MainWindow* mainWindow2 = new MainWindow();
-	mainWindow2->addAdapter(graphAdapter);
+	Window* graphWindow = new Window();
+	graphWindow->addAdapter(graphAdapter);
 
-	// Starts a new view thread!
-	mainWindow->startWindow();
-	mainWindow2->startWindow();
-
-	system("pause");
+	// Starts new view threads!
+	nnWindow->startWindow();
+	graphWindow->startWindow();
 
 	double learningRate = 0.0314;
 	int numberOfIterations = 7000;
