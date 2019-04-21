@@ -141,7 +141,6 @@
     <ClCompile Include="VisualNeuron.cpp" />
     <ClCompile Include="VisualWeight.cpp" />
     <ClCompile Include="Weight.cpp" />
-    <ClCompile Include="Xor.cpp" />
     <ClCompile Include="X_Axis.cpp" />
     <ClCompile Include="Y_Axis.cpp" />
   </ItemGroup>
@@ -172,7 +171,6 @@
     <ClInclude Include="VisualObject.h" />
     <ClInclude Include="VisualWeight.h" />
     <ClInclude Include="Weight.h" />
-    <ClInclude Include="Xor.h" />
     <ClInclude Include="X_Axis.h" />
     <ClInclude Include="Y_Axis.h" />
   </ItemGroup>

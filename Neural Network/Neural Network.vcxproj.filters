@@ -36,9 +36,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Xor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VisualNeuron.cpp">
       <Filter>Source Files\Visualization</Filter>
     </ClCompile>
@@ -145,9 +142,6 @@
     </ClInclude>
     <ClInclude Include="MainWindow.h">
       <Filter>Header Files\Visualization</Filter>
-    </ClInclude>
-    <ClInclude Include="Xor.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
       <Filter>Header Files\Graph</Filter>
