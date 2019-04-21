@@ -54,6 +54,8 @@ public:
 	// Clear enough
 	LearningMethod* getLearningMethod();
 
+	std::string getCurrentStage();
+
 	const std::vector<Layer*> & getLayers();
 
 	// Redundant: Delete this line
@@ -75,4 +77,5 @@ public:
 private:
 	std::vector<Layer*> layers;
 	LearningMethod* learningMethod;
+	std::string currentStage;
 };

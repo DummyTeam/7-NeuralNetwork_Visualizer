@@ -6,6 +6,7 @@
 
 NeuralNetwork::NeuralNetwork()
 {
+	this->currentStage = "Created!";
 }
 
 int NeuralNetwork::getNumberOfLayers() {
@@ -20,7 +21,6 @@ int NeuralNetwork::getMaxNumberOfNeurons() {
 
 	return max;
 }
-
 
 std::vector<double> NeuralNetwork::predict(std::vector<double> &inputValues)
 {
@@ -108,10 +108,14 @@ std::string NeuralNetwork::toString() {
 
 void NeuralNetwork::train(DataSet* dataSet, double learningRate, int numberOfIterations)
 {
+	this->currentStage = "Training...";
 	this->learningMethod->train(dataSet, learningRate, numberOfIterations);
+	this->currentStage = "Trained!";
 }
 
 void NeuralNetwork::test(DataSet* dataSet) {
+	this->currentStage = "Testing...";
+
 	int index = 0;
 	for (std::vector<Sample*>::iterator sample = dataSet->getDataSet().begin(); sample < dataSet->getDataSet().end(); sample++) {
 		// Output layer activation values after feedforward propogation
@@ -129,6 +133,7 @@ void NeuralNetwork::test(DataSet* dataSet) {
 		printf("\n");
 	}
 
+	this->currentStage = "Tested!";
 	return;
 }
 
@@ -143,6 +148,10 @@ void NeuralNetwork::setLearningMethod(LearningMethod* learningMethod) {
 
 LearningMethod* NeuralNetwork::getLearningMethod() {
 	return this->learningMethod;
+}
+
+std::string NeuralNetwork::getCurrentStage() {
+	return this->currentStage;
 }
 
 

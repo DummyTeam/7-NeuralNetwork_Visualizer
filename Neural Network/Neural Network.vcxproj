@@ -126,6 +126,7 @@
     <ClCompile Include="Axis.cpp" />
     <ClCompile Include="GradientDescent.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="ScreenMessage.cpp" />
     <ClCompile Include="VisualGraphData.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -136,7 +137,7 @@
     <ClCompile Include="NNGraphAdapter.cpp" />
     <ClCompile Include="NNVisualAdapter.cpp" />
     <ClCompile Include="Sample.cpp" />
-    <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="VisualLayer.cpp" />
     <ClCompile Include="VisualNeuron.cpp" />
     <ClCompile Include="VisualWeight.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="GradientDescent.h" />
     <ClInclude Include="LearningMethod.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="ScreenMessage.h" />
     <ClInclude Include="VisualGraphData.h" />
     <ClInclude Include="MSE.h" />
     <ClInclude Include="NNGraphAdapter.h" />
@@ -165,7 +167,7 @@
     <ClInclude Include="Sigmoid.h" />
     <ClInclude Include="Squishification.h" />
     <ClInclude Include="Utils.h" />
-    <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="VisualLayer.h" />
     <ClInclude Include="VisualNeuron.h" />
     <ClInclude Include="VisualObject.h" />
