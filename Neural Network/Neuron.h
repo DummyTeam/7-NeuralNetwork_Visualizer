@@ -61,7 +61,6 @@ private:
 	double bias;
 	double activation;
 	double delta;
-	int type;
 	Squishification* squishification;
 	std::vector<Weight*> weights; // Incoming
 	std::vector<Weight*> outgoingWeights; // Outgoing

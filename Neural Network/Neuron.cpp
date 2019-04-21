@@ -20,7 +20,6 @@ Neuron::Neuron(Squishification* squishification)
 }
 
 void Neuron::init() {
-	this->type = 0;
 	this->setActivationValue(0);
 	this->bias = 0;
 }
