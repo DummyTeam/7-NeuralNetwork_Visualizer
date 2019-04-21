@@ -6,8 +6,6 @@
 
 NeuralNetwork::NeuralNetwork()
 {
-	this->latestNeuronIndex = 0;
-	this->willBeVisualized = false;
 }
 
 int NeuralNetwork::getNumberOfLayers() {
@@ -23,10 +21,6 @@ int NeuralNetwork::getMaxNumberOfNeurons() {
 	return max;
 }
 
-int NeuralNetwork::getNewNeuronIndex()
-{
-	return ++(this->latestNeuronIndex);
-}
 
 std::vector<double> NeuralNetwork::predict(std::vector<double> &inputValues)
 {
@@ -140,10 +134,6 @@ void NeuralNetwork::test(DataSet* dataSet) {
 
 const std::vector<Layer*> & NeuralNetwork::getLayers() {
 	return this->layers;
-}
-
-bool NeuralNetwork::getWillBeVisualized() {
-	return this->willBeVisualized;
 }
 
 void NeuralNetwork::setLearningMethod(LearningMethod* learningMethod) {

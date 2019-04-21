@@ -19,9 +19,6 @@ public:
 	// Compares all layer sizes and returns maximum one
 	int getMaxNumberOfNeurons();
 
-	// Kind of index generator for neurons. Not used right now
-	int getNewNeuronIndex();
-
 	// Adds layer to layers vector
 	void addLayer(Layer*);
 
@@ -52,9 +49,6 @@ public:
 	double costFunction(std::vector<double> const &);
 
 	// Clear enough
-	bool getWillBeVisualized();
-
-	// Clear enough
 	void setLearningMethod(LearningMethod*);
 
 	// Clear enough
@@ -79,9 +73,6 @@ public:
 	};
 
 private:
-	int latestNeuronIndex;
 	std::vector<Layer*> layers;
-	DataSet* dataSet;
-	bool willBeVisualized;
 	LearningMethod* learningMethod;
 };
