@@ -12,10 +12,10 @@ void VisualWeight::getValueColor()
 {
 	sf::Color color;
 	
-	if (this->weightPointer->getValue() > 0)
-		color = sf::Color(88, 204, 53);
-	else
+	if (this->weightPointer->getValue() < 0.0000001)
 		color = sf::Color(217, 53, 86);
+	else
+		color = sf::Color(88, 204, 53);
 
 	this->weightLine[0].color = color;
 	this->weightLine[1].color = color;
