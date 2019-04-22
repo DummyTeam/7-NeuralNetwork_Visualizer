@@ -1,51 +1,19 @@
 #include "Graph.h"
 #include "Utils.h"
+#include "FullRange.h"
+#include "LastNRange.h"
 
-Graph::Graph(std::vector<double>& costHistory) : costHistory(costHistory)
+Graph::Graph(std::vector<double>& costHistory, GraphRangeStyle* graphRangeStyle) : costHistory(costHistory)
 {
 	this->xAxis = new X_Axis();
 	this->yAxis = new Y_Axis();
 	this->costHistory = costHistory;
-	this->graphData.resize(400, new VisualGraphData(0));
+	this->graphRangeStyle = graphRangeStyle;
 }
 
 void Graph::draw(sf::RenderWindow* window)
 {
-	this->xAxis->draw(window);
-	this->yAxis->draw(window);
-
-	// TODO: Make this 400 value adjustable
-	int size = (this->costHistory.size() < 400) ? this->costHistory.size() : 400;
-
-	for (int i = this->costHistory.size() - 1, j = 0; i >= 0 && j < size; i--, j++)
-	{
-		this->graphData.at(this->graphData.size() - j - 1)->setData(this->costHistory.at(i) * 150);// TODO: Remove 150.
-
-		float posX = this->xAxis->getWidth() + this->xAxis->getPosition().x + size - j;
-		float posY = this->xAxis->getPosition().y - this->yAxis->getWidth();
-
-		this->graphData.at(this->graphData.size() - j - 1)->setPosition(
-			posX,
-			posY
-		);
-
-		this->graphData.at(this->graphData.size() - j - 1)->draw(window);
-
-		if (j != 0)
-		{
-			float previousPosX = this->graphData.at(this->graphData.size() - j)->getPosition().x;
-			float previousPosY = this->graphData.at(this->graphData.size() - j)->getPosition().y;
-			sf::VertexArray line(sf::LinesStrip, 2);
-
-			line[0].position = sf::Vector2f(posX, posY);
-			line[1].position = sf::Vector2f(previousPosX, previousPosY);
-
-			line[0].color = sf::Color(217, 53, 86);
-			line[1].color = sf::Color(217, 53, 86);
-
-			window->draw(line);
-		}
-	}
+	this->graphRangeStyle->renderGraph(this, window);
 }
 
 void Graph::addData(double item)
@@ -63,4 +31,21 @@ sf::Vector2u Graph::getSize() {
 void Graph::setPosition(sf::Vector2f pos) {
 	this->yAxis->setPosition(pos);
 	this->xAxis->setPosition(sf::Vector2f(pos.x, pos.y + this->yAxis->getHeight()));
+}
+
+X_Axis* Graph::getXAxis() {
+	return xAxis;
+}
+
+Y_Axis* Graph::getYAxis() {
+	return yAxis;
+}
+
+std::vector<double>& Graph::getCostHistory() {
+	return this->costHistory;
+}
+
+std::vector<VisualGraphData*>& Graph::getGraphData()
+{
+	return this->graphData;
 }
