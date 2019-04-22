@@ -1,14 +1,15 @@
 #include "NNVisualAdapter.h"
 
-
 NNVisualAdapter::NNVisualAdapter(NeuralNetwork* nn)
 {
 	this->nn = nn;
-	this->init();
-	this->arrangeVisually();
+	this->createVisualNN();
+	
 }
 
-void NNVisualAdapter::init() {
+void NNVisualAdapter::createVisualNN() {
+
+	// Creating visual version of Neural Network
 	for (size_t i = 0; i < nn->getNumberOfLayers(); i++) // iterating layers
 	{
 		VisualLayer* visualLayer = new VisualLayer();
@@ -38,7 +39,12 @@ void NNVisualAdapter::init() {
 
 void NNVisualAdapter::arrangeVisually() {
 	for (auto& objs : this->visualLayers) {
-		objs->arrangeVisually(this->nn->getMaxNumberOfNeurons(), (&objs - &(this->visualLayers[0])), this->visualLayers.size());
+		objs->arrangeVisually(
+			this->nn->getMaxNumberOfNeurons(),		// Max neuron number
+			(&objs - &(this->visualLayers[0])),		// Layer index
+			this->visualLayers.size(),				// Number of layers
+			this->renderWindow->getSize().x,		// Screen width
+			this->renderWindow->getSize().y);		// Screen height
 	}
 
 	for (auto& objs : this->visualWeights) {
@@ -49,8 +55,13 @@ void NNVisualAdapter::arrangeVisually() {
 	this->drawableObjects.insert(this->drawableObjects.end(), this->visualLayers.begin(), this->visualLayers.end());
 }
 
-void NNVisualAdapter::draw(sf::RenderWindow* window) {
+void NNVisualAdapter::init(sf::RenderWindow* renderWindow) {
+	this->renderWindow = renderWindow;
+	this->arrangeVisually();
+}
+
+void NNVisualAdapter::draw() {
 	for (auto& objs : this->drawableObjects) {
-		objs->draw(window);
+		objs->draw(this->renderWindow);
 	}
 }

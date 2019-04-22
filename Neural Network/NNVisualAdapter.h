@@ -12,13 +12,15 @@ class NNVisualAdapter : public Visualizable
 {
 public:
 	NNVisualAdapter(NeuralNetwork*);
-	void draw(sf::RenderWindow*);
+	void init(sf::RenderWindow*);
+	void draw();
 private:
 	NeuralNetwork* nn;
+	sf::RenderWindow* renderWindow;
 	std::vector<VisualLayer*> visualLayers;
 	std::vector<VisualWeight*> visualWeights;
 	std::vector<VisualObject*> drawableObjects;
 
-	void init();
+	void createVisualNN();
 	void arrangeVisually();
 };
