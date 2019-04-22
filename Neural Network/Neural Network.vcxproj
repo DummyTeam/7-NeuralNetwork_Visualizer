@@ -124,8 +124,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Axis.cpp" />
+    <ClCompile Include="AxisNumber.cpp" />
+    <ClCompile Include="FullRange.cpp" />
     <ClCompile Include="GradientDescent.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="LastNRange.cpp" />
     <ClCompile Include="ScreenMessage.cpp" />
     <ClCompile Include="VisualGraphData.cpp" />
     <ClCompile Include="Layer.cpp" />
@@ -147,9 +150,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Axis.h" />
+    <ClInclude Include="AxisNumber.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="CostFunction.h" />
+    <ClInclude Include="FullRange.h" />
     <ClInclude Include="GradientDescent.h" />
+    <ClInclude Include="GraphRangeStyle.h" />
+    <ClInclude Include="LastNRange.h" />
     <ClInclude Include="LearningMethod.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="ScreenMessage.h" />
