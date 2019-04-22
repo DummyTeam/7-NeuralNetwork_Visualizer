@@ -1,8 +1,10 @@
 #include "Core.h"
 #include "ReLU.h"
 #include "MSE.h"
+#include "FullRange.h"
+#include "LastNRange.h"
 #include "GradientDescent.h"
-#include "MainWindow.h"
+#include "Window.h"
 #include "NNVisualAdapter.h"
 #include "NNGraphAdapter.h"
 
@@ -10,8 +12,6 @@ int main()
 {
 	// Initialize random seed
 	srand(24);
-
-	system("pause");
 
 	// Neural Network for XOR
 	int numberOfInputs = 4;
@@ -24,19 +24,19 @@ int main()
 		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
 		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
-		->setLearningMethod(new GradientDescent(new MSE()))
+		->setLearningMethod(new GradientDescent(new MSE())) // Cost Function
 		->build();
 
 	DataSet* trainingDataSet = new DataSet("data4.data", numberOfInputs, numberOfOutputs);
 	DataSet* testingDataSet = new DataSet("data4Test.data", numberOfInputs, numberOfOutputs);
 
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
-	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn);
+	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new FullRange(150)); //  new LastNRange(800, 170)
 
-	Window* nnWindow = new Window();
+	Window* nnWindow = new Window(sf::Vector2i(700, 600), sf::Vector2i(20, 50), "Neural Network Structure");
 	nnWindow->addAdapter(nnVisualAdapter);
 
-	Window* graphWindow = new Window();
+	Window* graphWindow = new Window(sf::Vector2i(800, 600), sf::Vector2i(720, 50), "Cost Graph");
 	graphWindow->addAdapter(graphAdapter);
 
 	// Starts new view threads!
