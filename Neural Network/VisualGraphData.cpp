@@ -4,7 +4,7 @@ VisualGraphData::VisualGraphData(double data)
 {
 	this->data = data;
 	this->shape = new sf::CircleShape(1.f);
-	this->shape->setFillColor(sf::Color(100, 250, 50));
+	this->shape->setFillColor(sf::Color(88, 204, 53));
 }
 
 void VisualGraphData::setPosition(float x, float y)

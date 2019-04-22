@@ -1,7 +1,7 @@
 #pragma once
-#include "Visualizable.h"
+#include <SFML/Graphics.hpp>	
 
-class VisualGraphData : public Visualizable
+class VisualGraphData
 {
 public:
 	VisualGraphData(double data);
