@@ -4,13 +4,14 @@ AxisNumber::AxisNumber()
 {
 	this->text = new sf::Text();
 	this->font = new sf::Font();
+	this->data = 100;
 
 	if (!font->loadFromFile("arial.ttf")) {
 		throw "Font not found";
 	}
 
 	this->text->setFont(*font);
-	this->text->setString("100");
+	this->text->setString(std::to_string(data));
 
 	// in pixels, not points!
 	this->text->setCharacterSize(12);
@@ -30,4 +31,12 @@ void AxisNumber::draw(sf::RenderWindow* renderWindow)
 void AxisNumber::setPosition(sf::Vector2f pos)
 {
 	this->text->setPosition(pos);
+}
+
+float AxisNumber::getHeight() {
+	return this->text->getGlobalBounds().height;
+}
+
+void AxisNumber::setData(double data) {
+	this->text->setString(std::to_string(data));
 }

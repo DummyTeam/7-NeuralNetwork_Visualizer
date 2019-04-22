@@ -5,9 +5,6 @@ LastNRange::LastNRange(int rangeN, double yScaleFactor)
 {
 	this->rangeN = rangeN;
 	this->yScaleFactor = yScaleFactor;
-
-	
-
 }
 
 void LastNRange::renderGraph(Graph* graph, sf::RenderWindow* window) {

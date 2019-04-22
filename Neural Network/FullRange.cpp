@@ -31,6 +31,7 @@ void FullRange::renderGraph(Graph* graph, sf::RenderWindow* window) {
 		);
 
 		graph->getGraphData().at(i)->draw(window);
+		//graph->getXAxis()->setRange(graph->getGraphData().size());
 
 		if (i != 0)
 		{
