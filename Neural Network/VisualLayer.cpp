@@ -19,9 +19,9 @@ void VisualLayer::draw(sf::RenderWindow* window) {
 	}
 }
 
-void VisualLayer::arrangeVisually(int maxNeurons, int layerIndex, int numberOfLayers) {
-	float l = 800;
-	float h = 600;
+void VisualLayer::arrangeVisually(int maxNeurons, int layerIndex, int numberOfLayers, int screenWidth, int screenHeight) {
+	float l = screenWidth;
+	float h = screenHeight;
 
 	float w = 100.0f;
 	float g = 15.0f;

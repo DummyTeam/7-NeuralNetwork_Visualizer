@@ -11,7 +11,7 @@ public:
 	const std::vector<VisualNeuron*>& getVisualNeurons();
 
 	void draw(sf::RenderWindow* window);
-	void arrangeVisually(int maxNeurons, int layerIndex, int numberOfLayer);
+	void arrangeVisually(int maxNeurons, int layerIndex, int numberOfLayer, int screenWidth, int screenHeight);
 
 private:
 	std::vector<VisualNeuron*> visualNeurons;
