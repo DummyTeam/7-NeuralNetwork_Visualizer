@@ -47,7 +47,8 @@ void Window::drawNetwork() {
 	this->window = new sf::RenderWindow(sf::VideoMode(this->screenWidth, this->screenHeight), this->windowTitle, sf::Style::Default, settings);
 	this->window->setVerticalSyncEnabled(true);
 	this->window->setPosition(sf::Vector2i(this->screenXPos, this->screenYPos));
-	
+	//this->window->setFramerateLimit(60);
+
 	for (auto& elem : this->adapters) {
 		elem->init(this->window);
 	}

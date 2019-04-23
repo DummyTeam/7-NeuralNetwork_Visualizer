@@ -18,4 +18,3 @@ private:
 	sf::Font* font;
 	double data;
 };
-
