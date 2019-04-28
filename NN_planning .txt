@@ -53,45 +53,72 @@ Regular version:
 	cout << neuralNetwork->toString();
 	
 //////////////////////////////////////////////////////////////
-	
- - Create a neural network
- - Create a layer
-	- Creating a layer, Create neurons automatically
-		- Creating neurons automatically, Check their types 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+		         Logo
+				 Name
+			 --------------
+		   Small Description
+		 Links to ReadMe Headers
 			
+		   Image of NN (GIF)
+
+
+Key	Features
+-----------------------------------------
+	- LivePreview - Make changes, see changes
+	- Instantly see what thr Markdown look like
+	- Sync Scrolling
+	- Automatic scroll
+
+
+How to Use
+-----------------------------------------
+
+
+
+
+Example
+-----------------------------------------
+
+
+
+
+Structure
+-----------------------------------------
+
+
+	Class Diagrams
+	-------------------------------------
+
+
+
+Visualization
+-----------------------------------------
+
+
+
+
+Credits
+-----------------------------------------
+This software uses the following open source package:
+	- SFML
+
+
+
+License
+-----------------------------------------
+	- MIT
+
+
+
+
+Contact Links
+-----------------------------------------
+	- Github links
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////
