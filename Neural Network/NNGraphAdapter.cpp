@@ -24,5 +24,6 @@ void NNGraphAdapter::draw() {
 		"Stage: " + this->nn->getCurrentStage() + "\n" +
 		"Cost: " + std::to_string(this->nn->getLearningMethod()->getCurrentCost())
 	);
+	
 	this->screenMessage->draw(this->renderWindow);
 }

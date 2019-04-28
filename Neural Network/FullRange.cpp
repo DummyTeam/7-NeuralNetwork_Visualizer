@@ -7,6 +7,8 @@ FullRange::FullRange(double yScaleFactor)
 }
 
 void FullRange::renderGraph(Graph* graph, sf::RenderWindow* window) {
+	double maxYValue = 0;
+
 	graph->getXAxis()->draw(window);
 	graph->getYAxis()->draw(window);
 
@@ -46,9 +48,11 @@ void FullRange::renderGraph(Graph* graph, sf::RenderWindow* window) {
 
 			window->draw(line);
 		}
+		maxYValue = (posY > maxYValue) ? posY : maxYValue;
 	}
 
 	graph->getXAxis()->setRange(graph->getGraphData().size());
+	graph->getYAxis()->setRange(maxYValue / yScaleFactor * 1.0);
 
 
 }

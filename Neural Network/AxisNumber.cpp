@@ -1,10 +1,12 @@
 #include "AxisNumber.h"
+#include <sstream> 
+#include <iomanip> 
 
 AxisNumber::AxisNumber()
 {
 	this->text = new sf::Text();
 	this->font = new sf::Font();
-	this->data = 100;
+	this->data = 0.0;
 
 	if (!font->loadFromFile("arial.ttf")) {
 		throw "Font not found";
@@ -38,5 +40,14 @@ float AxisNumber::getHeight() {
 }
 
 void AxisNumber::setData(double data) {
-	this->text->setString(std::to_string(data));
+	std::stringstream ss;
+	if (ceil(data) - floor(data) > 0)
+	{
+		ss << std::fixed << std::setprecision(5) << data;
+	}
+	else
+	{
+		ss << data;
+	}
+	this->text->setString(ss.str());
 }
