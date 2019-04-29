@@ -9,6 +9,7 @@ public:
 	void setPosition(float x, float y);
 	const sf::Vector2f& getPosition();
 	void setData(double data);
+	double getData();
 
 private:
 	sf::CircleShape* shape;

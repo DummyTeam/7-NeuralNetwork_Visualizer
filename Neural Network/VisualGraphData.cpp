@@ -25,3 +25,7 @@ void VisualGraphData::draw(sf::RenderWindow* window)
 void VisualGraphData::setData(double data) {
 	this->data = data;
 }
+
+double VisualGraphData::getData() {
+	return this->data;
+}

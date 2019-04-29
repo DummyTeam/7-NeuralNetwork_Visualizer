@@ -31,21 +31,21 @@ int main()
 	DataSet* testingDataSet = new DataSet("data4Test.data", numberOfInputs, numberOfOutputs);
 
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
-	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new FullRange(170)); //  new LastNRange(800, 170)
+	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new LastNRange(800, 170)); //  new FullRange LastNRange(800, 170)
 
 	Window* nnWindow = new Window(sf::Vector2i(700, 600), sf::Vector2i(20, 50), "Neural Network Structure");
 	nnWindow->addAdapter(nnVisualAdapter);
 
 	Window* graphWindow = new Window(sf::Vector2i(800, 600), sf::Vector2i(720, 50), "Cost Graph");
 	graphWindow->addAdapter(graphAdapter);
-	
+
 	// Starts new view threads!
 	nnWindow->startWindow();
 	graphWindow->startWindow();
 
 	double learningRate = 0.0314;
 	int numberOfIterations = 7000;
-
+	system("pause");
 	nn->train(
 		trainingDataSet,
 		learningRate,
