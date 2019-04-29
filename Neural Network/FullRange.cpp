@@ -1,5 +1,6 @@
 #include "FullRange.h"
 #include "Graph.h"
+#include <iostream>
 
 FullRange::FullRange(double yScaleFactor)
 {
@@ -24,35 +25,30 @@ void FullRange::renderGraph(Graph* graph, sf::RenderWindow* window) {
 
 	for (int i = 0; i < graph->getGraphData().size(); i++)
 	{
-		float posX = graph->getXAxis()->getPosition().x + graph->getYAxis()->getWidth() + i * (graph->getXAxis()->getHeight() / graph->getGraphData().size() * 1.0);
-		float posY = graph->getXAxis()->getPosition().y;
-
 		graph->getGraphData().at(i)->setPosition(
-			posX,
-			posY
+			graph->getXAxis()->getPosition().x + graph->getYAxis()->getWidth() + i * (graph->getXAxis()->getHeight() / graph->getGraphData().size() * 1.0),
+			graph->getXAxis()->getPosition().y
 		);
 
 		graph->getGraphData().at(i)->draw(window);
 
 		if (i != 0)
 		{
-			float previousPosX = graph->getGraphData().at(i - 1)->getPosition().x;
-			float previousPosY = graph->getGraphData().at(i - 1)->getPosition().y;
 			sf::VertexArray line(sf::LinesStrip, 2);
 
-			line[0].position = sf::Vector2f(posX, posY);
-			line[1].position = sf::Vector2f(previousPosX, previousPosY);
+			line[0].position = graph->getGraphData().at(i)->getPosition();
+			line[1].position = graph->getGraphData().at(i - 1)->getPosition();
 
 			line[0].color = sf::Color(217, 53, 86);
 			line[1].color = sf::Color(217, 53, 86);
 
 			window->draw(line);
 		}
-		maxYValue = (posY > maxYValue) ? posY : maxYValue;
-	}
 
+		maxYValue = (graph->getGraphData().at(i)->getData() > maxYValue)
+			? graph->getGraphData().at(i)->getData()
+			: maxYValue;
+	}
 	graph->getXAxis()->setRange(graph->getGraphData().size());
 	graph->getYAxis()->setRange(maxYValue / yScaleFactor * 1.0);
-
-
 }
