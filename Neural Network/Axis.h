@@ -19,5 +19,6 @@ protected:
 	sf::RectangleShape* axis;
 	float width;
 	float height;
+	int size;
 	std::vector<AxisNumber*> axisNumbers;
 };

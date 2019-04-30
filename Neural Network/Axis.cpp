@@ -4,7 +4,7 @@ Axis::Axis()
 {
 	this->height = 450.f;
 	this->width = 2.f;
-	int size = 5; 
+	this->size = 5; 
 	this->axis = new sf::RectangleShape(sf::Vector2f(this->height, this->width));
 
 	for (size_t i = 0; i < size; i++)
