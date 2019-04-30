@@ -7,6 +7,7 @@ public:
 	X_Axis();
 	void setPosition(sf::Vector2f pos);
 	void setRange(double value);
+	void setRange(double from, double to);
 
 private:
 

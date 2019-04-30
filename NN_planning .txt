@@ -45,7 +45,7 @@ Regular version:
 		- takes the results and calculate the cost
 		- run backpropogation (updates weights and biases)
 
-	
+
 	// </Training>
 	
 	vector<double> results = neuralNetwork->predict(input);

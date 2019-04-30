@@ -21,6 +21,15 @@ void X_Axis::setPosition(sf::Vector2f pos) {
 void X_Axis::setRange(double value) {
 	for (size_t i = 0; i < this->axisNumbers.size(); i++)
 	{
-		this->axisNumbers.at(i)->setData((int)value * i / 5);
+		this->axisNumbers.at(i)->setData((int)value * i / this->size);
+	}
+}
+
+void X_Axis::setRange(double from, double to) {
+	from = (from < 0) ? 0 : from;
+	to = (to < 0) ? 0 : to;
+	for (size_t i = 0; i < this->axisNumbers.size(); i++)
+	{
+		this->axisNumbers.at(i)->setData((int)(from + ((to - from) * i / this->size)));
 	}
 }
