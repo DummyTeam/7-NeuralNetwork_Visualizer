@@ -67,18 +67,18 @@ The sample code below shows how Neural Network can be built in the project:
 	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new LastNRange(400, 170));
 
 	Window* nnWindow = new Window(
-								sf::Vector2i(700, 600), 	// Screen dimensions
-								sf::Vector2i(20, 50), 		// Screen position
-								"Neural Network Structure"	// Screen title
-								);
+				sf::Vector2i(700, 600), 	// Screen dimensions
+				sf::Vector2i(20, 50), 		// Screen position
+				"Neural Network Structure"	// Screen title
+				);
 								
 	nnWindow->addAdapter(nnVisualAdapter);
 
 	Window* graphWindow = new Window(
-								sf::Vector2i(800, 600), 	// Screen dimensions
-								sf::Vector2i(720, 50),      // Screen position
-								"Cost Graph"                // Screen title
-								);
+				sf::Vector2i(800, 600), 	// Screen dimensions
+				sf::Vector2i(720, 50),      // Screen position
+				"Cost Graph"                // Screen title
+				);
 								
 	graphWindow->addAdapter(graphAdapter);
 
@@ -116,7 +116,7 @@ The sample code below shows how Neural Network can be built in the project:
 
 Graph illustrating only last `n` number of the cost data:
 
-![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/graphLastNRange.gif)
+![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/graphLastNrange.gif)
 
 
 Graph containing all the cost data at once:
