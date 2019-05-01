@@ -6,7 +6,6 @@
   <br>
 </h1>
 
-
 <h4 align="center">Neural Network Implemented in C++: An Object Oriented Approach From Scratch with Visualizing tools built on top of <a href="https://github.com/SFML/SFML" target="_blank">SFML</a>.</h4>
 
 <p align="center">
@@ -37,24 +36,45 @@
 The sample code below shows how Neural Network can be built in the project:
 
 ```cpp
-	int numberOfInputs = 2;
-	int numberOfHiddenLayerNodes = 2;
+	int numberOfInputs = 4;
+	int numberOfHiddenLayerNodes = 8;
+	int numberOfHiddenLayerNodes2 = 8;
 	int numberOfOutputs = 1;
 
 	NeuralNetwork* nn = (new NeuralNetwork::Builder())
 		->addLayer(new Layer(numberOfInputs))
-		->addLayer(new Layer(numberOfHiddenLayerNodes))
-		->addLayer(new Layer(numberOfOutputs))
+		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
+		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
+		->addLayer(new Layer(numberOfOutputs, new ReLU()))
+		->setLearningMethod(new GradientDescent(new MSE())) // Cost Function
 		->build();
 
-	double learningRate = 0.1;
-	int numberOfIterations = 20000;
+	DataSet* trainingDataSet = new DataSet("data4.data", numberOfInputs, numberOfOutputs);
+	
+	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
+	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new LastNRange(400, 170)); //  new FullRange LastNRange(800, 170)
 
+	Window* nnWindow = new Window(sf::Vector2i(700, 600), sf::Vector2i(20, 50), "Neural Network Structure");
+	nnWindow->addAdapter(nnVisualAdapter);
+
+	Window* graphWindow = new Window(sf::Vector2i(800, 600), sf::Vector2i(720, 50), "Cost Graph");
+	graphWindow->addAdapter(graphAdapter);
+
+	// Starts new view threads!
+	nnWindow->startWindow();
+	graphWindow->startWindow();
+
+	double learningRate = 0.0314;
+	int numberOfIterations = 7000;
+	
 	nn->train(
-		new DataSet("data.data", numberOfInputs, numberOfOutputs), 
-		learningRate, 
+		trainingDataSet,
+		learningRate,
 		numberOfIterations
 	);
+
+	DataSet* testingDataSet = new DataSet("data4Test.data", numberOfInputs, numberOfOutputs);
+	nn->test(testingDataSet);
 ```
 
 
