@@ -6,7 +6,18 @@
   <br>
 </h1>
 
-<h4 align="center">Neural Network Implemented in C++: An Object Oriented Approach From Scratch with Visualizing tools built on top of <a href="https://github.com/SFML/SFML" target="_blank">SFML</a>.</h4>
+<h4 align="center">Neural Network Implemented in C++: An Object Oriented Approach From Scratch With Visualizing Tools Built on Top of <a href="https://github.com/SFML/SFML" target="_blank">SFML</a> Graphics Library.</h4>
+
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#sample-code">Sample Code</a> •
+  <a href="#structure">Structure</a> •
+  <a href="#visualization">Visualization</a> •
+  <a href="#graph">Graph</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#tools">Tools</a> •
+  <a href="#license">License</a>
+</p>
 
 <p align="center">
   <a href="https://github.com/DummyTeam/7-NeuralNetwork_OO">
@@ -15,23 +26,24 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#example">Example</a> •
-  <a href="#credits">Structure</a> •
-  <a href="#related">Visualization</a> •
-  <a href="#license">Credits</a>
-  <a href="#license">License</a>
-</p>
 
-![screenshot](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/animNeuralNetwork.gif)
+## Key Features
+
+* Easy to build a neural network 
+* Apply different learning methods
+* Various cost functions
+* Activation functions
+  - For all neurons in a layer
+  - For individual neurons
+* Train using multiple datasets
+* Trainign using multiple datasets
+* Visualizing activation values and weights
+* Visualizing cost in graph as the neural network gets trained and tested 
+  - For all neurons in a layer
 
 
-# 7-NeuralNetwork_OO
 
-
-### Sample Code
+## Sample Code
 
 The sample code below shows how Neural Network can be built in the project:
 
@@ -46,18 +58,28 @@ The sample code below shows how Neural Network can be built in the project:
 		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
 		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
-		->setLearningMethod(new GradientDescent(new MSE())) // Cost Function
+		->setLearningMethod(new GradientDescent(new MSE())) // Mean Squared Error
 		->build();
 
 	DataSet* trainingDataSet = new DataSet("data4.data", numberOfInputs, numberOfOutputs);
 	
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
-	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new LastNRange(400, 170)); //  new FullRange LastNRange(800, 170)
+	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new LastNRange(400, 170));
 
-	Window* nnWindow = new Window(sf::Vector2i(700, 600), sf::Vector2i(20, 50), "Neural Network Structure");
+	Window* nnWindow = new Window(
+								sf::Vector2i(700, 600), 	// Screen dimensions
+								sf::Vector2i(20, 50), 		// Screen position
+								"Neural Network Structure"	// Screen title
+								);
+								
 	nnWindow->addAdapter(nnVisualAdapter);
 
-	Window* graphWindow = new Window(sf::Vector2i(800, 600), sf::Vector2i(720, 50), "Cost Graph");
+	Window* graphWindow = new Window(
+								sf::Vector2i(800, 600), 	// Screen dimensions
+								sf::Vector2i(720, 50),      // Screen position
+								"Cost Graph"                // Screen title
+								);
+								
 	graphWindow->addAdapter(graphAdapter);
 
 	// Starts new view threads!
@@ -78,12 +100,47 @@ The sample code below shows how Neural Network can be built in the project:
 ```
 
 
-### Class Diagram
+## Structure
 
-![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/classDiagram.PNG)
+![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/WholeClassDiagram.jpg)
 
 
-### Tools
+
+## Visualization
+
+
+![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/animNeuralNetwork.gif)
+
+
+## Graph
+
+Graph illustrating only last `n` number of the cost data:
+
+![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/graphLastNRange.gif)
+
+
+Graph containing all the cost data at once:
+
+![Screen from program](https://raw.githubusercontent.com/DummyTeam/7-NeuralNetwork_OO/master/art/graphFullRange.gif)
+
+
+
+## Credits
+
+  - [SFML](https://github.com/SFML/SFML)
+
+
+## Tools
 
   - Visual Studio
   - C++
+
+
+## License
+
+MIT
+
+---
+
+> GitHub [@emiraslan](https://github.com/emiraslan) &nbsp;&middot;&nbsp;
+> GitHub [DummyTeam](https://github.com/DummyTeam) &nbsp;&middot;&nbsp;

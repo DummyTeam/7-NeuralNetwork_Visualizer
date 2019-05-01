@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Utils">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAFAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScreenMessage">
+    <Position X="4.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAABIAAAAAAAAgIAAAAAAAAAAAAIAAAAAAAAACA=</HashCode>
+      <FileName>ScreenMessage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NNVisualAdapter">
+    <Position X="2.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAQAAAAAAAAAAAIIIAIAAAAAAAAAoAEAAAAAAAACA=</HashCode>
+      <FileName>NNVisualAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Visualizable">
+    <Position X="3.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Visualizable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Window">
+    <Position X="0.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAABAAgAAGAAECAAAgAAAAAIJAAAASAAAABI=</HashCode>
+      <FileName>Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualLayer">
+    <Position X="4.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAIQAAAAAAEgAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>VisualLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualNeuron">
+    <Position X="0.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABACAAAAAAkCAKACQAAAAAAAAAIAAAAAgQAFAA=</HashCode>
+      <FileName>VisualNeuron.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualObject">
+    <Position X="2.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VisualObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualWeight">
+    <Position X="2.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIBAAACAAAAAAIAABgEAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>VisualWeight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CostFunction">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CostFunction.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GradientDescent">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQAIAAAAAAAAACACAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>GradientDescent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningMethod">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQEQAIAAEAAAAAACACAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LearningMethod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSE">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>MSE.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Layer">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAICAAAAgAAAIAYMBAIABAEIEAACBAAAAAkA=</HashCode>
+      <FileName>Layer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNetwork">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="NeuralNetwork::Builder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NeuralNetwork.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>RgAgEAAAIAQAAAAAAAAIBAQAABAAAQBoAAAADMAAQAA=</HashCode>
+      <FileName>NeuralNetwork.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Neuron">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAQAAEAAACAAAEFTAAEAAAAAAAAQAIQgAAAAEgIggA=</HashCode>
+      <FileName>Neuron.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataSet">
+    <Position X="0.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABGAgAAAAAQAACAAAAAAIAAAAAAAAAAgAAAAI=</HashCode>
+      <FileName>DataSet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReLU">
+    <Position X="7" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAABAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ReLU.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sample">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAECUCgAAAAAAAIAAABACAAAABAAAAAQEAAAAAA=</HashCode>
+      <FileName>Sample.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigmoid">
+    <Position X="4.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAABAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Sigmoid.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Squishification">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Squishification.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weight">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAICAAAAACAAAAIAAAgAACAIACIAAAAAAAAAAAA=</HashCode>
+      <FileName>Weight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Axis">
+    <Position X="8.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIAAAAAAAAQQAQIMEAAACBAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AxisNumber">
+    <Position X="11" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAAAAAAAAAAAIAAACCAAAAQAAoAAAQAAAAAAA=</HashCode>
+      <FileName>AxisNumber.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FullRange">
+    <Position X="7" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAEAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FullRange.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphRangeStyle">
+    <Position X="8" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphRangeStyle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LastNRange">
+    <Position X="9.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAICAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LastNRange.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graph">
+    <Position X="11.25" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgMAAAIAEAQAAAAIgAAACAAAAEAgAACAAAAAEAAA=</HashCode>
+      <FileName>Graph.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualGraphData">
+    <Position X="6.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEQIAAAAAAAAAAAAAIAAAACAAAAAAAAAAAQAAAABAA=</HashCode>
+      <FileName>VisualGraphData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NNGraphAdapter">
+    <Position X="4.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAIIAQAAAKAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>NNGraphAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="X_Axis">
+    <Position X="7.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAACAAAAAAAA=</HashCode>
+      <FileName>X_Axis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Y_Axis">
+    <Position X="10" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAACACAACAAAAA=</HashCode>
+      <FileName>Y_Axis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
