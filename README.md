@@ -36,11 +36,9 @@
   - For all neurons in a layer
   - For individual neurons
 * Train using multiple datasets
-* Trainign using multiple datasets
+* Training using multiple datasets
 * Visualizing activation values and weights
 * Visualizing cost in graph as the neural network gets trained and tested 
-  - For all neurons in a layer
-
 
 
 ## Sample Code
