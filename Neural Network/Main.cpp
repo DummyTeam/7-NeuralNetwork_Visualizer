@@ -14,15 +14,17 @@ int main()
 	srand(24);
 
 	// Neural Network for XOR
-	int numberOfInputs = 4;
-	int numberOfHiddenLayerNodes = 8;
-	int numberOfHiddenLayerNodes2 = 8;
+	int numberOfInputs = 8;
+	int numberOfHiddenLayerNodes = 4;
+	int numberOfHiddenLayerNodes2 = 2;
+	int numberOfHiddenLayerNodes3 = 4;
 	int numberOfOutputs = 1;
 
 	NeuralNetwork* nn = (new NeuralNetwork::Builder())
 		->addLayer(new Layer(numberOfInputs))
 		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
 		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
+		->addLayer(new Layer(numberOfHiddenLayerNodes3, new ReLU()))
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
 		->setLearningMethod(new GradientDescent(new MSE())) // Cost Function
 		->build();
@@ -36,6 +38,7 @@ int main()
 	Window* nnWindow = new Window(sf::Vector2i(700, 600), sf::Vector2i(20, 50), "Neural Network Structure");
 	nnWindow->addAdapter(nnVisualAdapter);
 
+	// TODO: Fix y axis values
 	Window* graphWindow = new Window(sf::Vector2i(800, 600), sf::Vector2i(720, 50), "Cost Graph");
 	graphWindow->addAdapter(graphAdapter);
 
@@ -46,6 +49,8 @@ int main()
 	double learningRate = 0.0314;
 	int numberOfIterations = 7000;
 	
+	system("pause");
+
 	nn->train(
 		trainingDataSet,
 		learningRate,

@@ -184,6 +184,7 @@
     <ClInclude Include="Y_Axis.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="data.data" />
     <None Include="data2.data" />
     <None Include="data2Test.data" />

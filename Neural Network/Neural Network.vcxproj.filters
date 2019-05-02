@@ -215,5 +215,6 @@
     <None Include="data4Test.data" />
     <None Include="newDataSet.data" />
     <None Include="newDataSetTest.data" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
