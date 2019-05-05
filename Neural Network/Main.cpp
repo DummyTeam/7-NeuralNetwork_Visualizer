@@ -14,17 +14,15 @@ int main()
 	srand(24);
 
 	// Neural Network for XOR
-	int numberOfInputs = 8;
-	int numberOfHiddenLayerNodes = 4;
-	int numberOfHiddenLayerNodes2 = 2;
-	int numberOfHiddenLayerNodes3 = 4;
+	int numberOfInputs = 4;
+	int numberOfHiddenLayerNodes = 8;
+	int numberOfHiddenLayerNodes2 = 8;
 	int numberOfOutputs = 1;
 
 	NeuralNetwork* nn = (new NeuralNetwork::Builder())
 		->addLayer(new Layer(numberOfInputs))
 		->addLayer(new Layer(numberOfHiddenLayerNodes, new ReLU()))
 		->addLayer(new Layer(numberOfHiddenLayerNodes2, new ReLU()))
-		->addLayer(new Layer(numberOfHiddenLayerNodes3, new ReLU()))
 		->addLayer(new Layer(numberOfOutputs, new ReLU()))
 		->setLearningMethod(new GradientDescent(new MSE())) // Cost Function
 		->build();
@@ -33,7 +31,7 @@ int main()
 	DataSet* testingDataSet = new DataSet("data4Test.data", numberOfInputs, numberOfOutputs);
 
 	NNVisualAdapter* nnVisualAdapter = new NNVisualAdapter(nn);
-	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new LastNRange(400, 170)); //new FullRange LastNRange(800, 170)
+	NNGraphAdapter* graphAdapter = new NNGraphAdapter(nn, new FullRange(170)); //new FullRange LastNRange(800, 170)
 
 	Window* nnWindow = new Window(sf::Vector2i(700, 600), sf::Vector2i(20, 50), "Neural Network Structure");
 	nnWindow->addAdapter(nnVisualAdapter);
@@ -46,10 +44,8 @@ int main()
 	nnWindow->startWindow();
 	graphWindow->startWindow();
 
-	double learningRate = 0.0314;
-	int numberOfIterations = 7000;
-	
-	system("pause");
+	double learningRate = 0.03014; // 0.0314;
+	int numberOfIterations = 4500;
 
 	nn->train(
 		trainingDataSet,
