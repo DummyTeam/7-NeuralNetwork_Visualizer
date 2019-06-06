@@ -155,30 +155,6 @@ std::string NeuralNetwork::getCurrentStage() {
 	return this->currentStage;
 }
 
-void NeuralNetwork::saveNetwork(std::string filename) {
-	std::ofstream file;
-	file.open(filename);
-
-	std::cout << "Saving neural network" << std::endl;
-	for (auto& layer : this->layers)
-	{
-		if (&layer - &(this->layers.at(0)) != 0)
-			for (auto& neuron : layer->getNeurons())
-			{
-				std::cout << std::to_string(neuron->getBias()) << std::endl;
-				for (auto& weight : neuron->getInconmingWeights())
-				{
-					file << std::to_string(weight->getValue()) << " ";
-				}
-				std::cout << std::endl;
-			}
-	}
-
-	file.close();
-	std::cout << "Saved neural network" << std::endl;
-}
-
-
 // Builder implementation
 NeuralNetwork::Builder::Builder()
 {

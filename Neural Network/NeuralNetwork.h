@@ -58,9 +58,6 @@ public:
 
 	const std::vector<Layer*> & getLayers();
 
-	// Save weights of nn to a file
-	void saveNetwork(std::string filename);
-
 	// Redundant: Delete this line
 	void printTheResult(int i, Sample* s);
 

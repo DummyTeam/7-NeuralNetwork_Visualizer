@@ -53,9 +53,6 @@ int main()
 		numberOfIterations
 	);
 
-	// TODO: Make this work!
-	//nn->saveNetwork("previousNeuralNetwork.nn");
-
 	nn->test(testingDataSet);
 
 	system("pause");
